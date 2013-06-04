@@ -1,0 +1,12 @@
+.DS_Store
+.settings
+target
+bin
+.classpath
+.project
+*~
+.idea
+*.iml
+.sonar-ide.properties
+*.swp
+*.log
