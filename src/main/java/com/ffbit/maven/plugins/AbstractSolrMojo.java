@@ -14,12 +14,21 @@ public abstract class AbstractSolrMojo extends AbstractMojo {
      */
     private int port;
 
+    /**
+     * @parameter property="solrVersion" default-value="4.3.0"
+     */
+    private String solrVersion;
+
     public String getPath() {
         return path;
     }
 
     public int getPort() {
         return port;
+    }
+
+    public String getSolrVersion() {
+        return solrVersion;
     }
 
 }
