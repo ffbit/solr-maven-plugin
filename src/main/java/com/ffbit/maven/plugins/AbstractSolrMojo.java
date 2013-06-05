@@ -1,10 +1,15 @@
 package com.ffbit.maven.plugins;
 
 import org.apache.maven.plugin.AbstractMojo;
+import org.apache.maven.plugin.MojoExecutionException;
+import org.sonatype.aether.RepositorySystem;
 import org.sonatype.aether.RepositorySystemSession;
 import org.sonatype.aether.artifact.Artifact;
 import org.sonatype.aether.repository.ArtifactRepository;
 import org.sonatype.aether.repository.RemoteRepository;
+import org.sonatype.aether.resolution.ArtifactRequest;
+import org.sonatype.aether.resolution.ArtifactResolutionException;
+import org.sonatype.aether.resolution.ArtifactResult;
 import org.sonatype.aether.util.artifact.DefaultArtifact;
 
 import java.util.List;
@@ -25,6 +30,13 @@ public abstract class AbstractSolrMojo extends AbstractMojo {
      * @parameter property="solrVersion" default-value="4.3.0"
      */
     private String solrVersion;
+
+    /**
+     * The entry point to Aether, i.e. the component doing all the work.
+     *
+     * @component
+     */
+    private RepositorySystem repositorySystem;
 
     /**
      * The current repository/network configuration of Maven.
@@ -62,9 +74,7 @@ public abstract class AbstractSolrMojo extends AbstractMojo {
         return repositorySession.getLocalRepository();
     }
 
-    public Artifact getArtifact() {
-
-
+    public Artifact getArtifact() throws MojoExecutionException {
         String groupId = "org.apache.solr";
         String artifactId = "solr";
         String version = solrVersion;
@@ -73,14 +83,15 @@ public abstract class AbstractSolrMojo extends AbstractMojo {
         Artifact artifact = new DefaultArtifact(groupId, artifactId, extension, version);
 
 
-//
-//
-//
-//        artifact.setGroupId("");
-//        artifact.setArtifactId("");
-//        artifact.setVersion(solrVersion);
+        ArtifactRequest request = new ArtifactRequest();
+        request.setArtifact(artifact);
+        request.setRepositories(remoteRepositories);
 
-//        localRepository.pathOf(artifact);
+        try {
+            ArtifactResult result = repositorySystem.resolveArtifact(repositorySession, request);
+        } catch (ArtifactResolutionException e) {
+            throw new MojoExecutionException(e.getMessage(), e);
+        }
 
         return artifact;
     }

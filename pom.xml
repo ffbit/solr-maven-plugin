@@ -39,12 +39,14 @@
             <version>${jetty.version}</version>
         </dependency>
 
+        <!--
         <dependency>
             <groupId>org.apache.solr</groupId>
             <artifactId>solr</artifactId>
             <version>${solr.version}</version>
             <type>war</type>
         </dependency>
+        -->
 
         <!-- Logging -->
         <dependency>
