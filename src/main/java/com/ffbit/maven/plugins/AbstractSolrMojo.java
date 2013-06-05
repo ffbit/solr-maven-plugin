@@ -1,9 +1,12 @@
 package com.ffbit.maven.plugins;
 
-import org.apache.maven.artifact.repository.ArtifactRepository;
 import org.apache.maven.plugin.AbstractMojo;
+import org.sonatype.aether.RepositorySystemSession;
+import org.sonatype.aether.artifact.Artifact;
+import org.sonatype.aether.repository.ArtifactRepository;
+import org.sonatype.aether.repository.RemoteRepository;
+import org.sonatype.aether.util.artifact.DefaultArtifact;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public abstract class AbstractSolrMojo extends AbstractMojo {
@@ -24,17 +27,20 @@ public abstract class AbstractSolrMojo extends AbstractMojo {
     private String solrVersion;
 
     /**
-     * @parameter default-value="${project.remoteArtifactRepositories}"
+     * The current repository/network configuration of Maven.
+     *
+     * @parameter default-value="${repositorySystemSession}"
+     * @readonly
      */
-    private List remoteRepositories;
+    private RepositorySystemSession repositorySession;
 
     /**
-     * @parameter default-value="${localRepository}"
+     * The project's remote repositories to use for the resolution.
+     *
+     * @parameter default-value="${project.remoteProjectRepositories}"
+     * @readonly
      */
-    private org.apache.maven.artifact.repository.ArtifactRepository localRepository;
-
-
-    private ArtifactRepository repository;
+    private List<RemoteRepository> remoteRepositories;
 
     public String getPath() {
         return path;
@@ -52,4 +58,30 @@ public abstract class AbstractSolrMojo extends AbstractMojo {
         return remoteRepositories;
     }
 
+    public ArtifactRepository getLocalRepository() {
+        return repositorySession.getLocalRepository();
+    }
+
+    public Artifact getArtifact() {
+
+
+        String groupId = "org.apache.solr";
+        String artifactId = "solr";
+        String version = solrVersion;
+        String extension = "war";
+
+        Artifact artifact = new DefaultArtifact(groupId, artifactId, extension, version);
+
+
+//
+//
+//
+//        artifact.setGroupId("");
+//        artifact.setArtifactId("");
+//        artifact.setVersion(solrVersion);
+
+//        localRepository.pathOf(artifact);
+
+        return artifact;
+    }
 }

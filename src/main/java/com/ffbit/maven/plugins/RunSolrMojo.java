@@ -20,7 +20,9 @@ public class RunSolrMojo extends AbstractSolrMojo {
         getLog().info("Hello 1 " + getPort() + " " + getPath());
         getLog().info("solr version " + getSolrVersion());
 
-//        runner.run();
+        getLog().info("repository:" + getLocalRepository());
+
+        getLog().info("artifact: " + getArtifact());
     }
 
 }
