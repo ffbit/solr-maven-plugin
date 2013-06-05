@@ -1,4 +1,4 @@
-package com.ffbit.maven.plugins;
+package com.ffbit.maven.solr;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -23,6 +23,7 @@ public class RunSolrMojo extends AbstractSolrMojo {
         getLog().info("repository:" + getLocalRepository());
 
         getLog().info("artifact: " + getArtifact());
+        runner.run();
     }
 
 }

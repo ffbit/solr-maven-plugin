@@ -1,4 +1,4 @@
-package com.ffbit.maven.plugins;
+package com.ffbit.maven.solr;
 
 /*
  * Copyright 2001-2005 The Apache Software Foundation.

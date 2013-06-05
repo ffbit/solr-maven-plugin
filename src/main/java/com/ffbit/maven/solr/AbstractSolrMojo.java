@@ -1,4 +1,4 @@
-package com.ffbit.maven.plugins;
+package com.ffbit.maven.solr;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
