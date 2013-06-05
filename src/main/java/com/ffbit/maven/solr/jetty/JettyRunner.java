@@ -3,15 +3,13 @@ package com.ffbit.maven.solr.jetty;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;
 
-import java.io.File;
-
 public class JettyRunner {
     private int port;
-    private String path;
+    private String contextPath;
 
-    public JettyRunner(int port, String path) {
+    public JettyRunner(int port, String contextPath) {
         this.port = port;
-        this.path = path;
+        this.contextPath = contextPath;
     }
 
     public void run(String warPath) {
@@ -19,7 +17,7 @@ public class JettyRunner {
         WebAppContext webapp = new WebAppContext();
 
         webapp.setWar(warPath);
-        webapp.setContextPath(path);
+        webapp.setContextPath(contextPath);
 
         server.setHandler(webapp);
 
