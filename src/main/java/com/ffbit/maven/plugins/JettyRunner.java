@@ -1,6 +1,7 @@
 package com.ffbit.maven.plugins;
 
 import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.webapp.WebAppContext;
 
 public class JettyRunner {
     private int port;
@@ -13,6 +14,12 @@ public class JettyRunner {
 
     public void run() {
         Server server = new Server(port);
+        WebAppContext webapp = new WebAppContext();
+        String warPath = "/Users/ffbit/.m2/repository/org/apache/solr/solr/4.3.0/solr-4.3.0.war";
+        webapp.setWar(warPath);
+        webapp.setContextPath(path);
+
+        server.setHandler(webapp);
 
         try {
             server.start();

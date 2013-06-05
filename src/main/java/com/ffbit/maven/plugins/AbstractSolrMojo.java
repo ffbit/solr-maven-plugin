@@ -1,6 +1,10 @@
 package com.ffbit.maven.plugins;
 
+import org.apache.maven.artifact.repository.ArtifactRepository;
 import org.apache.maven.plugin.AbstractMojo;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class AbstractSolrMojo extends AbstractMojo {
 
@@ -19,6 +23,19 @@ public abstract class AbstractSolrMojo extends AbstractMojo {
      */
     private String solrVersion;
 
+    /**
+     * @parameter default-value="${project.remoteArtifactRepositories}"
+     */
+    private List remoteRepositories;
+
+    /**
+     * @parameter default-value="${localRepository}"
+     */
+    private org.apache.maven.artifact.repository.ArtifactRepository localRepository;
+
+
+    private ArtifactRepository repository;
+
     public String getPath() {
         return path;
     }
@@ -29,6 +46,10 @@ public abstract class AbstractSolrMojo extends AbstractMojo {
 
     public String getSolrVersion() {
         return solrVersion;
+    }
+
+    public List getRemoteRepositories() {
+        return remoteRepositories;
     }
 
 }
