@@ -10,3 +10,6 @@ bin
 .sonar-ide.properties
 *.swp
 *.log
+
+solr/collection1/data/
+
