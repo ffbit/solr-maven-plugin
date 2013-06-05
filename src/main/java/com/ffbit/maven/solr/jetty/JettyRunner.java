@@ -1,4 +1,4 @@
-package com.ffbit.maven.solr;
+package com.ffbit.maven.solr.jetty;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;

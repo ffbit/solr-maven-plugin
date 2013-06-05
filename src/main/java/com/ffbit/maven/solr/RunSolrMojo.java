@@ -1,5 +1,6 @@
 package com.ffbit.maven.solr;
 
+import com.ffbit.maven.solr.jetty.JettyRunner;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 
