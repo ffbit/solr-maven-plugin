@@ -1,5 +1,6 @@
 package com.ffbit.maven.solr;
 
+import com.ffbit.maven.solr.artefact.SolrArtefactResolver;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.sonatype.aether.RepositorySystem;
@@ -75,24 +76,10 @@ public abstract class AbstractSolrMojo extends AbstractMojo {
     }
 
     public Artifact getArtifact() throws MojoExecutionException {
-        String groupId = "org.apache.solr";
-        String artifactId = "solr";
-        String version = solrVersion;
-        String extension = "war";
+        SolrArtefactResolver resolver =
+                new SolrArtefactResolver(repositorySystem, repositorySession, remoteRepositories);
 
-        Artifact artifact = new DefaultArtifact(groupId, artifactId, extension, version);
-
-
-        ArtifactRequest request = new ArtifactRequest();
-        request.setArtifact(artifact);
-        request.setRepositories(remoteRepositories);
-
-        try {
-            ArtifactResult result = repositorySystem.resolveArtifact(repositorySession, request);
-        } catch (ArtifactResolutionException e) {
-            throw new MojoExecutionException(e.getMessage(), e);
-        }
-
-        return artifact;
+        return resolver.resolve(solrVersion);
     }
+
 }
