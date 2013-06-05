@@ -3,6 +3,8 @@ package com.ffbit.maven.solr.jetty;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;
 
+import java.io.File;
+
 public class JettyRunner {
     private int port;
     private String path;
@@ -12,10 +14,10 @@ public class JettyRunner {
         this.path = path;
     }
 
-    public void run() {
+    public void run(String warPath) {
         Server server = new Server(port);
         WebAppContext webapp = new WebAppContext();
-        String warPath = "/Users/ffbit/.m2/repository/org/apache/solr/solr/4.3.0/solr-4.3.0.war";
+
         webapp.setWar(warPath);
         webapp.setContextPath(path);
 

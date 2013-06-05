@@ -1,17 +1,12 @@
 package com.ffbit.maven.solr;
 
-import com.ffbit.maven.solr.artefact.SolrArtefactResolver;
+import com.ffbit.maven.solr.artefact.SolrArtifactResolver;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.sonatype.aether.RepositorySystem;
 import org.sonatype.aether.RepositorySystemSession;
 import org.sonatype.aether.artifact.Artifact;
-import org.sonatype.aether.repository.ArtifactRepository;
 import org.sonatype.aether.repository.RemoteRepository;
-import org.sonatype.aether.resolution.ArtifactRequest;
-import org.sonatype.aether.resolution.ArtifactResolutionException;
-import org.sonatype.aether.resolution.ArtifactResult;
-import org.sonatype.aether.util.artifact.DefaultArtifact;
 
 import java.util.List;
 
@@ -67,17 +62,13 @@ public abstract class AbstractSolrMojo extends AbstractMojo {
         return solrVersion;
     }
 
-    public List getRemoteRepositories() {
-        return remoteRepositories;
-    }
-
-    public ArtifactRepository getLocalRepository() {
-        return repositorySession.getLocalRepository();
+    public String getArtifactPath() throws MojoExecutionException {
+        return getArtifact().getFile().getAbsolutePath();
     }
 
     public Artifact getArtifact() throws MojoExecutionException {
-        SolrArtefactResolver resolver =
-                new SolrArtefactResolver(repositorySystem, repositorySession, remoteRepositories);
+        SolrArtifactResolver resolver =
+                new SolrArtifactResolver(repositorySystem, repositorySession, remoteRepositories);
 
         return resolver.resolve(solrVersion);
     }

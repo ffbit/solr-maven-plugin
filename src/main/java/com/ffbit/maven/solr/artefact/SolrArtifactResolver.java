@@ -7,11 +7,12 @@ import org.sonatype.aether.artifact.Artifact;
 import org.sonatype.aether.repository.RemoteRepository;
 import org.sonatype.aether.resolution.ArtifactRequest;
 import org.sonatype.aether.resolution.ArtifactResolutionException;
+import org.sonatype.aether.resolution.ArtifactResult;
 import org.sonatype.aether.util.artifact.DefaultArtifact;
 
 import java.util.List;
 
-public class SolrArtefactResolver {
+public class SolrArtifactResolver {
     private final String GROUP_ID = "org.apache.solr";
     private final String ARTEFACT_ID = "solr";
     private final String EXTENTION = "war";
@@ -20,7 +21,7 @@ public class SolrArtefactResolver {
     private RepositorySystemSession repositorySession;
     private List<RemoteRepository> remoteRepositories;
 
-    public SolrArtefactResolver(RepositorySystem repositorySystem,
+    public SolrArtifactResolver(RepositorySystem repositorySystem,
                                 RepositorySystemSession repositorySession,
                                 List<RemoteRepository> remoteRepositories) {
         this.repositorySystem = repositorySystem;
@@ -30,12 +31,11 @@ public class SolrArtefactResolver {
 
     public Artifact resolve(String solrVersion) throws MojoExecutionException {
         Artifact artifact = createArtifact(solrVersion);
-        fetchArtifact(artifact);
 
-        return artifact;
+        return fetchArtifact(artifact);
     }
 
-    private DefaultArtifact createArtifact(String solrVersion)
+    private Artifact createArtifact(String solrVersion)
             throws MojoExecutionException {
         try {
             return new DefaultArtifact(GROUP_ID, ARTEFACT_ID, EXTENTION, solrVersion);
@@ -44,13 +44,14 @@ public class SolrArtefactResolver {
         }
     }
 
-    private void fetchArtifact(Artifact artifact) throws MojoExecutionException {
+    private Artifact fetchArtifact(Artifact artifact) throws MojoExecutionException {
         ArtifactRequest request = new ArtifactRequest();
         request.setArtifact(artifact);
         request.setRepositories(remoteRepositories);
 
         try {
-            repositorySystem.resolveArtifact(repositorySession, request);
+            ArtifactResult result = repositorySystem.resolveArtifact(repositorySession, request);
+            return result.getArtifact();
         } catch (ArtifactResolutionException e) {
             throw new MojoExecutionException(e.getMessage(), e);
         }

@@ -15,16 +15,11 @@ public class RunSolrMojo extends AbstractSolrMojo {
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
         JettyRunner runner = new JettyRunner(getPort(), getPath());
+        String warPath = getArtifactPath();
 
-        getLog().info("repositories: " + getRemoteRepositories());
+        getLog().info("artifact: " + warPath);
 
-        getLog().info("Hello 1 " + getPort() + " " + getPath());
-        getLog().info("solr version " + getSolrVersion());
-
-        getLog().info("repository:" + getLocalRepository());
-
-        getLog().info("artifact: " + getArtifact());
-        runner.run();
+        runner.run(warPath);
     }
 
 }
