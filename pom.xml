@@ -8,7 +8,8 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <name>Apache Solr Maven Plugin</name>
-    <url>http://maven.apache.org</url>
+    <description>A plugin which runs Apache Solr Server for Integration Tests</description>
+    <url>https://github.com/ffbit/solr-maven-plugin/</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
