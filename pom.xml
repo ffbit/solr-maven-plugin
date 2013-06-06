@@ -31,6 +31,12 @@
             <artifactId>aether-impl</artifactId>
             <version>1.13.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugin-tools</groupId>
+            <artifactId>maven-plugin-annotations</artifactId>
+            <version>3.2</version>
+            <scope>provided</scope>
+        </dependency>
 
         <dependency>
             <groupId>org.eclipse.jetty.aggregate</groupId>
@@ -85,6 +91,9 @@
                 <groupId>${project.groupId}</groupId>
                 <artifactId>${project.artifactId}</artifactId>
                 <version>${project.version}</version>
+                <configuration>
+                    <port>8983</port>
+                </configuration>
             </plugin>
         </plugins>
     </build>

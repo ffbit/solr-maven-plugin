@@ -23,7 +23,7 @@ public class JettyRunner {
 
         try {
             server.start();
-            server.join();
+            //server.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (Exception e) {
