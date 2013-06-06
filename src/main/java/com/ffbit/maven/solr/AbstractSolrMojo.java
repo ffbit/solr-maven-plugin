@@ -16,7 +16,7 @@ import java.util.List;
 public abstract class AbstractSolrMojo extends AbstractMojo {
 
     /**
-     * @parameter property="contextPath" default-value="/solr"
+     * @parameter property="contextPath" default-value="/"
      */
     private String contextPath;
 
