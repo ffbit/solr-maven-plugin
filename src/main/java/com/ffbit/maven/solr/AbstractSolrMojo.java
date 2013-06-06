@@ -1,6 +1,7 @@
 package com.ffbit.maven.solr;
 
 import com.ffbit.maven.solr.artefact.SolrArtifactResolver;
+import com.ffbit.maven.solr.extract.BootstrapExtractor;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -9,16 +10,8 @@ import org.sonatype.aether.RepositorySystemSession;
 import org.sonatype.aether.artifact.Artifact;
 import org.sonatype.aether.repository.RemoteRepository;
 
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.Collections;
 import java.util.List;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
 
 public abstract class AbstractSolrMojo extends AbstractMojo {
 
@@ -90,84 +83,12 @@ public abstract class AbstractSolrMojo extends AbstractMojo {
 
     @Override
     public final void execute() throws MojoExecutionException, MojoFailureException {
-        createSolrHomeFolder();
-        try {
-            fillSolrHomeFolder();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        BootstrapExtractor extractor = new BootstrapExtractor(solrHome, solrVersion);
+        extractor.extract();
+
         exportSolrHomeProperty();
 
         executeGoal();
-    }
-
-    protected void createSolrHomeFolder() {
-        solrHome.mkdirs();
-
-        if (!solrHome.isDirectory() || !solrHome.canWrite()) {
-            // throw a new exception
-        }
-    }
-
-    protected void fillSolrHomeFolder() throws Exception {
-        String jarPath = getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
-        JarFile jar = new JarFile(jarPath);
-
-        for (JarEntry entry : Collections.list(jar.entries())) {
-            if (entry.getName().startsWith(solrVersion)) {
-                unJar(entry, jar);
-            }
-        }
-    }
-
-    private void unJar(JarEntry entry, JarFile jar) {
-        String name = entry.getName().substring(solrVersion.length());
-        File destination = new File(solrHome, name);
-
-        if (entry.isDirectory()) {
-            destination.mkdirs();
-        } else {
-            writeFile(jar, entry, destination);
-        }
-    }
-
-    private void writeFile(JarFile jar, JarEntry entry, File destination) {
-        InputStream in = null;
-        OutputStream out = null;
-
-        try {
-
-            in = jar.getInputStream(entry);
-            out = new BufferedOutputStream(new FileOutputStream(destination));
-
-            byte[] buffer = new byte[1024];
-            int length = 0;
-
-            while ((length = in.read(buffer)) > 0) {
-                out.write(buffer, 0, length);
-            }
-
-            out.flush();
-        } catch (IOException e) {
-            getLog().info(e.getMessage(), e);
-            // throw e;
-        } finally {
-            if (in != null) {
-                try {
-                    in.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            if (out != null) {
-                try {
-                    out.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
     }
 
     private void exportSolrHomeProperty() {
