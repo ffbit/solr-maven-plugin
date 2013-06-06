@@ -6,4 +6,4 @@ Run Apache Solr Server for Integration Tests
 
 ## Status
 
-Current status is under development
+Supports Apache Solr of version 4.3.0
