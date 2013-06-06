@@ -19,6 +19,12 @@
         </license>
     </licenses>
 
+    <scm>
+        <connection>scm:git:git@github.com:ffbit/${project.artifactId}.git</connection>
+        <developerConnection>scm:git:git@github.com:ffbit/${project.artifactId}.git</developerConnection>
+        <url>https://github.com/ffbit/${project.artifactId}/</url>
+    </scm>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
