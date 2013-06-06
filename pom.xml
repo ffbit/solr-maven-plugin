@@ -91,9 +91,6 @@
                 <groupId>${project.groupId}</groupId>
                 <artifactId>${project.artifactId}</artifactId>
                 <version>${project.version}</version>
-                <configuration>
-                    <port>8983</port>
-                </configuration>
             </plugin>
         </plugins>
     </build>

@@ -11,25 +11,21 @@ import org.sonatype.aether.repository.RemoteRepository;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Collections;
 import java.util.List;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
-import java.util.zip.ZipFile;
 
 public abstract class AbstractSolrMojo extends AbstractMojo {
 
     /**
-     * @parameter property="path" default-value="/solr"
+     * @parameter property="contextPath" default-value="/solr"
      */
-    private String path;
+    private String contextPath;
 
     /**
      * @parameter property="port" default-value="8983"
@@ -69,8 +65,8 @@ public abstract class AbstractSolrMojo extends AbstractMojo {
      */
     private List<RemoteRepository> remoteRepositories;
 
-    public String getPath() {
-        return path;
+    public String getContextPath() {
+        return contextPath;
     }
 
     public int getPort() {
