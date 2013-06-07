@@ -1,7 +1,5 @@
 package com.ffbit.maven.solr.artefact;
 
-import org.apache.maven.plugin.logging.Log;
-import org.apache.maven.plugin.logging.SystemStreamLog;
 import org.sonatype.aether.RepositorySystem;
 import org.sonatype.aether.RepositorySystemSession;
 import org.sonatype.aether.artifact.Artifact;
@@ -13,8 +11,6 @@ import org.sonatype.aether.resolution.ArtifactResult;
 import java.util.List;
 
 public class ArtifactResolver {
-    private Log log = new SystemStreamLog();
-
     private RepositorySystem repositorySystem;
     private RepositorySystemSession repositorySession;
     private List<RemoteRepository> remoteRepositories;
@@ -30,9 +26,7 @@ public class ArtifactResolver {
     public void resolve(List<Artifact> artifacts) {
         // Brute-force implementation
         for (Artifact artifact : artifacts) {
-            artifact = resolve(artifact);
-
-            log.info(artifact.getFile().getAbsolutePath());
+            resolve(artifact);
         }
     }
 
