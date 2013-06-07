@@ -26,6 +26,19 @@
         </license>
     </licenses>
 
+    <developers>
+        <developer>
+            <id>ffbit</id>
+            <name>Dmytro Chyzhykov</name>
+            <email>dmytro.chyzhykov@gmail.com</email>
+            <url>http://ffbit.com/</url>
+            <timezone>+3</timezone>
+            <roles>
+                <role>dev</role>
+            </roles>
+        </developer>
+    </developers>
+
     <scm>
         <connection>scm:git:git@github.com:ffbit/${project.artifactId}.git</connection>
         <developerConnection>scm:git:git@github.com:ffbit/${project.artifactId}.git</developerConnection>
