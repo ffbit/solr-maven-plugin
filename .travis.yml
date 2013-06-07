@@ -1,0 +1,5 @@
+language: java
+jdk:
+  - oraclejdk6
+  - openjdk6
+script: mvn clean test solr:start
