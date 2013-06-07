@@ -1,13 +1,11 @@
 package com.ffbit.maven.solr.artefact;
 
+import com.ffbit.maven.solr.artefact.external.ExternalArtifactsFactory;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.sonatype.aether.RepositorySystem;
 import org.sonatype.aether.RepositorySystemSession;
 import org.sonatype.aether.artifact.Artifact;
 import org.sonatype.aether.repository.RemoteRepository;
-import org.sonatype.aether.resolution.ArtifactRequest;
-import org.sonatype.aether.resolution.ArtifactResolutionException;
-import org.sonatype.aether.resolution.ArtifactResult;
 import org.sonatype.aether.util.artifact.DefaultArtifact;
 
 import java.util.List;
@@ -17,22 +15,21 @@ public class SolrArtifactResolver {
     private final String ARTEFACT_ID = "solr";
     private final String EXTENTION = "war";
 
-    private RepositorySystem repositorySystem;
-    private RepositorySystemSession repositorySession;
-    private List<RemoteRepository> remoteRepositories;
+    private ArtifactResolver resolver;
 
     public SolrArtifactResolver(RepositorySystem repositorySystem,
                                 RepositorySystemSession repositorySession,
                                 List<RemoteRepository> remoteRepositories) {
-        this.repositorySystem = repositorySystem;
-        this.repositorySession = repositorySession;
-        this.remoteRepositories = remoteRepositories;
+        resolver = new ArtifactResolver(repositorySystem, repositorySession, remoteRepositories);
     }
 
     public Artifact resolve(String solrVersion) throws MojoExecutionException {
         Artifact artifact = createArtifact(solrVersion);
+        ExternalArtifactsFactory factory = new ExternalArtifactsFactory();
 
-        return fetchArtifact(artifact);
+        resolver.resolve(factory.getExternalArtifacts(solrVersion).gerArtifacts());
+
+        return resolver.resolve(artifact);
     }
 
     private Artifact createArtifact(String solrVersion)
@@ -40,19 +37,6 @@ public class SolrArtifactResolver {
         try {
             return new DefaultArtifact(GROUP_ID, ARTEFACT_ID, EXTENTION, solrVersion);
         } catch (IllegalArgumentException e) {
-            throw new MojoExecutionException(e.getMessage(), e);
-        }
-    }
-
-    private Artifact fetchArtifact(Artifact artifact) throws MojoExecutionException {
-        ArtifactRequest request = new ArtifactRequest();
-        request.setArtifact(artifact);
-        request.setRepositories(remoteRepositories);
-
-        try {
-            ArtifactResult result = repositorySystem.resolveArtifact(repositorySession, request);
-            return result.getArtifact();
-        } catch (ArtifactResolutionException e) {
             throw new MojoExecutionException(e.getMessage(), e);
         }
     }
