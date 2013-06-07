@@ -123,6 +123,7 @@
         </dependency>
     </dependencies>
 
+    <!-- `mvn clean package deploy -DperformRelease=true` -->
     <profiles>
         <profile>
             <id>release-sign-artifacts</id>
