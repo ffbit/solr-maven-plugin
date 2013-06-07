@@ -121,14 +121,15 @@
 
   <lib dir="${maven.local.repository:}/org/apache/solr/solr-clustering/4.3.0/" regex=".*.jar" />
 
-
-
-
-
-
-
+  <!--
   <lib dir="../../../contrib/langid/lib/" regex=".*\.jar" />
   <lib dir="../../../dist/" regex="solr-langid-\d.*\.jar" />
+  -->
+
+  <lib dir="${maven.local.repository:}/net/arnx/jsonic/1.2.7/" regex=".*.jar" />
+  <lib dir="${maven.local.repository:}/com/cybozu/labs/langdetect/1.1-20120112/" regex=".*.jar" />
+  <lib dir="${maven.local.repository:}/org/apache/solr/solr-langid/4.3.0/" regex=".*.jar" />
+
 
   <lib dir="../../../contrib/velocity/lib" regex=".*\.jar" />
   <lib dir="../../../dist/" regex="solr-velocity-\d.*\.jar" />

@@ -19,6 +19,9 @@ public class Solr_4_3_0_ExternalArtifacts implements ExternalArtifacts {
         artifacts.addAll(getClasteringArtifacts());
         artifacts.addAll(getSolrClasteringArtifacts());
 
+        artifacts.addAll(getLangIdArtifacts());
+        artifacts.addAll(getSolrLangIdArtifacts());
+
         return artifacts;
     }
 
@@ -82,6 +85,21 @@ public class Solr_4_3_0_ExternalArtifacts implements ExternalArtifacts {
     private List<Artifact> getSolrClasteringArtifacts() {
         return Arrays.<Artifact>asList(
                 new DefaultArtifact("org.apache.solr:solr-clustering:jar:4.3.0")
+        );
+    }
+
+    // <lib dir="../../../contrib/langid/lib/" regex=".*\.jar" />
+    private List<Artifact> getLangIdArtifacts() {
+        return Arrays.<Artifact>asList(
+                new DefaultArtifact("net.arnx:jsonic:jar:1.2.7"),
+                new DefaultArtifact("com.cybozu.labs:langdetect:jar:1.1-20120112")
+        );
+    }
+
+    // <lib dir="../../../dist/" regex="solr-langid-\d.*\.jar" />
+    private List<Artifact> getSolrLangIdArtifacts() {
+        return Arrays.<Artifact>asList(
+                new DefaultArtifact("org.apache.solr:solr-langid:jar:4.3.0")
         );
     }
 
