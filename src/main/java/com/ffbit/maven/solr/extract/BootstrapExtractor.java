@@ -33,7 +33,7 @@ public class BootstrapExtractor {
     }
 
     private void checkDestinationRoot() {
-        destinationRoot.mkdir();
+        destinationRoot.mkdirs();
         boolean isDirectory = destinationRoot.isDirectory();
         boolean isWritable = destinationRoot.canWrite();
 
