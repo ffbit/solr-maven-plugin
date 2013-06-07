@@ -1,6 +1,7 @@
 package com.ffbit.maven.solr.artefact;
 
-import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugin.logging.Log;
+import org.apache.maven.plugin.logging.SystemStreamLog;
 import org.sonatype.aether.RepositorySystem;
 import org.sonatype.aether.RepositorySystemSession;
 import org.sonatype.aether.artifact.Artifact;
@@ -12,13 +13,15 @@ import org.sonatype.aether.resolution.ArtifactResult;
 import java.util.List;
 
 public class ArtifactResolver {
+    private Log log = new SystemStreamLog();
+
     private RepositorySystem repositorySystem;
     private RepositorySystemSession repositorySession;
     private List<RemoteRepository> remoteRepositories;
 
     public ArtifactResolver(RepositorySystem repositorySystem,
-                                RepositorySystemSession repositorySession,
-                                List<RemoteRepository> remoteRepositories) {
+                            RepositorySystemSession repositorySession,
+                            List<RemoteRepository> remoteRepositories) {
         this.repositorySystem = repositorySystem;
         this.repositorySession = repositorySession;
         this.remoteRepositories = remoteRepositories;
@@ -27,7 +30,9 @@ public class ArtifactResolver {
     public void resolve(List<Artifact> artifacts) {
         // Brute-force implementation
         for (Artifact artifact : artifacts) {
-            resolve(artifact);
+            artifact = resolve(artifact);
+
+            log.info(artifact.getFile().getAbsolutePath());
         }
     }
 
@@ -37,7 +42,8 @@ public class ArtifactResolver {
         request.setRepositories(remoteRepositories);
 
         try {
-            ArtifactResult result = repositorySystem.resolveArtifact(repositorySession, request);
+            ArtifactResult result =
+                    repositorySystem.resolveArtifact(repositorySession, request);
             return result.getArtifact();
         } catch (ArtifactResolutionException e) {
             throw new RuntimeException(e.getMessage(), e);

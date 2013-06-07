@@ -1,5 +1,6 @@
 package com.ffbit.maven.solr.artefact;
 
+import com.ffbit.maven.solr.artefact.external.ExternalArtifacts;
 import com.ffbit.maven.solr.artefact.external.ExternalArtifactsFactory;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.sonatype.aether.RepositorySystem;
@@ -26,8 +27,9 @@ public class SolrArtifactResolver {
     public Artifact resolve(String solrVersion) throws MojoExecutionException {
         Artifact artifact = createArtifact(solrVersion);
         ExternalArtifactsFactory factory = new ExternalArtifactsFactory();
+        ExternalArtifacts externalArtifacts = factory.getExternalArtifacts(solrVersion);
 
-        resolver.resolve(factory.getExternalArtifacts(solrVersion).gerArtifacts());
+        resolver.resolve(externalArtifacts.gerArtifacts());
 
         return resolver.resolve(artifact);
     }

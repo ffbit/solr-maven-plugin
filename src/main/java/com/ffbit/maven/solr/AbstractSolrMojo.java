@@ -8,6 +8,7 @@ import org.apache.maven.plugin.MojoFailureException;
 import org.sonatype.aether.RepositorySystem;
 import org.sonatype.aether.RepositorySystemSession;
 import org.sonatype.aether.artifact.Artifact;
+import org.sonatype.aether.repository.LocalRepository;
 import org.sonatype.aether.repository.RemoteRepository;
 
 import java.io.File;
@@ -87,15 +88,26 @@ public abstract class AbstractSolrMojo extends AbstractMojo {
         extractor.extract();
 
         exportSolrHomeProperty();
+        exportMavenLocalRepositoryProperty();
 
         executeGoal();
     }
 
-    private void exportSolrHomeProperty() {
-        String SOLR_SOLR_HOME = "solr.solr.home";
+    private void exportMavenLocalRepositoryProperty() {
+        String key = "maven.local.repository";
+        LocalRepository localRepository = repositorySession.getLocalRepository();
+        String localRepositoryPath = localRepository.getBasedir().getAbsolutePath();
 
-        if (System.getProperty(SOLR_SOLR_HOME) == null) {
-            System.setProperty(SOLR_SOLR_HOME, solrHome.getAbsolutePath());
+        setSystemPropertyIfNotSet(key, localRepositoryPath);
+    }
+
+    private void exportSolrHomeProperty() {
+        setSystemPropertyIfNotSet("solr.solr.home", solrHome.getAbsolutePath());
+    }
+
+    private void setSystemPropertyIfNotSet(String key, String value) {
+        if (System.getProperty(key) == null) {
+            System.setProperty(key, value);
         }
     }
 
