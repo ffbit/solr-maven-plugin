@@ -22,6 +22,9 @@ public class Solr_4_3_0_ExternalArtifacts implements ExternalArtifacts {
         artifacts.addAll(getLangIdArtifacts());
         artifacts.addAll(getSolrLangIdArtifacts());
 
+        artifacts.addAll(getVelocityArtifacts());
+        artifacts.addAll(getSolrVelocityArtifacts());
+
         return artifacts;
     }
 
@@ -100,6 +103,23 @@ public class Solr_4_3_0_ExternalArtifacts implements ExternalArtifacts {
     private List<Artifact> getSolrLangIdArtifacts() {
         return Arrays.<Artifact>asList(
                 new DefaultArtifact("org.apache.solr:solr-langid:jar:4.3.0")
+        );
+    }
+
+    //
+    private List<Artifact> getVelocityArtifacts() {
+        return Arrays.<Artifact>asList(
+                new DefaultArtifact("commons-beanutils:commons-beanutils:jar:1.7.0"),
+                new DefaultArtifact("commons-collections:commons-collections:jar:3.2.1"),
+                new DefaultArtifact("org.apache.velocity:velocity:jar:1.7"),
+                new DefaultArtifact("org.apache.velocity:velocity-tools:jar:2.0")
+        );
+    }
+
+    //
+    private List<Artifact> getSolrVelocityArtifacts() {
+        return Arrays.<Artifact>asList(
+                new DefaultArtifact("org.apache.solr:solr-velocity:jar:4.3.0")
         );
     }
 

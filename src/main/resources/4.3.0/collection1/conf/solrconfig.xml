@@ -130,9 +130,17 @@
   <lib dir="${maven.local.repository:}/com/cybozu/labs/langdetect/1.1-20120112/" regex=".*.jar" />
   <lib dir="${maven.local.repository:}/org/apache/solr/solr-langid/4.3.0/" regex=".*.jar" />
 
-
+  <!--
   <lib dir="../../../contrib/velocity/lib" regex=".*\.jar" />
   <lib dir="../../../dist/" regex="solr-velocity-\d.*\.jar" />
+  -->
+
+  <lib dir="${maven.local.repository:}/commons-beanutils/commons-beanutils/1.7.0/" regex=".*.jar" />
+<lib dir="${maven.local.repository:}/commons-collections/commons-collections/3.2.1/" regex=".*.jar" />
+<lib dir="${maven.local.repository:}/org/apache/velocity/velocity/1.7/" regex=".*.jar" />
+<lib dir="${maven.local.repository:}/org/apache/velocity/velocity-tools/2.0/" regex=".*.jar" />
+<lib dir="${maven.local.repository:}/org/apache/solr/solr-velocity/4.3.0/" regex=".*.jar" />
+
 
   <!-- If a 'dir' option (with or without a regex) is used and nothing
        is found that matches, a warning will be logged.
