@@ -50,4 +50,4 @@ Run
 
 ## Status
 
-Supports Apache Solr of version 4.3.0
+Supports Apache Solr **only** of version 4.3.0
