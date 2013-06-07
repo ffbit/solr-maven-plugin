@@ -16,6 +16,9 @@ public class Solr_4_3_0_ExternalArtifacts implements ExternalArtifacts {
         artifacts.addAll(getExtractionArtifacts());
         artifacts.addAll(getSolrExtractionArtifacts());
 
+        artifacts.addAll(getClasteringArtifacts());
+        artifacts.addAll(getSolrClasteringArtifacts());
+
         return artifacts;
     }
 
@@ -58,6 +61,27 @@ public class Solr_4_3_0_ExternalArtifacts implements ExternalArtifacts {
     private List<Artifact> getSolrExtractionArtifacts() {
         return Arrays.<Artifact>asList(
                 new DefaultArtifact("org.apache.solr:solr-cell:jar:4.3.0")
+        );
+    }
+
+    // <lib dir="../../../contrib/clustering/lib/" regex=".*\.jar" />
+    private List<Artifact> getClasteringArtifacts() {
+        return Arrays.<Artifact>asList(
+                new DefaultArtifact("org.carrot2.attributes:attributes-binder:jar:1.0.1"),
+                new DefaultArtifact("org.carrot2:carrot2-mini:jar:3.6.2"),
+                new DefaultArtifact("com.carrotsearch:hppc:jar:0.4.1"),
+                new DefaultArtifact("org.codehaus.jackson:jackson-core-asl:jar:1.7.4"),
+                new DefaultArtifact("org.codehaus.jackson:jackson-mapper-asl:jar:1.7.4"),
+                new DefaultArtifact("org.apache.mahout:mahout-collections:jar:1.0"),
+                new DefaultArtifact("org.apache.mahout:mahout-math:jar:0.6"),
+                new DefaultArtifact("org.simpleframework:simple-xml:jar:2.6.4")
+        );
+    }
+
+    // <lib dir="../../../dist/" regex="solr-clustering-\d.*\.jar" />
+    private List<Artifact> getSolrClasteringArtifacts() {
+        return Arrays.<Artifact>asList(
+                new DefaultArtifact("org.apache.solr:solr-clustering:jar:4.3.0")
         );
     }
 

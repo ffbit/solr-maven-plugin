@@ -102,14 +102,30 @@
   <lib dir="${maven.local.repository:}/xerces/xercesImpl/2.9.1/" regex=".*.jar" />
   <lib dir="${maven.local.repository:}/org/apache/xmlbeans/xmlbeans/2.3.0/" regex=".*.jar" />
   <lib dir="${maven.local.repository:}/org/tukaani/xz/1.0/" regex=".*.jar" />
+
   <lib dir="${maven.local.repository:}/org/apache/solr/solr-cell/4.3.0/" regex=".*.jar" />
 
-
-
-
-
+  <!--
   <lib dir="../../../contrib/clustering/lib/" regex=".*\.jar" />
   <lib dir="../../../dist/" regex="solr-clustering-\d.*\.jar" />
+  -->
+
+  <lib dir="${maven.local.repository:}/org/carrot2/attributes/attributes-binder/1.0.1/" regex=".*.jar" />
+  <lib dir="${maven.local.repository:}/org/carrot2/carrot2-mini/3.6.2/" regex=".*.jar" />
+  <lib dir="${maven.local.repository:}/com/carrotsearch/hppc/0.4.1/" regex=".*.jar" />
+  <lib dir="${maven.local.repository:}/org/codehaus/jackson/jackson-core-asl/1.7.4/" regex=".*.jar" />
+  <lib dir="${maven.local.repository:}/org/codehaus/jackson/jackson-mapper-asl/1.7.4/" regex=".*.jar" />
+  <lib dir="${maven.local.repository:}/org/apache/mahout/mahout-collections/1.0/" regex=".*.jar" />
+  <lib dir="${maven.local.repository:}/org/apache/mahout/mahout-math/0.6/" regex=".*.jar" />
+  <lib dir="${maven.local.repository:}/org/simpleframework/simple-xml/2.6.4/" regex=".*.jar" />
+
+  <lib dir="${maven.local.repository:}/org/apache/solr/solr-clustering/4.3.0/" regex=".*.jar" />
+
+
+
+
+
+
 
   <lib dir="../../../contrib/langid/lib/" regex=".*\.jar" />
   <lib dir="../../../dist/" regex="solr-langid-\d.*\.jar" />
