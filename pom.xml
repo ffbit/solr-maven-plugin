@@ -7,6 +7,13 @@
     <packaging>maven-plugin</packaging>
     <version>0.0.1</version>
 
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+        <relativePath/>
+    </parent>
+
     <name>Apache Solr Maven Plugin</name>
     <description>A plugin which runs Apache Solr Server for Integration Tests</description>
     <url>https://github.com/ffbit/solr-maven-plugin/</url>
