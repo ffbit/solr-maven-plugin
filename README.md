@@ -1,5 +1,7 @@
 # Apache Solr Maven Plugin
 
+[![Build Status](https://travis-ci.org/ffbit/solr-maven-plugin.png)](https://travis-ci.org/ffbit/solr-maven-plugin)
+
 ## Goal
 
 Run Apache Solr Server for Integration Tests
