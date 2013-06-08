@@ -2,4 +2,6 @@ language: java
 jdk:
   - oraclejdk6
   - openjdk6
-script: mvn clean test solr:start
+script:
+  - mvn clean install
+  - mvn clean solr:start
