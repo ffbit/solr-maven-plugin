@@ -3,7 +3,7 @@
 ## v0.0.2
 
 * External libraries support for Apache Solr 4.3.0 ([#3](https://github.com/ffbit/solr-maven-plugin/pull/3) and [#7](https://github.com/ffbit/solr-maven-plugin/pull/7))
-* Travic CI build script ([#4](https://github.com/ffbit/solr-maven-plugin/pull/4) and #5(https://github.com/ffbit/solr-maven-plugin/pull/5))
+* Travic CI build script ([#4](https://github.com/ffbit/solr-maven-plugin/pull/4) and [#5](https://github.com/ffbit/solr-maven-plugin/pull/5))
 
 ## v0.0.1
 
