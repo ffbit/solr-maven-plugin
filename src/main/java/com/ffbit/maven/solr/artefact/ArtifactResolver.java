@@ -7,6 +7,7 @@ import org.sonatype.aether.repository.RemoteRepository;
 import org.sonatype.aether.resolution.ArtifactRequest;
 import org.sonatype.aether.resolution.ArtifactResolutionException;
 import org.sonatype.aether.resolution.ArtifactResult;
+import org.sonatype.aether.util.artifact.DefaultArtifact;
 
 import java.util.List;
 
@@ -42,6 +43,10 @@ public class ArtifactResolver {
         } catch (ArtifactResolutionException e) {
             throw new RuntimeException(e.getMessage(), e);
         }
+    }
+
+    public Artifact resolve(String coordinates) {
+        return resolve(new DefaultArtifact(coordinates));
     }
 
 }

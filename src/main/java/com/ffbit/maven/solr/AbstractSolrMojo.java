@@ -1,6 +1,6 @@
 package com.ffbit.maven.solr;
 
-import com.ffbit.maven.solr.artefact.SolrArtifactResolver;
+import com.ffbit.maven.solr.artefact.ArtifactResolver;
 import com.ffbit.maven.solr.extract.BootstrapExtractor;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -59,6 +59,8 @@ public abstract class AbstractSolrMojo extends AbstractMojo {
      */
     private List<RemoteRepository> remoteRepositories;
 
+    private ArtifactResolver artifactResolver;
+
     public String getContextPath() {
         return contextPath;
     }
@@ -75,16 +77,14 @@ public abstract class AbstractSolrMojo extends AbstractMojo {
         return getArtifact().getFile().getAbsolutePath();
     }
 
-    public Artifact getArtifact() throws MojoExecutionException {
-        SolrArtifactResolver resolver =
-                new SolrArtifactResolver(repositorySystem, repositorySession, remoteRepositories);
-
-        return resolver.resolve(solrVersion);
+    private Artifact getArtifact() throws MojoExecutionException {
+        return artifactResolver.resolve(solrVersion);
     }
 
     @Override
     public final void execute() throws MojoExecutionException, MojoFailureException {
-        BootstrapExtractor extractor = new BootstrapExtractor(solrHome, solrVersion);
+        artifactResolver = new ArtifactResolver(repositorySystem, repositorySession, remoteRepositories);
+        BootstrapExtractor extractor = new BootstrapExtractor(solrHome, solrVersion, artifactResolver);
         extractor.extract();
 
         exportSolrHomeProperty();

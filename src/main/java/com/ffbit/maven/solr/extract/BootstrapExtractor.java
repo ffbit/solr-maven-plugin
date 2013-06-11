@@ -1,7 +1,9 @@
 package com.ffbit.maven.solr.extract;
 
+import com.ffbit.maven.solr.artefact.ArtifactResolver;
 import org.apache.maven.plugin.logging.Log;
 import org.apache.maven.plugin.logging.SystemStreamLog;
+import org.sonatype.aether.artifact.Artifact;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -19,12 +21,17 @@ import java.util.jar.JarFile;
 public class BootstrapExtractor {
     private Log log = new SystemStreamLog();
 
+    private final String PLUGIN_ARTEFACT = "com.ffbit.maven.plugins:solr-maven-plugin:jar:0.0.2";
+
     private File destinationRoot;
     private String solrVersion;
+    private ArtifactResolver artifactResolver;
 
-    public BootstrapExtractor(File destinationRoot, String solrVersion) {
+    public BootstrapExtractor(File destinationRoot, String solrVersion,
+                              ArtifactResolver artifactResolver) {
         this.destinationRoot = destinationRoot;
         this.solrVersion = solrVersion;
+        this.artifactResolver = artifactResolver;
     }
 
     public void extract() {
@@ -48,12 +55,12 @@ public class BootstrapExtractor {
     }
 
     private void extractJar() {
-        String jarPath = getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
+        Artifact pluginArtefact = artifactResolver.resolve(PLUGIN_ARTEFACT);
 
         JarFile jar = null;
 
         try {
-            jar = new JarFile(jarPath);
+            jar = new JarFile(pluginArtefact.getFile());
         } catch (IOException e) {
             log.error(e.getMessage(), e);
             throw new RuntimeException(e.getMessage(), e);
