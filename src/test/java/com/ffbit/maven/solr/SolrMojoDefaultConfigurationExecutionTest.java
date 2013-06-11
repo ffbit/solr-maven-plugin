@@ -1,6 +1,5 @@
 package com.ffbit.maven.solr;
 
-import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.project.MavenProject;
 import org.apache.maven.repository.internal.DefaultArtifactDescriptorReader;
 import org.apache.maven.repository.internal.DefaultVersionRangeResolver;
@@ -10,7 +9,6 @@ import org.apache.maven.wagon.Wagon;
 import org.apache.maven.wagon.providers.http.LightweightHttpWagon;
 import org.sonatype.aether.RepositorySystem;
 import org.sonatype.aether.RepositorySystemSession;
-import org.sonatype.aether.artifact.Artifact;
 import org.sonatype.aether.connector.file.FileRepositoryConnectorFactory;
 import org.sonatype.aether.connector.wagon.WagonProvider;
 import org.sonatype.aether.connector.wagon.WagonRepositoryConnectorFactory;
@@ -20,36 +18,25 @@ import org.sonatype.aether.impl.VersionResolver;
 import org.sonatype.aether.impl.internal.DefaultServiceLocator;
 import org.sonatype.aether.repository.LocalRepository;
 import org.sonatype.aether.repository.RemoteRepository;
-import org.sonatype.aether.resolution.ArtifactRequest;
-import org.sonatype.aether.resolution.ArtifactResult;
 import org.sonatype.aether.spi.connector.RepositoryConnectorFactory;
-import org.sonatype.aether.util.artifact.DefaultArtifact;
 
 public class SolrMojoDefaultConfigurationExecutionTest extends
         AbstractSolrMojoDefaultConfigurationTest {
     private MavenProject project = new MavenProject();
 
     public void testStartWorkWithDefaultConfiguration() throws Exception {
-        AbstractMojo mojo = (AbstractSolrMojo) lookupConfiguredMojo(project, "start");
-
         RepositorySystem system = newRepositorySystem();
         RepositorySystemSession session = newRepositorySystemSession(system);
         RemoteRepository repository = newCentralRepository();
 
-        Artifact artifact = new DefaultArtifact("com.ffbit.maven.plugins:solr-maven-plugin:jar:0.0.1");
+        project.setFile(defaultPom);
+        project.getModel().getProperties().put("project.build.directory", "target");
 
-        ArtifactRequest artifactRequest = new ArtifactRequest();
-        artifactRequest.setArtifact(artifact);
-        artifactRequest.addRepository(repository);
+        AbstractSolrMojo mojo = (AbstractSolrMojo) lookupConfiguredMojo(project, "start");
 
-        ArtifactResult artifactResult = system.resolveArtifact(session, artifactRequest);
-
-        artifact = artifactResult.getArtifact();
-
-        System.out.println(artifact + " resolved to  " + artifact.getFile());
-
-
-//        mojo.execute();
+        mojo.setRepositorySession(session);
+        mojo.addRemoteRepository(repository);
+        mojo.execute();
     }
 
     public static RepositorySystemSession newRepositorySystemSession(RepositorySystem system) {

@@ -12,6 +12,7 @@ import org.sonatype.aether.repository.LocalRepository;
 import org.sonatype.aether.repository.RemoteRepository;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class AbstractSolrMojo extends AbstractMojo {
@@ -57,7 +58,7 @@ public abstract class AbstractSolrMojo extends AbstractMojo {
      * @parameter default-value="${project.remoteProjectRepositories}"
      * @readonly
      */
-    private List<RemoteRepository> remoteRepositories;
+    private List<RemoteRepository> remoteRepositories = new ArrayList<RemoteRepository>();
 
     private ArtifactResolver artifactResolver;
 
@@ -73,12 +74,24 @@ public abstract class AbstractSolrMojo extends AbstractMojo {
         return solrVersion;
     }
 
+    public File getSolrHome() {
+        return solrHome;
+    }
+
+    public void setRepositorySession(RepositorySystemSession repositorySession) {
+        this.repositorySession = repositorySession;
+    }
+
+    public void addRemoteRepository(RemoteRepository repository) {
+        remoteRepositories.add(repository);
+    }
+
     public String getArtifactPath() throws MojoExecutionException {
         return getArtifact().getFile().getAbsolutePath();
     }
 
     private Artifact getArtifact() throws MojoExecutionException {
-        return artifactResolver.resolve(solrVersion);
+        return artifactResolver.resolveSorlWarArtifact(solrVersion);
     }
 
     @Override

@@ -4,7 +4,7 @@ import org.apache.maven.plugin.testing.AbstractMojoTestCase;
 
 import java.io.File;
 
-public class AbstractSolrMojoDefaultConfigurationTest extends AbstractMojoTestCase {
+public abstract class AbstractSolrMojoDefaultConfigurationTest extends AbstractMojoTestCase {
     protected File defaultPom;
 
     @Override

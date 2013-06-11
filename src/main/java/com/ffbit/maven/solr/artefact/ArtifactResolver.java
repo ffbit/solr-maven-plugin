@@ -49,4 +49,12 @@ public class ArtifactResolver {
         return resolve(new DefaultArtifact(coordinates));
     }
 
+    public Artifact resolveSorlWarArtifact(String solrVersion) {
+        String GROUP_ID = "org.apache.solr";
+        String ARTEFACT_ID = "solr";
+        String EXTENTION = "war";
+
+        return resolve(new DefaultArtifact(GROUP_ID, ARTEFACT_ID, EXTENTION, solrVersion));
+    }
+
 }

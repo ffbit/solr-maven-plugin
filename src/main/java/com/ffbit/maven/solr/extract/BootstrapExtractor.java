@@ -21,7 +21,7 @@ import java.util.jar.JarFile;
 public class BootstrapExtractor {
     private Log log = new SystemStreamLog();
 
-    private final String PLUGIN_ARTEFACT = "com.ffbit.maven.plugins:solr-maven-plugin:jar:0.0.2";
+    private final String PLUGIN_ARTEFACT = "com.ffbit.maven.plugins:solr-maven-plugin:jar:0.0.1";
 
     private File destinationRoot;
     private String solrVersion;
@@ -45,6 +45,7 @@ public class BootstrapExtractor {
         boolean isWritable = destinationRoot.canWrite();
 
         if (isDirectory && isWritable) {
+            log.info("Solr home directrory: " + destinationRoot.getAbsolutePath());
             return;
         }
 
