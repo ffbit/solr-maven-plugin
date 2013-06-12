@@ -1,6 +1,8 @@
 package com.ffbit.maven.solr;
 
 import com.ffbit.maven.solr.artefact.ArtifactResolver;
+import com.ffbit.maven.solr.artefact.external.ExternalArtifacts;
+import com.ffbit.maven.solr.artefact.external.ExternalArtifactsFactory;
 import com.ffbit.maven.solr.extract.BootstrapExtractor;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -14,7 +16,6 @@ import org.sonatype.aether.repository.LocalRepository;
 import org.sonatype.aether.repository.RemoteRepository;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
 public abstract class AbstractSolrMojo extends AbstractMojo {
@@ -85,10 +86,17 @@ public abstract class AbstractSolrMojo extends AbstractMojo {
         BootstrapExtractor extractor = new BootstrapExtractor(solrHome, solrVersion, artifactResolver);
         extractor.extract();
 
+        resolveExternalArtifacts();
         exportSolrHomeProperty();
         exportMavenLocalRepositoryProperty();
 
         executeGoal();
+    }
+
+    private void resolveExternalArtifacts() {
+        ExternalArtifactsFactory factory = new ExternalArtifactsFactory();
+        ExternalArtifacts externalArtifacts = factory.getExternalArtifacts(solrVersion);
+        artifactResolver.resolve(externalArtifacts.gerArtifacts());
     }
 
     private void exportMavenLocalRepositoryProperty() {
