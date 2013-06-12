@@ -42,7 +42,8 @@ public abstract class AbstractSolrMojo extends AbstractMojo {
     /**
      * The project's remote repositories to use for the resolution.
      */
-    @Parameter(defaultValue = "${project.remoteProjectRepositories}")
+    @Parameter(defaultValue = "${project.remoteProjectRepositories}",
+            readonly = true)
     private List<RemoteRepository> remoteRepositories;
 
     private ArtifactResolver artifactResolver;
