@@ -5,6 +5,8 @@ import com.ffbit.maven.solr.extract.BootstrapExtractor;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.plugins.annotations.Component;
+import org.apache.maven.plugins.annotations.Parameter;
 import org.sonatype.aether.RepositorySystem;
 import org.sonatype.aether.RepositorySystemSession;
 import org.sonatype.aether.artifact.Artifact;
@@ -16,47 +18,27 @@ import java.util.List;
 
 public abstract class AbstractSolrMojo extends AbstractMojo {
 
-    /**
-     * @parameter property="contextPath" default-value="/"
-     */
+    @Parameter(property = "contextPath", defaultValue = "/")
     private String contextPath;
 
-    /**
-     * @parameter property="port" default-value="8983"
-     */
+    @Parameter(property = "port", defaultValue = "8983")
     private int port;
 
-    /**
-     * @parameter property="solrVersion" default-value="4.3.0"
-     */
+    @Parameter(property = "solrVersion", defaultValue = "4.3.0")
     private String solrVersion;
 
-    /**
-     * @parameter property="solrHome" expression="${solr.solr.home}" default-value="${project.build.directory}/solr"
-     */
+    @Parameter(property = "solrHome", alias = "${solr.solr.home}",
+            defaultValue = "${project.build.directory}/solr")
     private File solrHome;
 
-    /**
-     * The entry point to Aether, i.e. the component doing all the work.
-     *
-     * @component
-     */
+    @Component
     private RepositorySystem repositorySystem;
 
-    /**
-     * The current repository/network configuration of Maven.
-     *
-     * @parameter default-value="${repositorySystemSession}"
-     * @readonly
-     */
+    @Component
+    @Parameter(defaultValue = "${repositorySystemSession}")
     private RepositorySystemSession repositorySession;
 
-    /**
-     * The project's remote repositories to use for the resolution.
-     *
-     * @parameter default-value="${project.remoteProjectRepositories}"
-     * @readonly
-     */
+    @Parameter(defaultValue = "${project.remoteProjectRepositories}")
     private List<RemoteRepository> remoteRepositories;
 
     public String getContextPath() {
