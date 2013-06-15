@@ -42,11 +42,27 @@ public class JettyRunner {
     public void start() {
         try {
             server.start();
+            addSystemShotdownHook();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void addSystemShotdownHook() {
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+
+            @Override
+            public void run() {
+                try {
+                    server.stop();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+        });
     }
 
 }
