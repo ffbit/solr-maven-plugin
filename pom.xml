@@ -61,6 +61,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+        <aether.version>1.13.1</aether.version>
         <jetty.version>8.1.11.v20130520</jetty.version>
         <junit.version>4.11</junit.version>
         <log4j.version>1.2.17</log4j.version>
@@ -93,7 +94,7 @@
         <dependency>
             <groupId>org.sonatype.aether</groupId>
             <artifactId>aether-impl</artifactId>
-            <version>1.13.1</version>
+            <version>${aether.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.maven.plugin-tools</groupId>
@@ -115,12 +116,12 @@
         <dependency>
             <groupId>org.sonatype.aether</groupId>
             <artifactId>aether-connector-wagon</artifactId>
-            <version>1.13.1</version>
+            <version>${aether.version}</version>
         </dependency>
         <dependency>
             <groupId>org.sonatype.aether</groupId>
             <artifactId>aether-connector-file</artifactId>
-            <version>1.13.1</version>
+            <version>${aether.version}</version>
         </dependency>
 
         <dependency>
