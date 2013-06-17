@@ -1,9 +1,6 @@
 package com.ffbit.maven.solr;
 
 import org.apache.maven.plugin.AbstractMojo;
-import org.apache.maven.plugin.testing.AbstractMojoTestCase;
-
-import java.io.File;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
