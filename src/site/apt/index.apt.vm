@@ -18,10 +18,10 @@ ${project.name}
 * Goals Overview
 
   * {{{./help-mojo.html}sorl:help}}
-    Displays help information on solr-maven-plugin.
+    Display help information on solr-maven-plugin.
 
   * {{{./start-mojo.html}solr:start}}
-    Starts a new Apache Solr instance and executes while Maven is running.
+    Start a new Apache Solr instance and executes while Maven is running.
 
   * {{{./run-mojo.html}solr:run}}
-      Runs a new Apache Solr instance and executes it indefinably.
+    Run a new Apache Solr instance and executes it indefinably.

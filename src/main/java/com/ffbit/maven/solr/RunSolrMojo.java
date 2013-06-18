@@ -6,7 +6,7 @@ import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.Mojo;
 
 /**
- * Goal which runs a new Apache Solr instance and executes it indefinably.
+ * Run a new Apache Solr instance and executes it indefinably.
  */
 @Mojo(name = "run")
 public class RunSolrMojo extends AbstractSolrMojo {
