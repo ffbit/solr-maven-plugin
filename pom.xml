@@ -69,6 +69,7 @@
         <junit.version>4.11</junit.version>
         <log4j.version>1.2.17</log4j.version>
         <maven.version>3.0.5</maven.version>
+        <maven.plugin.version>3.2</maven.plugin.version>
         <slf4j.version>1.7.5</slf4j.version>
     </properties>
 
@@ -226,7 +227,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-plugin-plugin</artifactId>
-                <version>3.2</version>
+                <version>${maven.plugin.version}</version>
                 <configuration>
                     <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
                 </configuration>
@@ -318,7 +319,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-plugin-plugin</artifactId>
-                <version>3.2</version>
+                <version>${maven.plugin.version}</version>
             </plugin>
         </plugins>
     </reporting>
