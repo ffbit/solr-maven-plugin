@@ -20,28 +20,60 @@ import java.util.List;
 
 public abstract class AbstractSolrMojo extends AbstractMojo {
 
+    /**
+     * The context path for the server instance.
+     *
+     * @since 0.0.1
+     */
     @Parameter(property = "contextPath", defaultValue = "/")
     private String contextPath;
 
+    /**
+     * The running port.
+     *
+     * @since 0.0.1
+     */
     @Parameter(property = "port", defaultValue = "8983")
     private int port;
 
+    /**
+     * The running Apache Solr version.
+     *
+     * @since 0.0.1
+     */
     @Parameter(property = "solrVersion", defaultValue = "4.3.0")
     private String solrVersion;
 
+    /**
+     * The Apache Solr Home directory.
+     *
+     * @since 0.0.1
+     */
     @Parameter(property = "solrHome", alias = "${solr.solr.home}",
             defaultValue = "${project.build.directory}/solr")
     private File solrHome;
 
+    /**
+     * The entry point to Aether, i.e. the component doing all the work.
+     *
+     * @since 0.0.1
+     */
     @Component
     private RepositorySystem repositorySystem;
 
+    /**
+     * The current repository/network configuration of Maven.
+     *
+     * @since 0.0.1
+     */
     @Component
     @Parameter(defaultValue = "${repositorySystemSession}")
     private RepositorySystemSession repositorySession;
 
     /**
      * The project's remote repositories to use for the resolution.
+     *
+     * @since 0.0.1
      */
     @Parameter(defaultValue = "${project.remoteProjectRepositories}",
             readonly = true)
