@@ -7,7 +7,7 @@ import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.Mojo;
 
 /**
- * Goal which starts a new Apache Solr instance and executes while Maven is running.
+ * Start a new Apache Solr instance and executes while Maven is running.
  */
 @Mojo(name = "start")
 public class StartSolrMojo extends AbstractSolrMojo {
