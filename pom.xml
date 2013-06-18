@@ -18,6 +18,12 @@
     <description>
         Apache Solr Maven Plugin runs an Apache Solr instance during integration tests
         or as a standalone instance for other test purposes.
+
+        Current version of the plugin supports only the following versions of
+        Apache Solr:
+
+          * 4.3.0
+
     </description>
     <url>https://github.com/ffbit/solr-maven-plugin/</url>
 
