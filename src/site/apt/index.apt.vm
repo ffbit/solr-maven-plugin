@@ -14,3 +14,11 @@ ${project.name}
   {{{http://lucene.apache.org/solr/}Apache Solr}} instance from
   within Maven environment. That can be useful during integration
   tests phase or for running standalone test instance.
+
+* Goals Overview
+
+  * {{{./start-mojo.html}solr:start}}
+    Starts a new Apache Solr instance and executes while Maven is running.
+
+  * {{{./run-mojo.html}solr:run}}
+      Runs a new Apache Solr instance and executes it indefinably.

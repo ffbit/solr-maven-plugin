@@ -6,6 +6,11 @@
     <body>
         <menu name="Overview">
             <item name="Introduction" href="index.html"/>
+            <item name="Goals" href="plugin-info.html">
+                <item name="solr:help" href="./help-mojo.html"/>
+                <item name="solr:run" href="./run-mojo.html"/>
+                <item name="solr:start" href="./start-mojo.html"/>
+            </item>
         </menu>
         <menu ref="reports"/>
     </body>
