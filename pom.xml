@@ -15,7 +15,16 @@
     </parent>
 
     <name>Apache Solr Maven Plugin</name>
-    <description>A plugin which runs Apache Solr Server for Integration Tests</description>
+    <description>
+        Apache Solr Maven Plugin runs an Apache Solr instance during integration tests
+        or as a standalone instance for other test purposes.
+
+        Current version of the plugin supports only the following versions of
+        Apache Solr:
+
+          * 4.3.0
+
+    </description>
     <url>https://github.com/ffbit/solr-maven-plugin/</url>
 
     <licenses>
@@ -66,6 +75,7 @@
         <junit.version>4.11</junit.version>
         <log4j.version>1.2.17</log4j.version>
         <maven.version>3.0.5</maven.version>
+        <maven.plugin.version>3.2</maven.plugin.version>
         <slf4j.version>1.7.5</slf4j.version>
     </properties>
 
@@ -223,7 +233,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-plugin-plugin</artifactId>
-                <version>3.2</version>
+                <version>${maven.plugin.version}</version>
                 <configuration>
                     <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
                 </configuration>
@@ -310,6 +320,12 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>cobertura-maven-plugin</artifactId>
                 <version>2.5.2</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-plugin-plugin</artifactId>
+                <version>${maven.plugin.version}</version>
             </plugin>
         </plugins>
     </reporting>
