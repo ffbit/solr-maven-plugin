@@ -20,6 +20,8 @@ import org.sonatype.aether.repository.LocalRepository;
 import org.sonatype.aether.repository.RemoteRepository;
 import org.sonatype.aether.spi.connector.RepositoryConnectorFactory;
 
+import java.io.File;
+
 public class SolrMojoDefaultConfigurationExecutionTest extends
         AbstractSolrMojoDefaultConfigurationTest {
     private MavenProject project = new MavenProject();
@@ -42,7 +44,10 @@ public class SolrMojoDefaultConfigurationExecutionTest extends
     public static RepositorySystemSession newRepositorySystemSession(RepositorySystem system) {
         MavenRepositorySystemSession session = new MavenRepositorySystemSession();
 
-        LocalRepository localRepo = new LocalRepository("target/local-repo");
+        String userHome = System.getProperty("user.home");
+        File localRepositoryPath = new File(userHome, ".m2/repository");
+
+        LocalRepository localRepo = new LocalRepository(localRepositoryPath);
         session.setLocalRepositoryManager(system.newLocalRepositoryManager(localRepo));
 
         return session;
