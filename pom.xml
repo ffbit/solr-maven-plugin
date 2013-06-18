@@ -15,7 +15,10 @@
     </parent>
 
     <name>Apache Solr Maven Plugin</name>
-    <description>A plugin which runs Apache Solr Server for Integration Tests</description>
+    <description>
+        Apache Solr Maven Plugin runs an Apache Solr instance during integration tests
+        or as a standalone instance for other test purposes.
+    </description>
     <url>https://github.com/ffbit/solr-maven-plugin/</url>
 
     <licenses>

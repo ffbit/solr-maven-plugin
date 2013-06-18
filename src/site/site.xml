@@ -5,6 +5,7 @@
           http://maven.apache.org/xsd/decoration-1.0.0.xsd">
     <body>
         <menu name="Overview">
+            <item name="Introduction" href="index.html"/>
         </menu>
         <menu ref="reports"/>
     </body>
