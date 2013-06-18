@@ -4,7 +4,21 @@
 
 ## Goal
 
-Run Apache Solr Server for Integration Tests
+Apache Solr Maven Plugin runs an Apache Solr instance during integration tests
+or as a standalone instance for other test purposes.
+
+Current version of the plugin supports only the following versions of
+Apache Solr:
+
+  * 4.3.0
+
+## Documentation
+
+[Apache Solr Maven Plugin Documentation](http://ffbit.github.io/solr-maven-plugin/)
+
+## Change log
+
+[RELEASE-NOTES.md](RELEASE-NOTES.md)
 
 ## Usage
 
