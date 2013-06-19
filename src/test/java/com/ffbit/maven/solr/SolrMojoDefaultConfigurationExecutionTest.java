@@ -1,5 +1,6 @@
 package com.ffbit.maven.solr;
 
+import com.ffbit.maven.solr.support.ManualHttpWagonProvider;
 import org.apache.maven.project.MavenProject;
 import org.apache.maven.repository.internal.DefaultArtifactDescriptorReader;
 import org.apache.maven.repository.internal.DefaultVersionRangeResolver;
@@ -58,7 +59,7 @@ public class SolrMojoDefaultConfigurationExecutionTest extends
         DefaultServiceLocator locator = new DefaultServiceLocator();
         locator.addService(RepositoryConnectorFactory.class, FileRepositoryConnectorFactory.class);
         locator.addService(RepositoryConnectorFactory.class, WagonRepositoryConnectorFactory.class);
-        locator.setServices(WagonProvider.class, new ManualWagonProvider());
+        locator.setServices(WagonProvider.class, new ManualHttpWagonProvider());
         locator.addService(VersionResolver.class, DefaultVersionResolver.class);
         locator.addService(VersionRangeResolver.class, DefaultVersionRangeResolver.class);
         locator.addService(ArtifactDescriptorReader.class, DefaultArtifactDescriptorReader.class);
@@ -68,24 +69,6 @@ public class SolrMojoDefaultConfigurationExecutionTest extends
 
     public static RemoteRepository newCentralRepository() {
         return new RemoteRepository("central", "default", "http://repo1.maven.org/maven2/");
-    }
-
-}
-
-
-class ManualWagonProvider
-        implements WagonProvider {
-
-    public Wagon lookup(String roleHint)
-            throws Exception {
-        if ("http".equals(roleHint)) {
-            return new LightweightHttpWagon();
-        }
-        return null;
-    }
-
-    public void release(Wagon wagon) {
-
     }
 
 }
