@@ -10,13 +10,13 @@ public class SolrMojoDefaultConfigurationTest extends
         AbstractSolrMojoDefaultConfigurationTest {
 
     public void testStartWorkWithDefaultConfiguration() throws Exception {
-        AbstractMojo mojo = (AbstractSolrMojo) lookupMojo("start", defaultPom);
+        AbstractMojo mojo = (AbstractSolrMojo) lookupMojo("start", getPom());
 
         assertThat(mojo, is(notNullValue()));
     }
 
     public void testRuntWorkWithDefaultConfiguration() throws Exception {
-        AbstractMojo mojo = (AbstractSolrMojo) lookupMojo("run", defaultPom);
+        AbstractMojo mojo = (AbstractSolrMojo) lookupMojo("run", getPom());
 
         assertThat(mojo, is(notNullValue()));
     }
