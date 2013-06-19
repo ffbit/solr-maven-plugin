@@ -105,11 +105,11 @@ public abstract class AbstractSolrMojo extends AbstractMojo {
         remoteRepositories.add(repository);
     }
 
-    public String getArtifactPath() throws MojoExecutionException {
+    public String getArtifactPath() {
         return getArtifact().getFile().getAbsolutePath();
     }
 
-    private Artifact getArtifact() throws MojoExecutionException {
+    private Artifact getArtifact() {
         return artifactResolver.resolveSorlWarArtifact(solrVersion);
     }
 

@@ -14,7 +14,7 @@ public class StartSolrMojo extends AbstractSolrMojo {
 
     @Override
     protected void executeGoal() throws MojoExecutionException, MojoFailureException {
-        JettyRunner runner = new JettyRunner(getPort(), getContextPath(), getArtifactPath());
+        JettyRunner runner = new JettyRunner(this);
 
         runner.start();
     }
