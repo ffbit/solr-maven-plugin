@@ -17,7 +17,7 @@ ${project.name}
 
 * Goals Overview
 
-  * {{{./help-mojo.html}sorl:help}}
+  * {{{./help-mojo.html}solr:help}}
     Display help information on solr-maven-plugin.
 
   * {{{./start-mojo.html}solr:start}}
