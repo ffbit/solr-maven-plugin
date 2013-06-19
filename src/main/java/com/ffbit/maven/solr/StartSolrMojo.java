@@ -11,12 +11,18 @@ import org.apache.maven.plugins.annotations.Mojo;
  */
 @Mojo(name = "start")
 public class StartSolrMojo extends AbstractSolrMojo {
+    private JettyRunner runner;
 
     @Override
     protected void executeGoal() throws MojoExecutionException, MojoFailureException {
-        JettyRunner runner = new JettyRunner(this);
+        runner = new JettyRunner(this);
 
         runner.start();
+    }
+
+    @Override
+    public void stop() throws Exception {
+        runner.stop();
     }
 
 }

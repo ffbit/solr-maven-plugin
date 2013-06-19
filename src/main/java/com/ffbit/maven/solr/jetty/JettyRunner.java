@@ -57,10 +57,14 @@ public class JettyRunner {
 
     private void join() {
         try {
-            Thread.currentThread().join(0);
+            Thread.currentThread().join(mojo.getServerWaitingTimeout());
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public void stop() throws Exception {
+        server.stop();
     }
 
 }
