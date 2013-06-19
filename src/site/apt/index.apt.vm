@@ -1,0 +1,27 @@
+  ------
+  Introduction
+  ------
+  Dmytro Chyzhykov
+  ------
+  2013-06-18
+  ------
+
+${project.name}
+
+  ${project.description}
+
+  The Apache Solr Maven Plugin makes it easy to start and run
+  {{{http://lucene.apache.org/solr/}Apache Solr}} instance from
+  within Maven environment. That can be useful during integration
+  tests phase or for running standalone test instance.
+
+* Goals Overview
+
+  * {{{./help-mojo.html}sorl:help}}
+    Display help information on solr-maven-plugin.
+
+  * {{{./start-mojo.html}solr:start}}
+    Start a new Apache Solr instance and executes while Maven is running.
+
+  * {{{./run-mojo.html}solr:run}}
+    Run a new Apache Solr instance and executes it indefinably.
