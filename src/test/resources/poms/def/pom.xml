@@ -12,6 +12,7 @@
             <plugin>
                 <groupId>com.ffbit.maven.plugins</groupId>
                 <artifactId>solr-maven-plugin</artifactId>
+                <version>0.0.4-SNAPSHOT</version>
                 <configuration>
                 </configuration>
             </plugin>
