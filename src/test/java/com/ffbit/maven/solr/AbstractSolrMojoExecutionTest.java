@@ -1,8 +1,8 @@
 package com.ffbit.maven.solr;
 
-public class SolrMojoDefaultConfigurationExecutionTest extends
-        AbstractSolrMojoDefaultConfigurationTest {
-    private AbstractSolrMojo mojo;
+public abstract class AbstractSolrMojoExecutionTest extends
+        AbstractSolrMojoTest {
+    protected AbstractSolrMojo mojo;
 
     public void testStartWorkWithDefaultConfiguration() throws Exception {
         mojo = lookupAndConfigureMojo("start");
