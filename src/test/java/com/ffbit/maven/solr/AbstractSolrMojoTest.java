@@ -2,7 +2,11 @@ package com.ffbit.maven.solr;
 
 import com.ffbit.maven.solr.support.ManualHttpWagonProvider;
 import org.apache.maven.plugin.testing.AbstractMojoTestCase;
+import org.apache.maven.project.DefaultProjectBuildingRequest;
 import org.apache.maven.project.MavenProject;
+import org.apache.maven.project.ProjectBuilder;
+import org.apache.maven.project.ProjectBuildingRequest;
+import org.apache.maven.project.ProjectBuildingResult;
 import org.apache.maven.repository.internal.DefaultArtifactDescriptorReader;
 import org.apache.maven.repository.internal.DefaultVersionRangeResolver;
 import org.apache.maven.repository.internal.DefaultVersionResolver;
@@ -22,7 +26,6 @@ import org.sonatype.aether.repository.RemoteRepository;
 import org.sonatype.aether.spi.connector.RepositoryConnectorFactory;
 
 import java.io.File;
-import java.util.Properties;
 
 public abstract class AbstractSolrMojoTest extends AbstractMojoTestCase {
     private MavenProject project;
@@ -34,7 +37,7 @@ public abstract class AbstractSolrMojoTest extends AbstractMojoTestCase {
     protected void setUp() throws Exception {
         super.setUp();
 
-        project = newMavenProject();
+        project = getMavenProject();
 
         system = newRepositorySystem();
         session = newRepositorySystemSession(system);
@@ -52,18 +55,12 @@ public abstract class AbstractSolrMojoTest extends AbstractMojoTestCase {
         return mojo;
     }
 
-    public MavenProject newMavenProject() {
-        MavenProject mavenProject = new MavenProject();
-        mavenProject.setFile(getPom());
+    public MavenProject getMavenProject() throws Exception {
+        ProjectBuilder projectBuilder = lookup(ProjectBuilder.class);
+        ProjectBuildingRequest request = new DefaultProjectBuildingRequest();
+        ProjectBuildingResult result = projectBuilder.build(getPom(), request);
 
-        fixMavenProjectProperties(mavenProject);
-
-        return mavenProject;
-    }
-
-    private void fixMavenProjectProperties(MavenProject mavenProject) {
-        Properties properties = mavenProject.getModel().getProperties();
-        properties.put("project.build.directory", "target");
+        return result.getProject();
     }
 
     public RepositorySystemSession newRepositorySystemSession(RepositorySystem system) {
