@@ -34,13 +34,13 @@ public class JettyRunner {
     public void start() {
         try {
             server.start();
-            addSystemShotdownHook();
+            addSystemShutdownHook();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void addSystemShotdownHook() {
+    private void addSystemShutdownHook() {
         Runtime.getRuntime().addShutdownHook(new Thread() {
 
             @Override
