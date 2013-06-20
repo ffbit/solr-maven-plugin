@@ -1,50 +1,40 @@
 package com.ffbit.maven.solr.jetty;
 
+import com.ffbit.maven.solr.AbstractSolrMojo;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;
 
 public class JettyRunner {
-    private int port;
-    private String contextPath;
-    private String warPath;
+    private AbstractSolrMojo mojo;
 
     private Server server;
     private WebAppContext webapp;
 
-    public JettyRunner(int port, String contextPath, String warPath) {
-        this.port = port;
-        this.contextPath = contextPath;
-        this.warPath = warPath;
+    public JettyRunner(AbstractSolrMojo mojo) {
+        this.mojo = mojo;
 
         initialize();
     }
 
     private void initialize() {
-        server = new Server(port);
+        server = new Server(mojo.getPort());
         webapp = new WebAppContext();
 
-        webapp.setWar(warPath);
-        webapp.setContextPath(contextPath);
+        webapp.setWar(mojo.getArtifactPath());
+        webapp.setContextPath(mojo.getContextPath());
 
         server.setHandler(webapp);
     }
 
     public void run() {
         start();
-
-        try {
-            server.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        join();
     }
 
     public void start() {
         try {
             server.start();
             addSystemShotdownHook();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -63,6 +53,18 @@ public class JettyRunner {
             }
 
         });
+    }
+
+    private void join() {
+        try {
+            Thread.currentThread().join(mojo.getServerWaitingTimeout());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void stop() throws Exception {
+        server.stop();
     }
 
 }
