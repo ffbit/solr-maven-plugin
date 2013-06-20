@@ -11,14 +11,13 @@ public class ExternalArtifactsFactory {
             return new Solr_4_3_1_ExternalArtifacts();
         }
 
-
-        return throwException(solrVersion);
+        throw exception(solrVersion);
     }
 
-    private ExternalArtifacts throwException(String solrVersion) {
+    private RuntimeException exception(String solrVersion) {
         String message = "Unsupported Apache Solr version `" + solrVersion + "`";
 
-        throw new IllegalArgumentException(message);
+        return new IllegalArgumentException(message);
     }
 
 }
