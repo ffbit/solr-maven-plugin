@@ -1,5 +1,11 @@
 # Release Notes
 
+## v0.0.4
+
+* Solr 4.3.1 support [#17](https://github.com/ffbit/solr-maven-plugin/pull/17)
+* Support for Apache Solr 4.3.1 [#15](https://github.com/ffbit/solr-maven-plugin/pull/15)
+* Refactored tests [#16](https://github.com/ffbit/solr-maven-plugin/pull/16) as a part of the Unit tests [#6](https://github.com/ffbit/solr-maven-plugin/pull/6) issue
+
 ## v0.0.3
 
 * Site documentation without usage examples [#14](https://github.com/ffbit/solr-maven-plugin/pull/14) as a part of the Documentation [#13](https://github.com/ffbit/solr-maven-plugin/issues/13) issue
