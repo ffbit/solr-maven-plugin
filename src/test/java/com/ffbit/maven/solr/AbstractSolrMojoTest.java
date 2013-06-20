@@ -2,13 +2,7 @@ package com.ffbit.maven.solr;
 
 import com.ffbit.maven.solr.support.ManualHttpWagonProvider;
 import org.apache.maven.execution.MavenSession;
-import org.apache.maven.model.Model;
 import org.apache.maven.model.Plugin;
-import org.apache.maven.model.building.DefaultModelBuildingRequest;
-import org.apache.maven.model.building.FileModelSource;
-import org.apache.maven.model.building.ModelBuilder;
-import org.apache.maven.model.building.ModelBuildingRequest;
-import org.apache.maven.model.building.ModelBuildingResult;
 import org.apache.maven.plugin.Mojo;
 import org.apache.maven.plugin.MojoExecution;
 import org.apache.maven.plugin.PluginParameterExpressionEvaluator;
@@ -124,17 +118,6 @@ public abstract class AbstractSolrMojoTest extends AbstractMojoTestCase {
                 getContainer().getContainerRealm());
 
         return mojo;
-    }
-
-    private Model buildModel() throws Exception {
-        ModelBuildingRequest request = new DefaultModelBuildingRequest();
-        request.setModelSource(new FileModelSource(getPom()));
-
-        ModelBuilder builder = lookup(ModelBuilder.class);
-        ModelBuildingResult result = builder.build(request);
-        Model model = result.getRawModel();
-
-        return model;
     }
 
     public RepositorySystemSession newRepositorySystemSession(RepositorySystem system) {
