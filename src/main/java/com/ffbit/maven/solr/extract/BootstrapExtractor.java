@@ -56,12 +56,12 @@ public class BootstrapExtractor {
     }
 
     private void extractJar() {
-        Artifact pluginArtefact = artifactResolver.resolve(PLUGIN_ARTEFACT);
+        Artifact pluginArtifact = artifactResolver.resolve(PLUGIN_ARTEFACT);
 
         JarFile jar = null;
 
         try {
-            jar = new JarFile(pluginArtefact.getFile());
+            jar = new JarFile(pluginArtifact.getFile());
 
             for (JarEntry entry : Collections.list(jar.entries())) {
                 if (entry.getName().startsWith(solrVersion)) {
