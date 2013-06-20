@@ -62,14 +62,20 @@ public class BootstrapExtractor {
 
         try {
             jar = new JarFile(pluginArtefact.getFile());
+
+            for (JarEntry entry : Collections.list(jar.entries())) {
+                if (entry.getName().startsWith(solrVersion)) {
+                    unJar(entry, jar);
+                }
+            }
         } catch (IOException e) {
             log.error(e.getMessage(), e);
             throw new RuntimeException(e.getMessage(), e);
-        }
-
-        for (JarEntry entry : Collections.list(jar.entries())) {
-            if (entry.getName().startsWith(solrVersion)) {
-                unJar(entry, jar);
+        } finally {
+            try {
+                jar.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }
