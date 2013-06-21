@@ -21,7 +21,7 @@ import java.util.jar.JarFile;
 public class BootstrapExtractor {
     private Log log = new SystemStreamLog();
 
-    private final String PLUGIN_ARTEFACT = "com.ffbit.maven.plugins:solr-maven-plugin:0.0.3";
+    private final String PLUGIN_ARTEFACT = "com.ffbit.maven.plugins:solr-maven-plugin:0.0.4";
 
     private File destinationRoot;
     private String solrVersion;
@@ -56,20 +56,26 @@ public class BootstrapExtractor {
     }
 
     private void extractJar() {
-        Artifact pluginArtefact = artifactResolver.resolve(PLUGIN_ARTEFACT);
+        Artifact pluginArtifact = artifactResolver.resolve(PLUGIN_ARTEFACT);
 
         JarFile jar = null;
 
         try {
-            jar = new JarFile(pluginArtefact.getFile());
+            jar = new JarFile(pluginArtifact.getFile());
+
+            for (JarEntry entry : Collections.list(jar.entries())) {
+                if (entry.getName().startsWith(solrVersion)) {
+                    unJar(entry, jar);
+                }
+            }
         } catch (IOException e) {
             log.error(e.getMessage(), e);
             throw new RuntimeException(e.getMessage(), e);
-        }
-
-        for (JarEntry entry : Collections.list(jar.entries())) {
-            if (entry.getName().startsWith(solrVersion)) {
-                unJar(entry, jar);
+        } finally {
+            try {
+                jar.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }

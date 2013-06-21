@@ -79,6 +79,8 @@ public abstract class AbstractSolrMojo extends AbstractMojo {
             readonly = true)
     private List<RemoteRepository> remoteRepositories;
 
+    private long serverWaitingTimeout;
+
     private ArtifactResolver artifactResolver;
 
     public String getContextPath() {
@@ -87,6 +89,14 @@ public abstract class AbstractSolrMojo extends AbstractMojo {
 
     public int getPort() {
         return port;
+    }
+
+    public long getServerWaitingTimeout() {
+        return serverWaitingTimeout;
+    }
+
+    public void setServerWaitingTimeout(long serverWaitingTimeout) {
+        this.serverWaitingTimeout = serverWaitingTimeout;
     }
 
     public String getSolrVersion() {
@@ -105,11 +115,11 @@ public abstract class AbstractSolrMojo extends AbstractMojo {
         remoteRepositories.add(repository);
     }
 
-    public String getArtifactPath() throws MojoExecutionException {
+    public String getArtifactPath() {
         return getArtifact().getFile().getAbsolutePath();
     }
 
-    private Artifact getArtifact() throws MojoExecutionException {
+    private Artifact getArtifact() {
         return artifactResolver.resolveSorlWarArtifact(solrVersion);
     }
 
@@ -151,5 +161,7 @@ public abstract class AbstractSolrMojo extends AbstractMojo {
     }
 
     protected abstract void executeGoal() throws MojoExecutionException, MojoFailureException;
+
+    public abstract void stop() throws Exception;
 
 }

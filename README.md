@@ -11,6 +11,7 @@ Current version of the plugin supports only the following versions of
 Apache Solr:
 
   * 4.3.0
+  * 4.3.1
 
 ## Documentation
 
@@ -29,7 +30,7 @@ Add plugin to your pom.xml
     <plugin>
         <groupId>com.ffbit.maven.plugins</groupId>
         <artifactId>solr-maven-plugin</artifactId>
-        <version>0.0.3</version>
+        <version>0.0.4</version>
     </plugin>
 
 Run
@@ -47,7 +48,7 @@ Add plugin to your pom.xml
     <plugin>
         <groupId>com.ffbit.maven.plugins</groupId>
         <artifactId>solr-maven-plugin</artifactId>
-        <version>0.0.3</version>
+        <version>0.0.4</version>
         <executions>
             <execution>
                 <id>Apache Solr Start</id>
@@ -66,4 +67,4 @@ Run
 
 ## Status
 
-Supports Apache Solr **only** of version 4.3.0
+Supports Apache Solr **only** of version 4.3.0 and 4.3.1
