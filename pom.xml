@@ -221,6 +221,17 @@
     </profiles>
 
     <build>
+        <resources>
+            <resource>
+                <directory>${basedir}</directory>
+                <filtering>false</filtering>
+                <includes>
+                    <include>LICENSE.txt</include>
+                    <include>README.md</include>
+                </includes>
+            </resource>
+        </resources>
+
         <pluginManagement>
             <plugins>
                 <plugin>
