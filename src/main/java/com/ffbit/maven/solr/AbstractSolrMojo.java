@@ -18,7 +18,8 @@ import org.sonatype.aether.repository.RemoteRepository;
 import java.io.File;
 import java.util.List;
 
-public abstract class AbstractSolrMojo extends AbstractMojo {
+public abstract class AbstractSolrMojo extends AbstractMojo
+        implements JettyConfiguration {
 
     /**
      * The context path for the server instance.
@@ -83,14 +84,26 @@ public abstract class AbstractSolrMojo extends AbstractMojo {
 
     private ArtifactResolver artifactResolver;
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public String getContextPath() {
         return contextPath;
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public int getPort() {
         return port;
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public long getServerWaitingTimeout() {
         return serverWaitingTimeout;
     }
@@ -115,6 +128,10 @@ public abstract class AbstractSolrMojo extends AbstractMojo {
         remoteRepositories.add(repository);
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public String getArtifactPath() {
         return getArtifact().getFile().getAbsolutePath();
     }

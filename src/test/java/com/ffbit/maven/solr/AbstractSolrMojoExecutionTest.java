@@ -12,7 +12,7 @@ public abstract class AbstractSolrMojoExecutionTest extends
 
     public void testRunWorkWithDefaultConfiguration() throws Exception {
         mojo = lookupAndConfigureMojo("run");
-        mojo.setServerWaitingTimeout(1);
+        mojo.setServerWaitingTimeout(1000);
 
         mojo.execute();
     }
