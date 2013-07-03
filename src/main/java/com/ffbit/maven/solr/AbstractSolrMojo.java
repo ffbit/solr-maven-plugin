@@ -18,28 +18,11 @@ import org.sonatype.aether.repository.RemoteRepository;
 import java.io.File;
 import java.util.List;
 
-public abstract class AbstractSolrMojo extends AbstractSolrConfigurationMojo
-        implements JettyConfiguration {
+public abstract class AbstractSolrMojo extends AbstractSolrConfigurationMojo {
 
     private long serverWaitingTimeout;
 
     private ArtifactResolver artifactResolver;
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getContextPath() {
-        return contextPath;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public int getPort() {
-        return port;
-    }
 
     /**
      * {@inheritDoc}

@@ -13,15 +13,8 @@ import java.util.List;
 /**
  * General place for Solr Maven Plugin configuration stuff.
  */
-public abstract class AbstractSolrConfigurationMojo extends AbstractMojo {
-
-    /**
-     * The context path for the server instance.
-     *
-     * @since 0.0.1
-     */
-    @Parameter(property = "contextPath", defaultValue = "/")
-    protected String contextPath;
+public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
+        implements JettyConfiguration {
 
     /**
      * The running port.
@@ -29,7 +22,15 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo {
      * @since 0.0.1
      */
     @Parameter(property = "port", defaultValue = "8983")
-    protected int port;
+    private int port;
+
+    /**
+     * The context path for the server instance.
+     *
+     * @since 0.0.1
+     */
+    @Parameter(property = "contextPath", defaultValue = "/")
+    private String contextPath;
 
     /**
      * The running Apache Solr version.
@@ -73,5 +74,21 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo {
     @Parameter(defaultValue = "${project.remoteProjectRepositories}",
             readonly = true)
     protected List<RemoteRepository> remoteRepositories;
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int getPort() {
+        return port;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getContextPath() {
+        return contextPath;
+    }
 
 }
