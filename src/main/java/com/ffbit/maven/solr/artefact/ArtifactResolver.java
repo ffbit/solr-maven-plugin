@@ -9,6 +9,7 @@ import org.sonatype.aether.resolution.ArtifactResolutionException;
 import org.sonatype.aether.resolution.ArtifactResult;
 import org.sonatype.aether.util.artifact.DefaultArtifact;
 
+import java.io.File;
 import java.util.List;
 
 public class ArtifactResolver {
@@ -46,15 +47,11 @@ public class ArtifactResolver {
         return resolve(new DefaultArtifact(coordinates));
     }
 
-    public Artifact resolveSorlWarArtifact() {
-        String GROUP_ID = "org.apache.solr";
-        String ARTIFACT_ID = "solr";
-        String EXTENSION = "war";
-        String SOLR_VERSION = configuration.getSolrVersion();
+    public File resolveSorlWarArtifact() {
+        String coordinates = "org.apache.solr:solr:war:" + configuration.getSolrVersion();
+        Artifact artifact = resolve(coordinates);
 
-        Artifact artifact = new DefaultArtifact(GROUP_ID, ARTIFACT_ID, EXTENSION, SOLR_VERSION);
-
-        return resolve(artifact);
+        return artifact.getFile();
     }
 
 }

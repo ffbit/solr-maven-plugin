@@ -53,11 +53,7 @@ public abstract class AbstractSolrMojo extends AbstractSolrConfigurationMojo {
      */
     @Override
     public String getArtifactPath() {
-        return getArtifact().getFile().getAbsolutePath();
-    }
-
-    private Artifact getArtifact() {
-        return artifactResolver.resolveSorlWarArtifact();
+        return artifactResolver.resolveSorlWarArtifact().getAbsolutePath();
     }
 
     @Override
