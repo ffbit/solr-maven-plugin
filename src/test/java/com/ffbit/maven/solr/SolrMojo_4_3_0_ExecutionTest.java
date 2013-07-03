@@ -1,4 +1,4 @@
-package com.ffbit.maven.solr.four.three.zero;
+package com.ffbit.maven.solr;
 
 import com.ffbit.maven.solr.AbstractSolrMojoExecutionTest;
 

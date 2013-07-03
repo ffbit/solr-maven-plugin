@@ -1,4 +1,4 @@
-package com.ffbit.maven.solr.def;
+package com.ffbit.maven.solr;
 
 import com.ffbit.maven.solr.AbstractSolrMojo;
 import com.ffbit.maven.solr.AbstractSolrMojoTest;
