@@ -22,8 +22,6 @@ public abstract class AbstractSolrMojo extends AbstractSolrConfigurationMojo {
 
     private long serverWaitingTimeout;
 
-    private ArtifactResolver artifactResolver;
-
     /**
      * {@inheritDoc}
      */
@@ -34,10 +32,6 @@ public abstract class AbstractSolrMojo extends AbstractSolrConfigurationMojo {
 
     public void setServerWaitingTimeout(long serverWaitingTimeout) {
         this.serverWaitingTimeout = serverWaitingTimeout;
-    }
-
-    public File getSolrHome() {
-        return solrHome;
     }
 
     public void setRepositorySession(RepositorySystemSession repositorySession) {
@@ -53,13 +47,22 @@ public abstract class AbstractSolrMojo extends AbstractSolrConfigurationMojo {
      */
     @Override
     public String getArtifactPath() {
-        return artifactResolver.resolveSorlWarArtifact().getAbsolutePath();
+        File solrWarArtifact = getArtifactResolver().resolveSorlWarArtifact();
+
+        return solrWarArtifact.getAbsolutePath();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public ArtifactResolver getArtifactResolver() {
+        return new ArtifactResolver(this);
     }
 
     @Override
     public final void execute() throws MojoExecutionException, MojoFailureException {
-        artifactResolver = new ArtifactResolver(this);
-        BootstrapExtractor extractor = new BootstrapExtractor(solrHome, solrVersion, artifactResolver);
+        BootstrapExtractor extractor = new BootstrapExtractor(this);
         extractor.extract();
 
         resolveExternalArtifacts();
@@ -72,7 +75,7 @@ public abstract class AbstractSolrMojo extends AbstractSolrConfigurationMojo {
     private void resolveExternalArtifacts() {
         ExternalArtifactsFactory factory = new ExternalArtifactsFactory();
         ExternalArtifacts externalArtifacts = factory.getExternalArtifacts(solrVersion);
-        artifactResolver.resolve(externalArtifacts.gerArtifacts());
+        getArtifactResolver().resolve(externalArtifacts.gerArtifacts());
     }
 
     private void exportMavenLocalRepositoryProperty() {

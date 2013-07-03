@@ -27,11 +27,10 @@ public class BootstrapExtractor {
     private String solrVersion;
     private ArtifactResolver artifactResolver;
 
-    public BootstrapExtractor(File destinationRoot, String solrVersion,
-                              ArtifactResolver artifactResolver) {
-        this.destinationRoot = destinationRoot;
-        this.solrVersion = solrVersion;
-        this.artifactResolver = artifactResolver;
+    public BootstrapExtractor(BootstrapConfiguration configuration) {
+        this.destinationRoot = configuration.getSolrHome();
+        this.solrVersion = configuration.getSolrVersion();
+        this.artifactResolver = configuration.getArtifactResolver();
     }
 
     public void extract() {

@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Represents configuration for Aether Maven Artifact Resolver.
  */
-public interface ArtifactResolverConfiguration {
+public interface ArtifactResolverConfiguration extends SolrVersionConfiguration {
 
     /**
      * Get the current repository system configuration of Maven.
@@ -31,12 +31,5 @@ public interface ArtifactResolverConfiguration {
      * @return project's remote repositories to use for the resolution.
      */
     List<RemoteRepository> getRemoteRepositories();
-
-    /**
-     * Get running Apache Solr version.
-     *
-     * @return running Apache Solr version.
-     */
-    String getSolrVersion();
 
 }
