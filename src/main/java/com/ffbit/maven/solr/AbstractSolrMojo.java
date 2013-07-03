@@ -36,10 +36,6 @@ public abstract class AbstractSolrMojo extends AbstractSolrConfigurationMojo {
         this.serverWaitingTimeout = serverWaitingTimeout;
     }
 
-    public String getSolrVersion() {
-        return solrVersion;
-    }
-
     public File getSolrHome() {
         return solrHome;
     }
@@ -61,7 +57,7 @@ public abstract class AbstractSolrMojo extends AbstractSolrConfigurationMojo {
     }
 
     private Artifact getArtifact() {
-        return artifactResolver.resolveSorlWarArtifact(solrVersion);
+        return artifactResolver.resolveSorlWarArtifact();
     }
 
     @Override

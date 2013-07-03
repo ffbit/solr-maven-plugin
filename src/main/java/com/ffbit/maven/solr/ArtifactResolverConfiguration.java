@@ -32,4 +32,11 @@ public interface ArtifactResolverConfiguration {
      */
     List<RemoteRepository> getRemoteRepositories();
 
+    /**
+     * Get running Apache Solr version.
+     *
+     * @return running Apache Solr version.
+     */
+    String getSolrVersion();
+
 }

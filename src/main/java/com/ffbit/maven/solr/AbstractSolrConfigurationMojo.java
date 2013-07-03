@@ -116,4 +116,11 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
         return repositorySession;
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public String getSolrVersion() {
+        return solrVersion;
+    }
+
 }
