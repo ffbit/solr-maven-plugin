@@ -14,7 +14,7 @@ import java.util.List;
  * General place for Solr Maven Plugin configuration stuff.
  */
 public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
-        implements JettyConfiguration {
+        implements JettyConfiguration, ArtifactResolverConfiguration {
 
     /**
      * The running port.
@@ -50,7 +50,8 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
     protected File solrHome;
 
     /**
-     * The entry point to Aether, i.e. the component doing all the work.
+     * The entry point to Aether, i.e. the component doing all the work
+     * with repository system.
      *
      * @since 0.0.1
      */
@@ -67,7 +68,7 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
     protected RepositorySystemSession repositorySession;
 
     /**
-     * The project's remote repositories to use for the resolution.
+     * Project's remote repositories to use for the resolution.
      *
      * @since 0.0.1
      */
@@ -89,6 +90,30 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
     @Override
     public String getContextPath() {
         return contextPath;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<RemoteRepository> getRemoteRepositories() {
+        return remoteRepositories;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public RepositorySystem getRepositorySystem() {
+        return repositorySystem;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public RepositorySystemSession getRepositorySession() {
+        return repositorySession;
     }
 
 }

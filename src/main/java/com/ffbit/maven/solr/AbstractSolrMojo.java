@@ -66,7 +66,7 @@ public abstract class AbstractSolrMojo extends AbstractSolrConfigurationMojo {
 
     @Override
     public final void execute() throws MojoExecutionException, MojoFailureException {
-        artifactResolver = new ArtifactResolver(repositorySystem, repositorySession, remoteRepositories);
+        artifactResolver = new ArtifactResolver(this);
         BootstrapExtractor extractor = new BootstrapExtractor(solrHome, solrVersion, artifactResolver);
         extractor.extract();
 
