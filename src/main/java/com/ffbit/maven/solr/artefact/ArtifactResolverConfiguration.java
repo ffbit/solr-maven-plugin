@@ -1,4 +1,4 @@
-package com.ffbit.maven.solr;
+package com.ffbit.maven.solr.artefact;
 
 import org.sonatype.aether.RepositorySystem;
 import org.sonatype.aether.RepositorySystemSession;

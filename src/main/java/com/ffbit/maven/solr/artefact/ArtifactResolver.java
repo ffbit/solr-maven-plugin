@@ -1,6 +1,5 @@
 package com.ffbit.maven.solr.artefact;
 
-import com.ffbit.maven.solr.ArtifactResolverConfiguration;
 import org.sonatype.aether.RepositorySystem;
 import org.sonatype.aether.RepositorySystemSession;
 import org.sonatype.aether.artifact.Artifact;

@@ -1,4 +1,4 @@
-package com.ffbit.maven.solr;
+package com.ffbit.maven.solr.jetty;
 
 /**
  * Represents configuration for running Jetty Server.

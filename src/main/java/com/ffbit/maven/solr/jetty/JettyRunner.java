@@ -1,6 +1,5 @@
 package com.ffbit.maven.solr.jetty;
 
-import com.ffbit.maven.solr.JettyConfiguration;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;
 

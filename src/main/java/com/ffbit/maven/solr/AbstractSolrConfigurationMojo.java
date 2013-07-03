@@ -1,5 +1,7 @@
 package com.ffbit.maven.solr;
 
+import com.ffbit.maven.solr.artefact.ArtifactResolverConfiguration;
+import com.ffbit.maven.solr.jetty.JettyConfiguration;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugins.annotations.Component;
 import org.apache.maven.plugins.annotations.Parameter;
