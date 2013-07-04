@@ -7,6 +7,10 @@ public class ExternalArtifactsFactory {
             return new Solr_4_2_0_ExternalArtifacts();
         }
 
+        if ("4.2.1".equals(solrVersion)) {
+            return new Solr_4_2_1_ExternalArtifacts();
+        }
+
         if ("4.3.0".equals(solrVersion)) {
             return new Solr_4_3_0_ExternalArtifacts();
         }
