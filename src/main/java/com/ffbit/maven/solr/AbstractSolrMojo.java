@@ -4,19 +4,13 @@ import com.ffbit.maven.solr.artefact.ArtifactResolver;
 import com.ffbit.maven.solr.artefact.external.ExternalArtifacts;
 import com.ffbit.maven.solr.artefact.external.ExternalArtifactsFactory;
 import com.ffbit.maven.solr.extract.BootstrapExtractor;
-import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
-import org.apache.maven.plugins.annotations.Component;
-import org.apache.maven.plugins.annotations.Parameter;
-import org.sonatype.aether.RepositorySystem;
 import org.sonatype.aether.RepositorySystemSession;
-import org.sonatype.aether.artifact.Artifact;
 import org.sonatype.aether.repository.LocalRepository;
 import org.sonatype.aether.repository.RemoteRepository;
 
 import java.io.File;
-import java.util.List;
 
 public abstract class AbstractSolrMojo extends AbstractSolrConfigurationMojo {
 
