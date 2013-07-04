@@ -1,27 +1,26 @@
 package com.ffbit.maven.solr.jetty;
 
-import com.ffbit.maven.solr.AbstractSolrMojo;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;
 
 public class JettyRunner {
-    private AbstractSolrMojo mojo;
+    private JettyConfiguration configuration;
 
     private Server server;
     private WebAppContext webapp;
 
-    public JettyRunner(AbstractSolrMojo mojo) {
-        this.mojo = mojo;
+    public JettyRunner(JettyConfiguration configuration) {
+        this.configuration = configuration;
 
         initialize();
     }
 
     private void initialize() {
-        server = new Server(mojo.getPort());
+        server = new Server(configuration.getPort());
         webapp = new WebAppContext();
 
-        webapp.setWar(mojo.getArtifactPath());
-        webapp.setContextPath(mojo.getContextPath());
+        webapp.setWar(configuration.getArtifactPath());
+        webapp.setContextPath(configuration.getContextPath());
 
         server.setHandler(webapp);
     }
@@ -57,7 +56,7 @@ public class JettyRunner {
 
     private void join() {
         try {
-            Thread.currentThread().join(mojo.getServerWaitingTimeout());
+            Thread.currentThread().join(configuration.getServerWaitingTimeout());
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

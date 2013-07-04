@@ -21,17 +21,16 @@ import java.util.jar.JarFile;
 public class BootstrapExtractor {
     private Log log = new SystemStreamLog();
 
-    private final String PLUGIN_ARTEFACT = "com.ffbit.maven.plugins:solr-maven-plugin:0.0.4";
+    private final String PLUGIN_ARTEFACT = "com.ffbit.maven.plugins:solr-maven-plugin:0.0.5-SNAPSHOT";
 
     private File destinationRoot;
     private String solrVersion;
     private ArtifactResolver artifactResolver;
 
-    public BootstrapExtractor(File destinationRoot, String solrVersion,
-                              ArtifactResolver artifactResolver) {
-        this.destinationRoot = destinationRoot;
-        this.solrVersion = solrVersion;
-        this.artifactResolver = artifactResolver;
+    public BootstrapExtractor(BootstrapConfiguration configuration) {
+        this.destinationRoot = configuration.getSolrHome();
+        this.solrVersion = configuration.getSolrVersion();
+        this.artifactResolver = configuration.getArtifactResolver();
     }
 
     public void extract() {
