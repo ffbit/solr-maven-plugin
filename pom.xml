@@ -22,6 +22,10 @@
         Current version of the plugin supports only the following versions of
         Apache Solr:
 
+        * 4.2.0
+
+        * 4.2.1
+
         * 4.3.0
 
         * 4.3.1

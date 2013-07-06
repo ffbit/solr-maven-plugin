@@ -10,6 +10,8 @@ or as a standalone instance for other test purposes.
 Current version of the plugin supports only the following versions of
 Apache Solr:
 
+  * 4.2.0
+  * 4.2.1
   * 4.3.0
   * 4.3.1
 
@@ -67,4 +69,4 @@ Run
 
 ## Status
 
-Supports Apache Solr **only** of version 4.3.0 and 4.3.1
+Supports Apache Solr of version 4.2.0, 4.2.1, 4.3.0 and 4.3.1 **only**
