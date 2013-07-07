@@ -32,7 +32,7 @@ Add plugin to your pom.xml
     <plugin>
         <groupId>com.ffbit.maven.plugins</groupId>
         <artifactId>solr-maven-plugin</artifactId>
-        <version>0.0.4</version>
+        <version>0.0.5</version>
     </plugin>
 
 Run
@@ -50,7 +50,7 @@ Add plugin to your pom.xml
     <plugin>
         <groupId>com.ffbit.maven.plugins</groupId>
         <artifactId>solr-maven-plugin</artifactId>
-        <version>0.0.4</version>
+        <version>0.0.5</version>
         <executions>
             <execution>
                 <id>Apache Solr Start</id>

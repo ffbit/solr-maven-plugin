@@ -1,5 +1,9 @@
 # Release Notes
 
+## v0.0.5
+
+* Solr 4.x.x support [#20](https://github.com/ffbit/solr-maven-plugin/pull/20) as an implementation of the Add Support for Apache Solr 4.x.x [#19](https://github.com/ffbit/solr-maven-plugin/issues/19) issue
+
 ## v0.0.4
 
 * Solr 4.3.1 support [#17](https://github.com/ffbit/solr-maven-plugin/pull/17)
