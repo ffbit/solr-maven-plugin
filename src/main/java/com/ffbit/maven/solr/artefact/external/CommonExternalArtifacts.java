@@ -7,10 +7,29 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Solr_4_3_0_ExternalArtifacts implements ExternalArtifacts {
+/**
+ * Represents a source for Maven external artifacts for a given Apache Solr Version.
+ */
+public class CommonExternalArtifacts implements ExternalArtifacts {
+    /**
+     * Current running Apache Solr version.
+     */
+    private final String solrVersion;
 
+    /**
+     * Instantiates common external artifacts source for a given Apache Solr version.
+     *
+     * @param solrVersion a given Apache Solr version
+     */
+    public CommonExternalArtifacts(String solrVersion) {
+        this.solrVersion = solrVersion;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public List<Artifact> gerArtifacts() {
+    public List<Artifact> getArtifacts() {
         List<Artifact> artifacts = new ArrayList<Artifact>();
 
         artifacts.addAll(getExtractionArtifacts());
@@ -29,7 +48,7 @@ public class Solr_4_3_0_ExternalArtifacts implements ExternalArtifacts {
     }
 
     // <lib dir="../../../contrib/extraction/lib" regex=".*\.jar" />
-    protected List<Artifact> getExtractionArtifacts() {
+    private List<Artifact> getExtractionArtifacts() {
         return Arrays.<Artifact>asList(
                 new DefaultArtifact("org.apache.james:apache-mime4j-core:jar:0.7.2"),
                 new DefaultArtifact("org.apache.james:apache-mime4j-dom:jar:0.7.2"),
@@ -64,14 +83,14 @@ public class Solr_4_3_0_ExternalArtifacts implements ExternalArtifacts {
     }
 
     // <lib dir="../../../dist/" regex="solr-cell-\d.*\.jar" />
-    protected List<Artifact> getSolrExtractionArtifacts() {
+    private List<Artifact> getSolrExtractionArtifacts() {
         return Arrays.<Artifact>asList(
-                new DefaultArtifact("org.apache.solr:solr-cell:jar:4.3.0")
+                new DefaultArtifact("org.apache.solr:solr-cell:jar:" + solrVersion)
         );
     }
 
     // <lib dir="../../../contrib/clustering/lib/" regex=".*\.jar" />
-    protected List<Artifact> getClasteringArtifacts() {
+    private List<Artifact> getClasteringArtifacts() {
         return Arrays.<Artifact>asList(
                 new DefaultArtifact("org.carrot2.attributes:attributes-binder:jar:1.0.1"),
                 new DefaultArtifact("org.carrot2:carrot2-mini:jar:3.6.2"),
@@ -85,14 +104,14 @@ public class Solr_4_3_0_ExternalArtifacts implements ExternalArtifacts {
     }
 
     // <lib dir="../../../dist/" regex="solr-clustering-\d.*\.jar" />
-    protected List<Artifact> getSolrClasteringArtifacts() {
+    private List<Artifact> getSolrClasteringArtifacts() {
         return Arrays.<Artifact>asList(
-                new DefaultArtifact("org.apache.solr:solr-clustering:jar:4.3.0")
+                new DefaultArtifact("org.apache.solr:solr-clustering:jar:" + solrVersion)
         );
     }
 
     // <lib dir="../../../contrib/langid/lib/" regex=".*\.jar" />
-    protected List<Artifact> getLangIdArtifacts() {
+    private List<Artifact> getLangIdArtifacts() {
         return Arrays.<Artifact>asList(
                 new DefaultArtifact("net.arnx:jsonic:jar:1.2.7"),
                 new DefaultArtifact("com.cybozu.labs:langdetect:jar:1.1-20120112")
@@ -100,14 +119,14 @@ public class Solr_4_3_0_ExternalArtifacts implements ExternalArtifacts {
     }
 
     // <lib dir="../../../dist/" regex="solr-langid-\d.*\.jar" />
-    protected List<Artifact> getSolrLangIdArtifacts() {
+    private List<Artifact> getSolrLangIdArtifacts() {
         return Arrays.<Artifact>asList(
-                new DefaultArtifact("org.apache.solr:solr-langid:jar:4.3.0")
+                new DefaultArtifact("org.apache.solr:solr-langid:jar:" + solrVersion)
         );
     }
 
     // <lib dir="../../../contrib/velocity/lib" regex=".*\.jar" />
-    protected List<Artifact> getVelocityArtifacts() {
+    private List<Artifact> getVelocityArtifacts() {
         return Arrays.<Artifact>asList(
                 new DefaultArtifact("commons-beanutils:commons-beanutils:jar:1.7.0"),
                 new DefaultArtifact("commons-collections:commons-collections:jar:3.2.1"),
@@ -117,9 +136,9 @@ public class Solr_4_3_0_ExternalArtifacts implements ExternalArtifacts {
     }
 
     // <lib dir="../../../dist/" regex="solr-velocity-\d.*\.jar" />
-    protected List<Artifact> getSolrVelocityArtifacts() {
+    private List<Artifact> getSolrVelocityArtifacts() {
         return Arrays.<Artifact>asList(
-                new DefaultArtifact("org.apache.solr:solr-velocity:jar:4.3.0")
+                new DefaultArtifact("org.apache.solr:solr-velocity:jar:" + solrVersion)
         );
     }
 
