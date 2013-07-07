@@ -69,7 +69,7 @@ public abstract class AbstractSolrMojo extends AbstractSolrConfigurationMojo {
     private void resolveExternalArtifacts() {
         ExternalArtifactsFactory factory = new ExternalArtifactsFactory();
         ExternalArtifacts externalArtifacts = factory.getExternalArtifacts(solrVersion);
-        getArtifactResolver().resolve(externalArtifacts.gerArtifacts());
+        getArtifactResolver().resolve(externalArtifacts.getArtifacts());
     }
 
     private void exportMavenLocalRepositoryProperty() {

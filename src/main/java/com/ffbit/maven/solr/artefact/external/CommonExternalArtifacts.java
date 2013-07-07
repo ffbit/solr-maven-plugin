@@ -25,8 +25,11 @@ public class CommonExternalArtifacts implements ExternalArtifacts {
         this.solrVersion = solrVersion;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public List<Artifact> gerArtifacts() {
+    public List<Artifact> getArtifacts() {
         List<Artifact> artifacts = new ArrayList<Artifact>();
 
         artifacts.addAll(getExtractionArtifacts());

@@ -4,8 +4,16 @@ import org.sonatype.aether.artifact.Artifact;
 
 import java.util.List;
 
+/**
+ * Represents a source of Maven external artifacts.
+ */
 public interface ExternalArtifacts {
 
-    List<Artifact> gerArtifacts();
+    /**
+     * Get Maven external artifacts list.
+     *
+     * @return Maven external artifacts list.
+     */
+    List<Artifact> getArtifacts();
 
 }
