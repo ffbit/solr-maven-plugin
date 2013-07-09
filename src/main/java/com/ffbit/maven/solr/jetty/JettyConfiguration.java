@@ -1,7 +1,5 @@
 package com.ffbit.maven.solr.jetty;
 
-import org.mortbay.jetty.plugin.JettyServer;
-
 /**
  * Represents configuration for running Jetty Server.
  */

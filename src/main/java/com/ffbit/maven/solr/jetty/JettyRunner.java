@@ -2,9 +2,9 @@ package com.ffbit.maven.solr.jetty;
 
 import org.apache.maven.plugin.logging.Log;
 import org.apache.maven.plugin.logging.SystemStreamLog;
+import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.util.resource.Resource;
 import org.eclipse.jetty.xml.XmlConfiguration;
-import org.mortbay.jetty.plugin.JettyServer;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -14,11 +14,11 @@ public class JettyRunner {
     private Log log = new SystemStreamLog();
 
     private JettyConfiguration configuration;
-    private JettyServer server;
+    private Server server;
 
     public JettyRunner(JettyConfiguration configuration) {
         this.configuration = configuration;
-        server = new JettyServer();
+        server = new Server();
 
         initialize();
     }

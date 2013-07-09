@@ -6,7 +6,6 @@ import com.ffbit.maven.solr.jetty.JettyConfiguration;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugins.annotations.Component;
 import org.apache.maven.plugins.annotations.Parameter;
-import org.mortbay.jetty.plugin.JettyWebAppContext;
 import org.sonatype.aether.RepositorySystem;
 import org.sonatype.aether.RepositorySystemSession;
 import org.sonatype.aether.repository.RemoteRepository;
@@ -88,17 +87,6 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
     @Parameter(defaultValue = "${project.remoteProjectRepositories}",
             readonly = true)
     protected List<RemoteRepository> remoteRepositories;
-
-    /**
-     * An instance of org.eclipse.jetty.webapp.WebAppContext that represents the webapp.
-     * Use any of its setters to configure the webapp. This is the preferred and most
-     * flexible method of configuration, rather than using the (deprecated) individual
-     * parameters like "tmpDirectory", "contextPath" etc.
-     *
-     * @since 0.0.6
-     */
-    @Parameter
-    private JettyWebAppContext webApp;
 
     /**
      * {@inheritDoc}
