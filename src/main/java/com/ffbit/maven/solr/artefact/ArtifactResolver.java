@@ -46,11 +46,4 @@ public class ArtifactResolver {
         return resolve(new DefaultArtifact(coordinates));
     }
 
-    public File resolveSorlWarArtifact() {
-        String coordinates = "org.apache.solr:solr:war:" + configuration.getSolrVersion();
-        Artifact artifact = resolve(coordinates);
-
-        return artifact.getFile();
-    }
-
 }

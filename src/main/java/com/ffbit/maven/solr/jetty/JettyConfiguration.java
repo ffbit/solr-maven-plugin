@@ -22,19 +22,11 @@ public interface JettyConfiguration {
     String getContextPath();
 
     /**
-     * Get path to Apache Solr maven artifact.
+     * Get comma separated list of a jetty xml configuration files whose contents
+     * will be applied before any plugin configuration.
      *
-     * @return path to Apache Solr maven artifact.
+     * @return comma separated list of a jetty xml configuration files.
      */
-    String getArtifactPath();
-
-    /**
-     * Get current Jetty Server to be run.
-     *
-     * @return current Jetty Server to be run.
-     */
-    JettyServer getServer();
-
     String getJettyXml();
 
     /**

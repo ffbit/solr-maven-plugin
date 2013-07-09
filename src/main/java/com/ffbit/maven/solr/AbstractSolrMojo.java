@@ -40,16 +40,6 @@ public abstract class AbstractSolrMojo extends AbstractSolrConfigurationMojo {
      * {@inheritDoc}
      */
     @Override
-    public String getArtifactPath() {
-        File solrWarArtifact = getArtifactResolver().resolveSorlWarArtifact();
-
-        return solrWarArtifact.getAbsolutePath();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
     public ArtifactResolver getArtifactResolver() {
         return new ArtifactResolver(this);
     }

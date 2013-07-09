@@ -6,17 +6,12 @@ import com.ffbit.maven.solr.jetty.JettyConfiguration;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugins.annotations.Component;
 import org.apache.maven.plugins.annotations.Parameter;
-import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.util.resource.Resource;
-import org.eclipse.jetty.xml.XmlConfiguration;
-import org.mortbay.jetty.plugin.JettyServer;
 import org.mortbay.jetty.plugin.JettyWebAppContext;
 import org.sonatype.aether.RepositorySystem;
 import org.sonatype.aether.RepositorySystemSession;
 import org.sonatype.aether.repository.RemoteRepository;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -170,11 +165,6 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
      */
     public File getSolrHome() {
         return solrHome;
-    }
-
-    @Override
-    public JettyServer getServer() {
-        return null;
     }
 
 }
