@@ -62,6 +62,14 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
     protected File solrHome;
 
     /**
+     * Jetty login properties.
+     *
+     * @since 0.0.6
+     */
+    @Parameter
+    private File loggingPropertiesPath;
+
+    /**
      * The entry point to Aether, i.e. the component doing all the work
      * with repository system.
      *
@@ -153,6 +161,16 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
      */
     public File getSolrHome() {
         return solrHome;
+    }
+
+    public File getLoggingPropertiesPath() {
+        if (loggingPropertiesPath != null) {
+            return loggingPropertiesPath;
+        }
+
+        File file = new File(solrHome, "jetty/logging.properties");
+        getLog().info(file + " " + file.exists());
+        return file;
     }
 
 }

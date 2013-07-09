@@ -10,8 +10,6 @@ import org.sonatype.aether.RepositorySystemSession;
 import org.sonatype.aether.repository.LocalRepository;
 import org.sonatype.aether.repository.RemoteRepository;
 
-import java.io.File;
-
 public abstract class AbstractSolrMojo extends AbstractSolrConfigurationMojo {
 
     private long serverWaitingTimeout;
@@ -52,8 +50,14 @@ public abstract class AbstractSolrMojo extends AbstractSolrConfigurationMojo {
         resolveExternalArtifacts();
         exportSolrHomeProperty();
         exportMavenLocalRepositoryProperty();
+        exportLoggingProperties();
 
         executeGoal();
+    }
+
+    private void exportLoggingProperties() {
+        setSystemPropertyIfNotSet("java.util.logging.config.file",
+                getLoggingPropertiesPath().getAbsolutePath());
     }
 
     private void resolveExternalArtifacts() {
