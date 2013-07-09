@@ -14,11 +14,7 @@ public class RunSolrMojo extends StartSolrMojo {
     public void executeGoal() throws MojoExecutionException, MojoFailureException {
         super.executeGoal();
 
-        try {
-            //getServer().join();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        runner.run();
     }
 
 }

@@ -12,7 +12,7 @@ import org.eclipse.jetty.server.Server;
  */
 @Mojo(name = "start")
 public class StartSolrMojo extends AbstractSolrMojo {
-    private JettyRunner runner;
+    protected JettyRunner runner;
 
     @Override
     protected void executeGoal() throws MojoExecutionException, MojoFailureException {
