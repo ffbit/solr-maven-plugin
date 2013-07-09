@@ -195,7 +195,7 @@
       <Call name="addAppProvider">
         <Arg>
           <New class="org.eclipse.jetty.deploy.providers.ContextProvider">
-            <Set name="monitoredDirName"><SystemProperty name="jetty.home" default="."/>/contexts</Set>
+            <Set name="monitoredDirName"><SystemProperty name="solr.solr.home" default="."/>/jetty/solr-jetty-context.xml</Set>
             <Set name="scanInterval">0</Set>
           </New>
         </Arg>

@@ -1,13 +1,11 @@
 package com.ffbit.maven.solr.jetty;
 
-import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.webapp.WebAppContext;
+import org.mortbay.jetty.plugin.JettyServer;
 
 public class JettyRunner {
     private JettyConfiguration configuration;
 
-    private Server server;
-    private WebAppContext webapp;
+    private JettyServer server;
 
     public JettyRunner(JettyConfiguration configuration) {
         this.configuration = configuration;
@@ -16,13 +14,8 @@ public class JettyRunner {
     }
 
     private void initialize() {
-        server = new Server(configuration.getPort());
-        webapp = new WebAppContext();
-
-        webapp.setWar(configuration.getArtifactPath());
-        webapp.setContextPath(configuration.getContextPath());
-
-        server.setHandler(webapp);
+        server = configuration.getServer();
+        server.setStopAtShutdown(true);
     }
 
     public void run() {

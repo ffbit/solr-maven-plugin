@@ -5,6 +5,7 @@ import com.ffbit.maven.solr.jetty.JettyRunner;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.Mojo;
+import org.eclipse.jetty.server.Server;
 
 /**
  * Start a new Apache Solr instance and executes while Maven is running.

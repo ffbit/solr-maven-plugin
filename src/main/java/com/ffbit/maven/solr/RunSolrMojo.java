@@ -9,19 +9,23 @@ import org.apache.maven.plugins.annotations.Mojo;
  * Run a new Apache Solr instance and executes it indefinably.
  */
 @Mojo(name = "run")
-public class RunSolrMojo extends AbstractSolrMojo {
+public class RunSolrMojo extends StartSolrMojo {
     private JettyRunner runner;
 
     @Override
     public void executeGoal() throws MojoExecutionException, MojoFailureException {
-        runner = new JettyRunner(this);
+        super.executeGoal();
 
-        runner.run();
+        try {
+            //getServer().join();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void stop() throws Exception {
-        runner.stop();
+        getServer().stop();
     }
 
 }

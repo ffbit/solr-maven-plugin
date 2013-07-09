@@ -1,5 +1,7 @@
 package com.ffbit.maven.solr.jetty;
 
+import org.mortbay.jetty.plugin.JettyServer;
+
 /**
  * Represents configuration for running Jetty Server.
  */
@@ -25,6 +27,13 @@ public interface JettyConfiguration {
      * @return path to Apache Solr maven artifact.
      */
     String getArtifactPath();
+
+    /**
+     * Get current Jetty Server to be run.
+     *
+     * @return current Jetty Server to be run.
+     */
+    JettyServer getServer();
 
     /**
      * Get server waiting timeout in milliseconds for <b>plugin's own unit test use</b>.
