@@ -42,6 +42,15 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
     private String contextPath;
 
     /**
+     * Comma separated list of a jetty xml configuration files whose contents
+     * will be applied before any plugin configuration. Optional.
+     *
+     * @since 0.0.6
+     */
+    @Parameter
+    private String jettyXml;
+
+    /**
      * The running Apache Solr version.
      *
      * @since 0.0.1
@@ -97,13 +106,17 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
     private JettyWebAppContext webApp;
 
     /**
-     * Comma separated list of a jetty xml configuration files whose contents
-     * will be applied before any plugin configuration. Optional.
-     *
-     * @since 0.0.6
+     * {@inheritDoc}
      */
-    @Parameter
-    private String jettyXml;
+    @Override
+    public String getJettyXml() {
+        if (jettyXml == null) {
+            // a workaround with default value, because it doesn't interpolate user parameters
+            return getSolrHome() + "/jetty/jetty.xml";
+        }
+
+        return jettyXml;
+    }
 
     /**
      * {@inheritDoc}
@@ -159,36 +172,9 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
         return solrHome;
     }
 
-    private JettyServer server = new JettyServer();
-
-    public void applyJettyXml() throws Exception {
-        for (File xmlFile : getJettyXmlFiles()) {
-            getLog().info("Configuring Jetty from xml configuration file = " + xmlFile.getCanonicalPath());
-            XmlConfiguration xmlConfiguration = new XmlConfiguration(Resource.toURL(xmlFile));
-            xmlConfiguration.configure(getServer());
-        }
-    }
-
-    public List<File> getJettyXmlFiles() {
-        List<File> jettyXmlFiles = new ArrayList<File>();
-
-        if (jettyXml == null) {
-            // a workaround with default value, because it doesn't interpolate user parameters
-            jettyXml = solrHome + "/jetty/jetty.xml";
-        } else if (jettyXml.trim().isEmpty()) {
-            return jettyXmlFiles;
-        }
-
-        for (String file : jettyXml.split(",")) {
-            jettyXmlFiles.add(new File(file));
-        }
-
-        return jettyXmlFiles;
-    }
-
     @Override
     public JettyServer getServer() {
-        return server;
+        return null;
     }
 
 }

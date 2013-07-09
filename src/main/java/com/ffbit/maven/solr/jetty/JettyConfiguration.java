@@ -35,6 +35,8 @@ public interface JettyConfiguration {
      */
     JettyServer getServer();
 
+    String getJettyXml();
+
     /**
      * Get server waiting timeout in milliseconds for <b>plugin's own unit test use</b>.
      *

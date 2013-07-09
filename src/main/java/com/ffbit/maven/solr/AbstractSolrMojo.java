@@ -63,12 +63,6 @@ public abstract class AbstractSolrMojo extends AbstractSolrConfigurationMojo {
         exportSolrHomeProperty();
         exportMavenLocalRepositoryProperty();
 
-        try {
-            applyJettyXml();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
         executeGoal();
     }
 
