@@ -10,6 +10,8 @@ import org.sonatype.aether.RepositorySystemSession;
 import org.sonatype.aether.repository.LocalRepository;
 import org.sonatype.aether.repository.RemoteRepository;
 
+import java.util.Map;
+
 public abstract class AbstractSolrMojo extends AbstractSolrConfigurationMojo {
 
     private long serverWaitingTimeout;
@@ -51,6 +53,18 @@ public abstract class AbstractSolrMojo extends AbstractSolrConfigurationMojo {
         exportSolrHomeProperty();
         exportMavenLocalRepositoryProperty();
         exportLoggingProperties();
+
+        for (Map.Entry entry : ((Map<Object, Object>) getPluginContext()).entrySet()) {
+            String key = String.valueOf(entry.getKey());
+            String value = String.valueOf(entry.getValue());
+
+            setSystemPropertyIfNotSet(key, value);
+        }
+
+        for (Object e : System.getProperties().entrySet()) {
+            getLog().info("~~~ " + e);
+        }
+
 
         executeGoal();
     }

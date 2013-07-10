@@ -17,7 +17,7 @@ public interface JettyConfiguration {
      *
      * @return context path.
      */
-    String getContextPath();
+    String getHostContext();
 
     /**
      * Get comma separated list of a jetty xml configuration files whose contents

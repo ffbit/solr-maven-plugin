@@ -307,6 +307,9 @@
             <plugin>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>${project.artifactId}</artifactId>
+                <configuration>
+                    <jetty.port>8080</jetty.port>
+                </configuration>
             </plugin>
 
             <plugin>

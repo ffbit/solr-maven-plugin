@@ -24,7 +24,7 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
      *
      * @since 0.0.1
      */
-    @Parameter(property = "port", defaultValue = "8983")
+    @Parameter(property = "jetty.port", defaultValue = "8983")
     private int port;
 
     /**
@@ -32,8 +32,8 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
      *
      * @since 0.0.1
      */
-    @Parameter(property = "contextPath", defaultValue = "/")
-    private String contextPath;
+    @Parameter(property = "hostContext", defaultValue = "/")
+    private String hostContext;
 
     /**
      * Comma separated list of a jetty xml configuration files whose contents
@@ -57,7 +57,7 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
      *
      * @since 0.0.1
      */
-    @Parameter(property = "solrHome", alias = "${solr.solr.home}",
+    @Parameter(property = "solrHome", alias = "solr.solr.home",
             defaultValue = "${project.build.directory}/solr")
     protected File solrHome;
 
@@ -66,7 +66,7 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
      *
      * @since 0.0.6
      */
-    @Parameter
+    @Parameter(alias = "java.util.logging.config.file")
     private File loggingPropertiesPath;
 
     /**
@@ -121,8 +121,8 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
      * {@inheritDoc}
      */
     @Override
-    public String getContextPath() {
-        return contextPath;
+    public String getHostContext() {
+        return hostContext;
     }
 
     /**
