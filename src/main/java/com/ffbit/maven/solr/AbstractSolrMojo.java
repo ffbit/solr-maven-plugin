@@ -7,7 +7,6 @@ import com.ffbit.maven.solr.extract.BootstrapExtractor;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.sonatype.aether.RepositorySystemSession;
-import org.sonatype.aether.repository.LocalRepository;
 import org.sonatype.aether.repository.RemoteRepository;
 
 import java.util.Map;
@@ -44,34 +43,18 @@ public abstract class AbstractSolrMojo extends AbstractSolrConfigurationMojo {
         return new ArtifactResolver(this);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public final void execute() throws MojoExecutionException, MojoFailureException {
         BootstrapExtractor extractor = new BootstrapExtractor(this);
         extractor.extract();
 
         resolveExternalArtifacts();
-        exportSolrHomeProperty();
-        exportMavenLocalRepositoryProperty();
-        exportLoggingProperties();
-
-        for (Map.Entry entry : ((Map<Object, Object>) getPluginContext()).entrySet()) {
-            String key = String.valueOf(entry.getKey());
-            String value = String.valueOf(entry.getValue());
-
-            setSystemPropertyIfNotSet(key, value);
-        }
-
-        for (Object e : System.getProperties().entrySet()) {
-            getLog().info("~~~ " + e);
-        }
-
+        setSystemProperties();
 
         executeGoal();
-    }
-
-    private void exportLoggingProperties() {
-        setSystemPropertyIfNotSet("java.util.logging.config.file",
-                getLoggingPropertiesPath().getAbsolutePath());
     }
 
     private void resolveExternalArtifacts() {
@@ -80,16 +63,10 @@ public abstract class AbstractSolrMojo extends AbstractSolrConfigurationMojo {
         getArtifactResolver().resolve(externalArtifacts.getArtifacts());
     }
 
-    private void exportMavenLocalRepositoryProperty() {
-        String key = "maven.local.repository";
-        LocalRepository localRepository = repositorySession.getLocalRepository();
-        String localRepositoryPath = localRepository.getBasedir().getAbsolutePath();
-
-        setSystemPropertyIfNotSet(key, localRepositoryPath);
-    }
-
-    private void exportSolrHomeProperty() {
-        setSystemPropertyIfNotSet("solr.solr.home", solrHome.getAbsolutePath());
+    private void setSystemProperties() {
+        for (Map.Entry<String, Object> e : getSystemPropertiesToSet().entrySet()) {
+            setSystemPropertyIfNotSet(e.getKey(), String.valueOf(e.getValue()));
+        }
     }
 
     private void setSystemPropertyIfNotSet(String key, String value) {

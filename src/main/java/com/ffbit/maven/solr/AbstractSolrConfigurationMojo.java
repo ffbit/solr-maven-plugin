@@ -11,7 +11,9 @@ import org.sonatype.aether.RepositorySystemSession;
 import org.sonatype.aether.repository.RemoteRepository;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * General place for Solr Maven Plugin configuration stuff.
@@ -24,7 +26,7 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
      *
      * @since 0.0.1
      */
-    @Parameter(property = "jetty.port", defaultValue = "8983")
+    @Parameter(defaultValue = "8983")
     private int port;
 
     /**
@@ -32,8 +34,8 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
      *
      * @since 0.0.1
      */
-    @Parameter(property = "hostContext", defaultValue = "/")
-    private String hostContext;
+    @Parameter(defaultValue = "/")
+    private String contextPath;
 
     /**
      * Comma separated list of a jetty xml configuration files whose contents
@@ -49,7 +51,7 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
      *
      * @since 0.0.1
      */
-    @Parameter(property = "solrVersion", defaultValue = "4.3.0")
+    @Parameter(defaultValue = "4.3.0")
     protected String solrVersion;
 
     /**
@@ -66,7 +68,7 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
      *
      * @since 0.0.6
      */
-    @Parameter(alias = "java.util.logging.config.file")
+    @Parameter
     private File loggingPropertiesPath;
 
     /**
@@ -121,8 +123,8 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
      * {@inheritDoc}
      */
     @Override
-    public String getHostContext() {
-        return hostContext;
+    public String getContextPath() {
+        return contextPath;
     }
 
     /**
@@ -171,6 +173,20 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
         File file = new File(solrHome, "jetty/logging.properties");
         getLog().info(file + " " + file.exists());
         return file;
+    }
+
+    public Map<String, Object> getSystemPropertiesToSet() {
+        HashMap<String, Object> properties = new HashMap<String, Object>();
+
+        properties.put("hostContext", getContextPath());
+        properties.put("jetty.port", getPort());
+        properties.put("java.util.logging.config.file", getLoggingPropertiesPath().getAbsolutePath());
+
+        properties.put("solr.solr.home", getSolrHome().getAbsolutePath());
+
+        properties.put("maven.local.repository", repositorySession.getLocalRepository().getBasedir().getAbsolutePath());
+
+        return properties;
     }
 
 }

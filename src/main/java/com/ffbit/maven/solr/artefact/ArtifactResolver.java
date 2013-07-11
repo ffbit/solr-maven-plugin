@@ -8,7 +8,6 @@ import org.sonatype.aether.resolution.ArtifactResolutionException;
 import org.sonatype.aether.resolution.ArtifactResult;
 import org.sonatype.aether.util.artifact.DefaultArtifact;
 
-import java.io.File;
 import java.util.List;
 
 public class ArtifactResolver {
