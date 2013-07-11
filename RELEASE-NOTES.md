@@ -1,5 +1,12 @@
 # Release Notes
 
+## v0.0.6
+
+* Jetty XML configuration support [#21](https://github.com/ffbit/solr-maven-plugin/pull/2) and [#22](https://github.com/ffbit/solr-maven-plugin/pull/22) issues
+* Configuration properties' changes:
+  * Jetty context path by &lt;contextPath&gt;, default has been changed to **/solr**
+  * Jetty logging properties by &lt;loggingPropertiesPath&gt;, default is **${solrHome}/jetty/logging.properties**
+
 ## v0.0.5
 
 * Solr 4.x.x support [#20](https://github.com/ffbit/solr-maven-plugin/pull/20) as an implementation of the Add Support for Apache Solr 4.x.x [#19](https://github.com/ffbit/solr-maven-plugin/issues/19) issue
@@ -30,5 +37,5 @@
 * Configuration properties
   * Solr version by &lt;solrVersion&gt;, default is **4.3.0**
   * Solr home by &lt;solrHome&gt;, default is **${project.build.directory}/solr**
-  * Jetty context path by &lt;contextPath&gt;, default is **/**
+  * Jetty context path by &lt;contextPath&gt;, ~~default is **/**~~
   * Jetty port by &lt;port&gt;, default is **8983**
