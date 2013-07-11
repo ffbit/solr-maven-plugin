@@ -34,7 +34,7 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
      *
      * @since 0.0.1
      */
-    @Parameter(defaultValue = "/")
+    @Parameter(defaultValue = "/solr")
     private String contextPath;
 
     /**
