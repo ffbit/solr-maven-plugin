@@ -1,28 +1,31 @@
 package com.ffbit.maven.solr.jetty;
 
+import org.apache.maven.plugin.logging.Log;
+import org.apache.maven.plugin.logging.SystemStreamLog;
 import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.webapp.WebAppContext;
+import org.eclipse.jetty.util.resource.Resource;
+import org.eclipse.jetty.xml.XmlConfiguration;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class JettyRunner {
-    private JettyConfiguration configuration;
+    private Log log = new SystemStreamLog();
 
+    private JettyConfiguration configuration;
     private Server server;
-    private WebAppContext webapp;
 
     public JettyRunner(JettyConfiguration configuration) {
         this.configuration = configuration;
+        server = new Server();
 
         initialize();
     }
 
     private void initialize() {
-        server = new Server(configuration.getPort());
-        webapp = new WebAppContext();
-
-        webapp.setWar(configuration.getArtifactPath());
-        webapp.setContextPath(configuration.getContextPath());
-
-        server.setHandler(webapp);
+        server.setStopAtShutdown(true);
+        applyJettyXml();
     }
 
     public void run() {
@@ -33,25 +36,9 @@ public class JettyRunner {
     public void start() {
         try {
             server.start();
-            addSystemShutdownHook();
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    private void addSystemShutdownHook() {
-        Runtime.getRuntime().addShutdownHook(new Thread() {
-
-            @Override
-            public void run() {
-                try {
-                    server.stop();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-        });
     }
 
     private void join() {
@@ -64,6 +51,33 @@ public class JettyRunner {
 
     public void stop() throws Exception {
         server.stop();
+    }
+
+    private void applyJettyXml() {
+        try {
+            for (File xmlFile : getJettyXmlFiles()) {
+                log.info("Configuring Jetty from xml configuration file = " + xmlFile.getCanonicalPath());
+                XmlConfiguration xmlConfiguration = new XmlConfiguration(Resource.toURL(xmlFile));
+                xmlConfiguration.configure(server);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage(), e);
+        }
+    }
+
+    private List<File> getJettyXmlFiles() {
+        List<File> jettyXmlFiles = new ArrayList<File>();
+        String jettyXml = configuration.getJettyXml();
+
+        if (jettyXml.trim().isEmpty()) {
+            return jettyXmlFiles;
+        }
+
+        for (String file : jettyXml.split(",")) {
+            jettyXmlFiles.add(new File(file));
+        }
+
+        return jettyXmlFiles;
     }
 
 }
