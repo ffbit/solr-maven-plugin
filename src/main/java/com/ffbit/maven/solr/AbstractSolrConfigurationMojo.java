@@ -11,7 +11,9 @@ import org.sonatype.aether.RepositorySystemSession;
 import org.sonatype.aether.repository.RemoteRepository;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * General place for Solr Maven Plugin configuration stuff.
@@ -24,7 +26,7 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
      *
      * @since 0.0.1
      */
-    @Parameter(property = "port", defaultValue = "8983")
+    @Parameter(defaultValue = "8983")
     private int port;
 
     /**
@@ -32,15 +34,24 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
      *
      * @since 0.0.1
      */
-    @Parameter(property = "contextPath", defaultValue = "/")
+    @Parameter(defaultValue = "/solr")
     private String contextPath;
+
+    /**
+     * Comma separated list of a jetty xml configuration files whose contents
+     * will be applied before any plugin configuration. Optional.
+     *
+     * @since 0.0.6
+     */
+    @Parameter
+    private String jettyXml;
 
     /**
      * The running Apache Solr version.
      *
      * @since 0.0.1
      */
-    @Parameter(property = "solrVersion", defaultValue = "4.3.0")
+    @Parameter(defaultValue = "4.3.0")
     protected String solrVersion;
 
     /**
@@ -48,9 +59,17 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
      *
      * @since 0.0.1
      */
-    @Parameter(property = "solrHome", alias = "${solr.solr.home}",
+    @Parameter(property = "solrHome", alias = "solr.solr.home",
             defaultValue = "${project.build.directory}/solr")
     protected File solrHome;
+
+    /**
+     * Jetty login properties.
+     *
+     * @since 0.0.6
+     */
+    @Parameter
+    private File loggingPropertiesPath;
 
     /**
      * The entry point to Aether, i.e. the component doing all the work
@@ -78,6 +97,19 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
     @Parameter(defaultValue = "${project.remoteProjectRepositories}",
             readonly = true)
     protected List<RemoteRepository> remoteRepositories;
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getJettyXml() {
+        if (jettyXml == null) {
+            // a workaround with default value, because it doesn't interpolate user parameters
+            return getSolrHome() + "/jetty/jetty.xml";
+        }
+
+        return jettyXml;
+    }
 
     /**
      * {@inheritDoc}
@@ -131,6 +163,30 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
      */
     public File getSolrHome() {
         return solrHome;
+    }
+
+    public File getLoggingPropertiesPath() {
+        if (loggingPropertiesPath != null) {
+            return loggingPropertiesPath;
+        }
+
+        File file = new File(solrHome, "jetty/logging.properties");
+        getLog().info(file + " " + file.exists());
+        return file;
+    }
+
+    public Map<String, Object> getSystemPropertiesToSet() {
+        HashMap<String, Object> properties = new HashMap<String, Object>();
+
+        properties.put("hostContext", getContextPath());
+        properties.put("jetty.port", getPort());
+        properties.put("java.util.logging.config.file", getLoggingPropertiesPath().getAbsolutePath());
+
+        properties.put("solr.solr.home", getSolrHome().getAbsolutePath());
+
+        properties.put("maven.local.repository", repositorySession.getLocalRepository().getBasedir().getAbsolutePath());
+
+        return properties;
     }
 
 }

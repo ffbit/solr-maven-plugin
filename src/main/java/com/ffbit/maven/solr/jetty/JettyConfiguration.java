@@ -20,11 +20,12 @@ public interface JettyConfiguration {
     String getContextPath();
 
     /**
-     * Get path to Apache Solr maven artifact.
+     * Get comma separated list of a jetty xml configuration files whose contents
+     * will be applied before any plugin configuration.
      *
-     * @return path to Apache Solr maven artifact.
+     * @return comma separated list of a jetty xml configuration files.
      */
-    String getArtifactPath();
+    String getJettyXml();
 
     /**
      * Get server waiting timeout in milliseconds for <b>plugin's own unit test use</b>.

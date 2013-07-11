@@ -8,7 +8,6 @@ import org.sonatype.aether.resolution.ArtifactResolutionException;
 import org.sonatype.aether.resolution.ArtifactResult;
 import org.sonatype.aether.util.artifact.DefaultArtifact;
 
-import java.io.File;
 import java.util.List;
 
 public class ArtifactResolver {
@@ -44,13 +43,6 @@ public class ArtifactResolver {
 
     public Artifact resolve(String coordinates) {
         return resolve(new DefaultArtifact(coordinates));
-    }
-
-    public File resolveSorlWarArtifact() {
-        String coordinates = "org.apache.solr:solr:war:" + configuration.getSolrVersion();
-        Artifact artifact = resolve(coordinates);
-
-        return artifact.getFile();
     }
 
 }
