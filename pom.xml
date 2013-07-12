@@ -60,6 +60,11 @@
         <url>https://github.com/ffbit/${project.artifactId}/</url>
     </scm>
 
+    <ciManagement>
+        <system>Travis CI</system>
+        <url>https://travis-ci.org/ffbit/solr-maven-plugin</url>
+    </ciManagement>
+
     <distributionManagement>
         <snapshotRepository>
             <id>sonatype-snapshots-repository</id>
