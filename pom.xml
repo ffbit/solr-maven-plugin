@@ -65,6 +65,11 @@
         <url>https://travis-ci.org/ffbit/solr-maven-plugin</url>
     </ciManagement>
 
+    <issueManagement>
+        <system>GitHub Issues</system>
+        <url>https://github.com/ffbit/solr-maven-plugin</url>
+    </issueManagement>
+
     <distributionManagement>
         <snapshotRepository>
             <id>sonatype-snapshots-repository</id>
