@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<rss version="0.91">
+  <channel>
+    <title>Apache Solr Maven Plugin - Checkstyle report</title>
+    <link>https://github.com/ffbit/solr-maven-plugin/</link>
+    <description>Apache Solr Maven Plugin - Checkstyle report</description>
+    <language>en-us</language>
+    <copyright>&#169;2013</copyright>
+    <item>
+      <title>File: 24,
+             Errors: 27,
+             Warnings: 0,
+             Infos: 0
+      </title>
+            <link>https://github.com/ffbit/solr-maven-plugin//checkstyle.html</link>
+      <description>
+        <p>Click <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html">here</a> for the full Checkstyle report.</p>
+
+        <table summary="Files" boder="1">
+          <thead>
+            <tr>
+              <th>Files</th>
+              <th style="width:30px;"><abbr title="Info">I</abbr></th>
+              <th style="width:30px;"><abbr title="Warning">W</abbr></th>
+              <th style="width:30px;"><abbr title="Error">E</abbr></th>
+            </tr>
+          </thead>
+          <tbody>
+                          <tr>
+                <td>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#4.3.1.jetty.logging.properties">4.3.1/jetty/logging.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.jetty.package-info.java">com/ffbit/maven/solr/jetty/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.StartSolrMojo.java">com/ffbit/maven/solr/StartSolrMojo.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.artefact.external.ExternalArtifactsFactory.java">com/ffbit/maven/solr/artefact/external/ExternalArtifactsFactory.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.artefact.external.package-info.java">com/ffbit/maven/solr/artefact/external/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.package-info.java">com/ffbit/maven/solr/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.artefact.ArtifactResolverConfiguration.java">com/ffbit/maven/solr/artefact/ArtifactResolverConfiguration.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.artefact.package-info.java">com/ffbit/maven/solr/artefact/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#4.2.0.jetty.logging.properties">4.2.0/jetty/logging.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.artefact.external.CommonExternalArtifacts.java">com/ffbit/maven/solr/artefact/external/CommonExternalArtifacts.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.extract.BootstrapExtractor.java">com/ffbit/maven/solr/extract/BootstrapExtractor.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  8
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.artefact.SolrVersionConfiguration.java">com/ffbit/maven/solr/artefact/SolrVersionConfiguration.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.artefact.external.ExternalArtifacts.java">com/ffbit/maven/solr/artefact/external/ExternalArtifacts.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.AbstractSolrConfigurationMojo.java">com/ffbit/maven/solr/AbstractSolrConfigurationMojo.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  5
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#4.2.1.jetty.logging.properties">4.2.1/jetty/logging.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#log4j.properties">log4j.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.AbstractSolrMojo.java">com/ffbit/maven/solr/AbstractSolrMojo.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#4.3.0.jetty.logging.properties">4.3.0/jetty/logging.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.extract.package-info.java">com/ffbit/maven/solr/extract/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.jetty.JettyRunner.java">com/ffbit/maven/solr/jetty/JettyRunner.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  5
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.jetty.JettyConfiguration.java">com/ffbit/maven/solr/jetty/JettyConfiguration.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.artefact.ArtifactResolver.java">com/ffbit/maven/solr/artefact/ArtifactResolver.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.extract.BootstrapConfiguration.java">com/ffbit/maven/solr/extract/BootstrapConfiguration.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.RunSolrMojo.java">com/ffbit/maven/solr/RunSolrMojo.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                      </tbody>
+        </table>
+        
+      </description>
+    </item>
+  </channel>
+</rss>
+
