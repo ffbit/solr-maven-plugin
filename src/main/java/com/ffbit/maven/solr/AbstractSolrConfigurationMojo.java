@@ -163,6 +163,7 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
     /**
      * {@inheritDoc}
      */
+    @Override
     public String getSolrVersion() {
         return solrVersion;
     }
@@ -170,8 +171,17 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
     /**
      * {@inheritDoc}
      */
+    @Override
     public File getSolrHome() {
         return solrHome;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public BootstrapStrategyType getBootstrapStrategyType() {
+        return bootstrappingStrategyType;
     }
 
     public File getLoggingPropertiesPath() {
