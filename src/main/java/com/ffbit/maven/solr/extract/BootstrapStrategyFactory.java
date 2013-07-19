@@ -19,6 +19,8 @@ public class BootstrapStrategyFactory {
         BootstrapStrategyType bootstrapStrategyType = configuration.getBootstrapStrategyType();
 
         switch (bootstrapStrategyType) {
+            case EVERY_TIME:
+                return new EveryTimeBootstrapStrategy(configuration);
             case NEVER:
                 return new NeverBootstrapStrategy();
             default:

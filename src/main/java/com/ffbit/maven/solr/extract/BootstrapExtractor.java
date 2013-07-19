@@ -18,7 +18,7 @@ import java.util.jar.JarFile;
 /**
  * Extracts Apache Solr configuration files
  */
-public class BootstrapExtractor {
+class BootstrapExtractor {
     private Log log = new SystemStreamLog();
 
     private final String PLUGIN_ARTEFACT = "com.ffbit.maven.plugins:solr-maven-plugin:0.0.7-SNAPSHOT";
