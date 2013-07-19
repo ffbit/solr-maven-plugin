@@ -49,14 +49,18 @@ public abstract class AbstractSolrMojo extends AbstractSolrConfigurationMojo {
      */
     @Override
     public final void execute() throws MojoExecutionException, MojoFailureException {
-        BootstrapStrategyFactory bootstrapStrategyFactory = new BootstrapStrategyFactory(this);
-        BootstrapStrategy bootstrapStrategy = bootstrapStrategyFactory.getBootstrapStrategy();
-        bootstrapStrategy.bootstrap();
+        bootstrapConfiguration();
 
         resolveExternalArtifacts();
         setSystemProperties();
 
         executeGoal();
+    }
+
+    private void bootstrapConfiguration() {
+        BootstrapStrategyFactory bootstrapStrategyFactory = new BootstrapStrategyFactory(this);
+        BootstrapStrategy bootstrapStrategy = bootstrapStrategyFactory.getBootstrapStrategy();
+        bootstrapStrategy.bootstrap();
     }
 
     private void resolveExternalArtifacts() {
