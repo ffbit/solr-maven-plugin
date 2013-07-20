@@ -77,8 +77,8 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
      *
      * @since 0.0.7
      */
-    @Parameter(property = "bootstrappingStrategy", defaultValue = "EVERY_TIME")
-    private BootstrapStrategyType bootstrappingStrategyType;
+    @Parameter(defaultValue = "EVERY_TIME")
+    private BootstrapStrategyType bootstrappingStrategy;
 
     /**
      * The entry point to Aether, i.e. the component doing all the work
@@ -181,7 +181,7 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
      */
     @Override
     public BootstrapStrategyType getBootstrapStrategyType() {
-        return bootstrappingStrategyType;
+        return bootstrappingStrategy;
     }
 
     public File getLoggingPropertiesPath() {
