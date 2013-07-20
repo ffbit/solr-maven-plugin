@@ -3,7 +3,7 @@ package com.ffbit.maven.solr.extract;
 /**
  * Configuration Bootstrapping strategy which bootstraps every time.
  */
-public class EveryTimeBootstrapStrategy implements BootstrapStrategy {
+class EveryTimeBootstrapStrategy implements BootstrapStrategy {
     private BootstrapExtractor extractor;
 
     /**
