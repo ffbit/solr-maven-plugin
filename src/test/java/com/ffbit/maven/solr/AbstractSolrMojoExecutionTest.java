@@ -21,7 +21,7 @@ public abstract class AbstractSolrMojoExecutionTest extends
     public void tearDown() throws Exception {
         super.tearDown();
 
-        if (mojo != mojo) {
+        if (mojo != null) {
             mojo.stop();
         }
     }
