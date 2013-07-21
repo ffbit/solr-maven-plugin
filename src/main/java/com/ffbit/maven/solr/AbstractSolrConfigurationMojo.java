@@ -2,6 +2,7 @@ package com.ffbit.maven.solr;
 
 import com.ffbit.maven.solr.artefact.ArtifactResolverConfiguration;
 import com.ffbit.maven.solr.extract.BootstrapConfiguration;
+import com.ffbit.maven.solr.extract.BootstrapStrategyType;
 import com.ffbit.maven.solr.jetty.JettyConfiguration;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugins.annotations.Component;
@@ -70,6 +71,14 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
      */
     @Parameter
     private File loggingPropertiesPath;
+
+    /**
+     * Configuration bootstrapping strategy.
+     *
+     * @since 0.0.7
+     */
+    @Parameter(defaultValue = "EVERY_TIME")
+    private BootstrapStrategyType bootstrappingStrategy;
 
     /**
      * The entry point to Aether, i.e. the component doing all the work
@@ -154,6 +163,7 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
     /**
      * {@inheritDoc}
      */
+    @Override
     public String getSolrVersion() {
         return solrVersion;
     }
@@ -161,8 +171,17 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
     /**
      * {@inheritDoc}
      */
+    @Override
     public File getSolrHome() {
         return solrHome;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public BootstrapStrategyType getBootstrapStrategyType() {
+        return bootstrappingStrategy;
     }
 
     public File getLoggingPropertiesPath() {

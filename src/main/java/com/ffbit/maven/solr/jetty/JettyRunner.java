@@ -73,8 +73,14 @@ public class JettyRunner {
             return jettyXmlFiles;
         }
 
-        for (String file : jettyXml.split(",")) {
-            jettyXmlFiles.add(new File(file));
+        for (String path : jettyXml.split(",")) {
+            File file = new File(path);
+
+            if (file.exists()) {
+                jettyXmlFiles.add(file);
+            } else {
+                log.warn("Jetty XML configuration path `" + path + "` does not exists.\nCheck Solr Maven plugin configuration.");
+            }
         }
 
         return jettyXmlFiles;
