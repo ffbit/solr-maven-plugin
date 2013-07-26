@@ -1,5 +1,15 @@
 # Release Notes
 
+## v0.0.7
+
+* Configuration bootstrapping strategies [#23](https://github.com/ffbit/solr-maven-plugin/issues/23)
+  * bootstrap once as **ONCE**
+  * bootstrap every time as **EVERY_TIME** (default)
+  * never bootstrap as **NEVER**
+* Configuration bootstrapping strategies Implementation [#25](https://github.com/ffbit/solr-maven-plugin/pull/25)
+* Configuration properties
+  * Configuration bootstrapping strategy &lt;bootstrappingStrategy&gt;, default is **EVERY_TIME**
+
 ## v0.0.6
 
 * Jetty XML configuration support [#21](https://github.com/ffbit/solr-maven-plugin/pull/2) and [#22](https://github.com/ffbit/solr-maven-plugin/pull/22) issues
