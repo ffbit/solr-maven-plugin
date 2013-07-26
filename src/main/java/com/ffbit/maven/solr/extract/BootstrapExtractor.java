@@ -21,7 +21,7 @@ import java.util.jar.JarFile;
 class BootstrapExtractor {
     private Log log = new SystemStreamLog();
 
-    private final String PLUGIN_ARTEFACT = "com.ffbit.maven.plugins:solr-maven-plugin:0.0.7-SNAPSHOT";
+    private final String PLUGIN_ARTEFACT = "com.ffbit.maven.plugins:solr-maven-plugin:0.0.7";
 
     private File destinationRoot;
     private String solrVersion;
