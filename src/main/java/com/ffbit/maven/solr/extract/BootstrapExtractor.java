@@ -26,16 +26,19 @@ class BootstrapExtractor {
     private File destinationRoot;
     private String solrVersion;
     private ArtifactResolver artifactResolver;
+    private BootstrapConfiguration configuration;
 
     public BootstrapExtractor(BootstrapConfiguration configuration) {
         this.destinationRoot = configuration.getSolrHome();
         this.solrVersion = configuration.getSolrVersion();
         this.artifactResolver = configuration.getArtifactResolver();
+        this.configuration = configuration;
     }
 
     public void extract() {
         checkDestinationRoot();
         extractJar();
+        createSuccessFile();
     }
 
     private void checkDestinationRoot() {
@@ -127,6 +130,14 @@ class BootstrapExtractor {
                     log.warn(e.getMessage());
                 }
             }
+        }
+    }
+
+    private void createSuccessFile() {
+        try {
+            configuration.getSuccessFile().createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

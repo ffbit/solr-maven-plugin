@@ -11,6 +11,11 @@ import java.io.File;
 public interface BootstrapConfiguration extends SolrVersionConfiguration {
 
     /**
+     * Success marker file.
+     */
+    String SUCCESS_FILE = ".solr-maven-plugin-bootstrap-success-file";
+
+    /**
      * Get Apache Solr Home directory.
      *
      * @return Apache Solr Home directory.
@@ -30,5 +35,12 @@ public interface BootstrapConfiguration extends SolrVersionConfiguration {
      * @return configured configuration bootstrapping strategy type.
      */
     BootstrapStrategyType getBootstrapStrategyType();
+
+    /**
+     * Get success marker file.
+     *
+     * @return success marker file.
+     */
+    File getSuccessFile();
 
 }

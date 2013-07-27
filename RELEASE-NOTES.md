@@ -1,5 +1,9 @@
 # Release Notes
 
+## v0.0.7.1
+
+* Fixed bug in the bootstrap **ONCE** configuration bootstrapping strategy
+
 ## v0.0.7
 
 * Configuration bootstrapping strategies [#23](https://github.com/ffbit/solr-maven-plugin/issues/23)
