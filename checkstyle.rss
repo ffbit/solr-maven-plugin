@@ -8,8 +8,8 @@
     <language>en-us</language>
     <copyright>&#169;2013</copyright>
     <item>
-      <title>File: 24,
-             Errors: 27,
+      <title>File: 30,
+             Errors: 38,
              Warnings: 0,
              Infos: 0
       </title>
@@ -43,21 +43,7 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.jetty.package-info.java">com/ffbit/maven/solr/jetty/package-info.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.StartSolrMojo.java">com/ffbit/maven/solr/StartSolrMojo.java</a>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.extract.BootstrapStrategyFactory.java">com/ffbit/maven/solr/extract/BootstrapStrategyFactory.java</a>
                 </td>
                 <td>
                   0
@@ -67,20 +53,6 @@
                 </td>
                 <td>
                   2
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.artefact.external.ExternalArtifactsFactory.java">com/ffbit/maven/solr/artefact/external/ExternalArtifactsFactory.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
                 </td>
               </tr>
                           <tr>
@@ -99,7 +71,7 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.package-info.java">com/ffbit/maven/solr/package-info.java</a>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.artefact.external.ExternalArtifactsFactory.java">com/ffbit/maven/solr/artefact/external/ExternalArtifactsFactory.java</a>
                 </td>
                 <td>
                   0
@@ -109,6 +81,48 @@
                 </td>
                 <td>
                   0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.extract.BootstrapStrategy.java">com/ffbit/maven/solr/extract/BootstrapStrategy.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.extract.EveryTimeBootstrapStrategy.java">com/ffbit/maven/solr/extract/EveryTimeBootstrapStrategy.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.extract.OnceBootstrapStrategy.java">com/ffbit/maven/solr/extract/OnceBootstrapStrategy.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
                 </td>
               </tr>
                           <tr>
@@ -137,48 +151,6 @@
                 </td>
                 <td>
                   0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#4.2.0.jetty.logging.properties">4.2.0/jetty/logging.properties</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.artefact.external.CommonExternalArtifacts.java">com/ffbit/maven/solr/artefact/external/CommonExternalArtifacts.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  1
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.extract.BootstrapExtractor.java">com/ffbit/maven/solr/extract/BootstrapExtractor.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  8
                 </td>
               </tr>
                           <tr>
@@ -239,20 +211,6 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#log4j.properties">log4j.properties</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.AbstractSolrMojo.java">com/ffbit/maven/solr/AbstractSolrMojo.java</a>
                 </td>
                 <td>
@@ -295,7 +253,7 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.jetty.JettyRunner.java">com/ffbit/maven/solr/jetty/JettyRunner.java</a>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.artefact.ArtifactResolver.java">com/ffbit/maven/solr/artefact/ArtifactResolver.java</a>
                 </td>
                 <td>
                   0
@@ -304,7 +262,133 @@
                   0
                 </td>
                 <td>
-                  5
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.extract.NeverBootstrapStrategy.java">com/ffbit/maven/solr/extract/NeverBootstrapStrategy.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.jetty.package-info.java">com/ffbit/maven/solr/jetty/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.StartSolrMojo.java">com/ffbit/maven/solr/StartSolrMojo.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.extract.BootstrapStrategyType.java">com/ffbit/maven/solr/extract/BootstrapStrategyType.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.package-info.java">com/ffbit/maven/solr/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#4.2.0.jetty.logging.properties">4.2.0/jetty/logging.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.artefact.external.CommonExternalArtifacts.java">com/ffbit/maven/solr/artefact/external/CommonExternalArtifacts.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.extract.BootstrapExtractor.java">com/ffbit/maven/solr/extract/BootstrapExtractor.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  8
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#log4j.properties">log4j.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
                 </td>
               </tr>
                           <tr>
@@ -323,7 +407,7 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.artefact.ArtifactResolver.java">com/ffbit/maven/solr/artefact/ArtifactResolver.java</a>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.jetty.JettyRunner.java">com/ffbit/maven/solr/jetty/JettyRunner.java</a>
                 </td>
                 <td>
                   0
@@ -332,26 +416,26 @@
                   0
                 </td>
                 <td>
-                  3
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.extract.BootstrapConfiguration.java">com/ffbit/maven/solr/extract/BootstrapConfiguration.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
+                  6
                 </td>
               </tr>
                           <tr>
                 <td>
                   <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.RunSolrMojo.java">com/ffbit/maven/solr/RunSolrMojo.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/ffbit/solr-maven-plugin//checkstyle.html#com.ffbit.maven.solr.extract.BootstrapConfiguration.java">com/ffbit/maven/solr/extract/BootstrapConfiguration.java</a>
                 </td>
                 <td>
                   0
