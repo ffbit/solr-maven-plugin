@@ -14,7 +14,7 @@
                 <artifactId>solr-maven-plugin</artifactId>
                 <version>0.0.7</version>
                 <configuration>
-                    <solrVersion>4.3.0</solrVersion>
+                    <bootstrappingStrategy>ONCE</bootstrappingStrategy>
                 </configuration>
             </plugin>
         </plugins>

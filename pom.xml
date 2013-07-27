@@ -5,7 +5,7 @@
     <groupId>com.ffbit.maven.plugins</groupId>
     <artifactId>solr-maven-plugin</artifactId>
     <packaging>maven-plugin</packaging>
-    <version>0.0.6</version>
+    <version>0.0.7</version>
 
     <parent>
         <groupId>org.sonatype.oss</groupId>
@@ -59,6 +59,16 @@
         <developerConnection>scm:git:git@github.com:ffbit/${project.artifactId}.git</developerConnection>
         <url>https://github.com/ffbit/${project.artifactId}/</url>
     </scm>
+
+    <ciManagement>
+        <system>Travis CI</system>
+        <url>https://travis-ci.org/ffbit/solr-maven-plugin</url>
+    </ciManagement>
+
+    <issueManagement>
+        <system>GitHub Issues</system>
+        <url>https://github.com/ffbit/solr-maven-plugin</url>
+    </issueManagement>
 
     <distributionManagement>
         <snapshotRepository>

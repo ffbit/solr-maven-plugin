@@ -24,4 +24,11 @@ public interface BootstrapConfiguration extends SolrVersionConfiguration {
      */
     ArtifactResolver getArtifactResolver();
 
+    /**
+     * Get configured configuration bootstrapping strategy type.
+     *
+     * @return configured configuration bootstrapping strategy type.
+     */
+    BootstrapStrategyType getBootstrapStrategyType();
+
 }

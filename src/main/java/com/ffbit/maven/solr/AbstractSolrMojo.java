@@ -3,7 +3,8 @@ package com.ffbit.maven.solr;
 import com.ffbit.maven.solr.artefact.ArtifactResolver;
 import com.ffbit.maven.solr.artefact.external.ExternalArtifacts;
 import com.ffbit.maven.solr.artefact.external.ExternalArtifactsFactory;
-import com.ffbit.maven.solr.extract.BootstrapExtractor;
+import com.ffbit.maven.solr.extract.BootstrapStrategy;
+import com.ffbit.maven.solr.extract.BootstrapStrategyFactory;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.sonatype.aether.RepositorySystemSession;
@@ -48,13 +49,18 @@ public abstract class AbstractSolrMojo extends AbstractSolrConfigurationMojo {
      */
     @Override
     public final void execute() throws MojoExecutionException, MojoFailureException {
-        BootstrapExtractor extractor = new BootstrapExtractor(this);
-        extractor.extract();
+        bootstrapConfiguration();
 
         resolveExternalArtifacts();
         setSystemProperties();
 
         executeGoal();
+    }
+
+    private void bootstrapConfiguration() {
+        BootstrapStrategyFactory bootstrapStrategyFactory = new BootstrapStrategyFactory(this);
+        BootstrapStrategy bootstrapStrategy = bootstrapStrategyFactory.getBootstrapStrategy();
+        bootstrapStrategy.bootstrap();
     }
 
     private void resolveExternalArtifacts() {
