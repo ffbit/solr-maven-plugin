@@ -180,6 +180,14 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
      * {@inheritDoc}
      */
     @Override
+    public File getSuccessFile() {
+        return new File(getSolrHome(), SUCCESS_FILE);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public BootstrapStrategyType getBootstrapStrategyType() {
         return bootstrappingStrategy;
     }
