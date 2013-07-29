@@ -79,7 +79,8 @@ public class JettyRunner {
             if (file.exists()) {
                 jettyXmlFiles.add(file);
             } else {
-                log.warn("Jetty XML configuration path `" + path + "` does not exists.\nCheck Solr Maven plugin configuration.");
+                log.warn("Jetty XML configuration path `" + path
+                        + "` does not exists.\nCheck Solr Maven plugin configuration.");
             }
         }
 
