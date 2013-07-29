@@ -21,8 +21,6 @@ import java.util.jar.JarFile;
 class BootstrapExtractor {
     private Log log = new SystemStreamLog();
 
-    private final String PLUGIN_ARTEFACT = "com.ffbit.maven.plugins:solr-maven-plugin:0.0.7";
-
     private File destinationRoot;
     private String solrVersion;
     private ArtifactResolver artifactResolver;
@@ -58,7 +56,7 @@ class BootstrapExtractor {
     }
 
     private void extractJar() {
-        Artifact pluginArtifact = artifactResolver.resolve(PLUGIN_ARTEFACT);
+        Artifact pluginArtifact = artifactResolver.resolve(getPluginArtifact());
 
         JarFile jar = null;
 
@@ -80,6 +78,15 @@ class BootstrapExtractor {
                 e.printStackTrace();
             }
         }
+    }
+
+    /**
+     * Get coordinates of the Apache Solr Maven plugin artifact.
+     *
+     * @return coordinates of the Apache Solr Maven plugin artifact.
+     */
+    private String getPluginArtifact() {
+        return "com.ffbit.maven.plugins:solr-maven-plugin:0.0.7";
     }
 
     private void unJar(JarEntry entry, JarFile jar) {
