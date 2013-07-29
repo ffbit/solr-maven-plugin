@@ -53,7 +53,7 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
      * @since 0.0.1
      */
     @Parameter(defaultValue = "4.3.0")
-    protected String solrVersion;
+    private String solrVersion;
 
     /**
      * The Apache Solr Home directory.
@@ -62,7 +62,7 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
      */
     @Parameter(property = "solrHome", alias = "solr.solr.home",
             defaultValue = "${project.build.directory}/solr")
-    protected File solrHome;
+    private File solrHome;
 
     /**
      * Jetty login properties.
@@ -87,7 +87,7 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
      * @since 0.0.1
      */
     @Component
-    protected RepositorySystem repositorySystem;
+    private RepositorySystem repositorySystem;
 
     /**
      * The current repository/network configuration of Maven.
