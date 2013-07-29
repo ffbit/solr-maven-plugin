@@ -96,7 +96,7 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
      */
     @Component
     @Parameter(defaultValue = "${repositorySystemSession}")
-    protected RepositorySystemSession repositorySession;
+    private RepositorySystemSession repositorySession;
 
     /**
      * Project's remote repositories to use for the resolution.
@@ -105,7 +105,15 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
      */
     @Parameter(defaultValue = "${project.remoteProjectRepositories}",
             readonly = true)
-    protected List<RemoteRepository> remoteRepositories;
+    private List<RemoteRepository> remoteRepositories;
+
+    public void setRepositorySession(RepositorySystemSession repositorySession) {
+        this.repositorySession = repositorySession;
+    }
+
+    public void addRemoteRepository(RemoteRepository repository) {
+        remoteRepositories.add(repository);
+    }
 
     /**
      * {@inheritDoc}

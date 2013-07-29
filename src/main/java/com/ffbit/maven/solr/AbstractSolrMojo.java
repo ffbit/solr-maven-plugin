@@ -7,8 +7,6 @@ import com.ffbit.maven.solr.extract.BootstrapStrategy;
 import com.ffbit.maven.solr.extract.BootstrapStrategyFactory;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
-import org.sonatype.aether.RepositorySystemSession;
-import org.sonatype.aether.repository.RemoteRepository;
 
 import java.util.Map;
 
@@ -26,14 +24,6 @@ public abstract class AbstractSolrMojo extends AbstractSolrConfigurationMojo {
 
     public void setServerWaitingTimeout(long serverWaitingTimeout) {
         this.serverWaitingTimeout = serverWaitingTimeout;
-    }
-
-    public void setRepositorySession(RepositorySystemSession repositorySession) {
-        this.repositorySession = repositorySession;
-    }
-
-    public void addRemoteRepository(RemoteRepository repository) {
-        remoteRepositories.add(repository);
     }
 
     /**
