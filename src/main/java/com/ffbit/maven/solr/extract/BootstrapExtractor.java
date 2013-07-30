@@ -16,7 +16,7 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
 /**
- * Extracts Apache Solr configuration files
+ * Extracts Apache Solr configuration files.
  */
 class BootstrapExtractor {
     private Log log = new SystemStreamLog();
@@ -26,11 +26,11 @@ class BootstrapExtractor {
     private ArtifactResolver artifactResolver;
     private BootstrapConfiguration configuration;
 
-    public BootstrapExtractor(BootstrapConfiguration configuration) {
-        this.destinationRoot = configuration.getSolrHome();
-        this.solrVersion = configuration.getSolrVersion();
-        this.artifactResolver = configuration.getArtifactResolver();
-        this.configuration = configuration;
+    public BootstrapExtractor(BootstrapConfiguration conf) {
+        this.destinationRoot = conf.getSolrHome();
+        this.solrVersion = conf.getSolrVersion();
+        this.artifactResolver = conf.getArtifactResolver();
+        this.configuration = conf;
     }
 
     public void extract() {
@@ -109,7 +109,7 @@ class BootstrapExtractor {
             in = jar.getInputStream(entry);
             out = new BufferedOutputStream(new FileOutputStream(destination));
 
-            byte[] buffer = new byte[1024];
+            byte[] buffer = new byte[Short.MAX_VALUE];
             int length = 0;
 
             while ((length = in.read(buffer)) > 0) {
