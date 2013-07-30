@@ -6,6 +6,7 @@ import org.apache.maven.plugin.logging.SystemStreamLog;
 import org.sonatype.aether.artifact.Artifact;
 
 import java.io.BufferedOutputStream;
+import java.io.Closeable;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -72,11 +73,7 @@ class BootstrapExtractor {
             log.error(e.getMessage(), e);
             throw new RuntimeException(e.getMessage(), e);
         } finally {
-            try {
-                jar.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            close(jar);
         }
     }
 
@@ -105,7 +102,6 @@ class BootstrapExtractor {
         OutputStream out = null;
 
         try {
-
             in = jar.getInputStream(entry);
             out = new BufferedOutputStream(new FileOutputStream(destination));
 
@@ -121,21 +117,17 @@ class BootstrapExtractor {
             log.error(e.getMessage(), e);
             throw new RuntimeException(e.getMessage(), e);
         } finally {
-            if (in != null) {
-                try {
-                    in.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    log.warn(e.getMessage());
-                }
-            }
+            close(in);
+            close(out);
+        }
+    }
 
-            if (out != null) {
-                try {
-                    out.close();
-                } catch (IOException e) {
-                    log.warn(e.getMessage());
-                }
+    private void close(Closeable closable) {
+        if (closable != null) {
+            try {
+                closable.close();
+            } catch (IOException e) {
+                log.warn(e.getMessage());
             }
         }
     }
