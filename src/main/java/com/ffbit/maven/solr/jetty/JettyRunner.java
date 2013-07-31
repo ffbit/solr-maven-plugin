@@ -10,14 +10,27 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Start point for Jetty embedded Servlet Container.
+ */
 public class JettyRunner {
+    /**
+     * Simple logger.
+     */
     private Log log = new SystemStreamLog();
 
+    /**
+     * Jetty configuration.
+     */
     private JettyConfiguration configuration;
+
+    /**
+     * Jetty server.
+     */
     private Server server;
 
-    public JettyRunner(JettyConfiguration configuration) {
-        this.configuration = configuration;
+    public JettyRunner(JettyConfiguration config) {
+        this.configuration = config;
         server = new Server();
 
         initialize();
