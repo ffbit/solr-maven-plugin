@@ -73,7 +73,11 @@ class BootstrapExtractor {
             log.error(e.getMessage(), e);
             throw new RuntimeException(e.getMessage(), e);
         } finally {
-            close(jar);
+            try {
+                jar.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
