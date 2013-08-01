@@ -3,6 +3,6 @@ jdk:
   - oraclejdk6
   - openjdk6
 script:
-  - mvn help:system
+  - mvn help:evaluate -Dexpression=settings.localRepository
   - mvn clean install
   - mvn clean solr:start
