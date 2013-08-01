@@ -3,5 +3,6 @@ jdk:
   - oraclejdk6
   - openjdk6
 script:
+  - mvn help:system
   - mvn clean install
   - mvn clean solr:start
