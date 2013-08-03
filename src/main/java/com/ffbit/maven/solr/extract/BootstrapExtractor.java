@@ -20,11 +20,29 @@ import java.util.jar.JarFile;
  * Extracts Apache Solr configuration files.
  */
 class BootstrapExtractor {
+    /**
+     * Simple logger.
+     */
     private Log log = new SystemStreamLog();
 
+    /**
+     * Directory to extract configuration files to.
+     */
     private File destinationRoot;
+
+    /**
+     * Running Apache Solr version.
+     */
     private String solrVersion;
+
+    /**
+     * Current Maven Artifact resolver.
+     */
     private ArtifactResolver artifactResolver;
+
+    /**
+     * Bootstrapping strategy delegate.
+     */
     private BootstrapConfiguration configuration;
 
     public BootstrapExtractor(BootstrapConfiguration conf) {

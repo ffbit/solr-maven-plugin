@@ -13,8 +13,8 @@ import java.util.List;
 public class ArtifactResolver {
     private ArtifactResolverConfiguration configuration;
 
-    public ArtifactResolver(ArtifactResolverConfiguration configuration) {
-        this.configuration = configuration;
+    public ArtifactResolver(ArtifactResolverConfiguration conf) {
+        configuration = conf;
     }
 
     public void resolve(List<Artifact> artifacts) {

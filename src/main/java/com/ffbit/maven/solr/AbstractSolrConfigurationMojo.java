@@ -107,8 +107,8 @@ public abstract class AbstractSolrConfigurationMojo extends AbstractMojo
             readonly = true)
     private List<RemoteRepository> remoteRepositories;
 
-    public void setRepositorySession(RepositorySystemSession repositorySession) {
-        this.repositorySession = repositorySession;
+    public void setRepositorySession(RepositorySystemSession session) {
+        this.repositorySession = session;
     }
 
     public void addRemoteRepository(RemoteRepository repository) {
