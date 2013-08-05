@@ -10,8 +10,13 @@ import org.apache.maven.plugin.MojoFailureException;
 
 import java.util.Map;
 
+/**
+ * General place for Solr Maven plugin functionality.
+ */
 public abstract class AbstractSolrMojo extends AbstractSolrConfigurationMojo {
-
+    /**
+     * Server waiting timeout in milliseconds for <b>plugin's own unit test use</b>.
+     */
     private long serverWaitingTimeout;
 
     /**
@@ -22,8 +27,8 @@ public abstract class AbstractSolrMojo extends AbstractSolrConfigurationMojo {
         return serverWaitingTimeout;
     }
 
-    public void setServerWaitingTimeout(long serverWaitingTimeout) {
-        this.serverWaitingTimeout = serverWaitingTimeout;
+    public void setServerWaitingTimeout(long waitingTimeout) {
+        serverWaitingTimeout = waitingTimeout;
     }
 
     /**
