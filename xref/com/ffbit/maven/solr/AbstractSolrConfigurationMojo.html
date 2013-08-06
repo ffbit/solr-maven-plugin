@@ -63,7 +63,7 @@
 <a class="jxr_linenumber" name="53" href="#53">53</a>  <em class="jxr_javadoccomment">     * @since 0.0.1</em>
 <a class="jxr_linenumber" name="54" href="#54">54</a>  <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="55" href="#55">55</a>      @Parameter(defaultValue = <span class="jxr_string">"4.3.0"</span>)
-<a class="jxr_linenumber" name="56" href="#56">56</a>      <strong class="jxr_keyword">protected</strong> String solrVersion;
+<a class="jxr_linenumber" name="56" href="#56">56</a>      <strong class="jxr_keyword">private</strong> String solrVersion;
 <a class="jxr_linenumber" name="57" href="#57">57</a>  
 <a class="jxr_linenumber" name="58" href="#58">58</a>      <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="59" href="#59">59</a>  <em class="jxr_javadoccomment">     * The Apache Solr Home directory.</em>
@@ -72,7 +72,7 @@
 <a class="jxr_linenumber" name="62" href="#62">62</a>  <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="63" href="#63">63</a>      @Parameter(property = <span class="jxr_string">"solrHome"</span>, alias = <span class="jxr_string">"solr.solr.home"</span>,
 <a class="jxr_linenumber" name="64" href="#64">64</a>              defaultValue = <span class="jxr_string">"${project.build.directory}/solr"</span>)
-<a class="jxr_linenumber" name="65" href="#65">65</a>      <strong class="jxr_keyword">protected</strong> File solrHome;
+<a class="jxr_linenumber" name="65" href="#65">65</a>      <strong class="jxr_keyword">private</strong> File solrHome;
 <a class="jxr_linenumber" name="66" href="#66">66</a>  
 <a class="jxr_linenumber" name="67" href="#67">67</a>      <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="68" href="#68">68</a>  <em class="jxr_javadoccomment">     * Jetty login properties.</em>
@@ -97,7 +97,7 @@
 <a class="jxr_linenumber" name="87" href="#87">87</a>  <em class="jxr_javadoccomment">     * @since 0.0.1</em>
 <a class="jxr_linenumber" name="88" href="#88">88</a>  <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="89" href="#89">89</a>      @Component
-<a class="jxr_linenumber" name="90" href="#90">90</a>      <strong class="jxr_keyword">protected</strong> RepositorySystem repositorySystem;
+<a class="jxr_linenumber" name="90" href="#90">90</a>      <strong class="jxr_keyword">private</strong> RepositorySystem repositorySystem;
 <a class="jxr_linenumber" name="91" href="#91">91</a>  
 <a class="jxr_linenumber" name="92" href="#92">92</a>      <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="93" href="#93">93</a>  <em class="jxr_javadoccomment">     * The current repository/network configuration of Maven.</em>
@@ -106,7 +106,7 @@
 <a class="jxr_linenumber" name="96" href="#96">96</a>  <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="97" href="#97">97</a>      @Component
 <a class="jxr_linenumber" name="98" href="#98">98</a>      @Parameter(defaultValue = <span class="jxr_string">"${repositorySystemSession}"</span>)
-<a class="jxr_linenumber" name="99" href="#99">99</a>      <strong class="jxr_keyword">protected</strong> RepositorySystemSession repositorySession;
+<a class="jxr_linenumber" name="99" href="#99">99</a>      <strong class="jxr_keyword">private</strong> RepositorySystemSession repositorySession;
 <a class="jxr_linenumber" name="100" href="#100">100</a> 
 <a class="jxr_linenumber" name="101" href="#101">101</a>     <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="102" href="#102">102</a> <em class="jxr_javadoccomment">     * Project's remote repositories to use for the resolution.</em>
@@ -115,118 +115,126 @@
 <a class="jxr_linenumber" name="105" href="#105">105</a> <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="106" href="#106">106</a>     @Parameter(defaultValue = <span class="jxr_string">"${project.remoteProjectRepositories}"</span>,
 <a class="jxr_linenumber" name="107" href="#107">107</a>             readonly = <strong class="jxr_keyword">true</strong>)
-<a class="jxr_linenumber" name="108" href="#108">108</a>     <strong class="jxr_keyword">protected</strong> List&lt;RemoteRepository&gt; remoteRepositories;
+<a class="jxr_linenumber" name="108" href="#108">108</a>     <strong class="jxr_keyword">private</strong> List&lt;RemoteRepository&gt; remoteRepositories;
 <a class="jxr_linenumber" name="109" href="#109">109</a> 
-<a class="jxr_linenumber" name="110" href="#110">110</a>     <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="111" href="#111">111</a> <em class="jxr_javadoccomment">     * {@inheritDoc}</em>
-<a class="jxr_linenumber" name="112" href="#112">112</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="113" href="#113">113</a>     @Override
-<a class="jxr_linenumber" name="114" href="#114">114</a>     <strong class="jxr_keyword">public</strong> String getJettyXml() {
-<a class="jxr_linenumber" name="115" href="#115">115</a>         <strong class="jxr_keyword">if</strong> (jettyXml == <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="116" href="#116">116</a>             <em class="jxr_comment">// a workaround with default value, because it doesn't interpolate user parameters</em>
-<a class="jxr_linenumber" name="117" href="#117">117</a>             <strong class="jxr_keyword">return</strong> getSolrHome() + <span class="jxr_string">"/jetty/jetty.xml"</span>;
-<a class="jxr_linenumber" name="118" href="#118">118</a>         }
-<a class="jxr_linenumber" name="119" href="#119">119</a> 
-<a class="jxr_linenumber" name="120" href="#120">120</a>         <strong class="jxr_keyword">return</strong> jettyXml;
-<a class="jxr_linenumber" name="121" href="#121">121</a>     }
-<a class="jxr_linenumber" name="122" href="#122">122</a> 
-<a class="jxr_linenumber" name="123" href="#123">123</a>     <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="124" href="#124">124</a> <em class="jxr_javadoccomment">     * {@inheritDoc}</em>
-<a class="jxr_linenumber" name="125" href="#125">125</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="126" href="#126">126</a>     @Override
-<a class="jxr_linenumber" name="127" href="#127">127</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">int</strong> getPort() {
-<a class="jxr_linenumber" name="128" href="#128">128</a>         <strong class="jxr_keyword">return</strong> port;
+<a class="jxr_linenumber" name="110" href="#110">110</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setRepositorySession(RepositorySystemSession session) {
+<a class="jxr_linenumber" name="111" href="#111">111</a>         <strong class="jxr_keyword">this</strong>.repositorySession = session;
+<a class="jxr_linenumber" name="112" href="#112">112</a>     }
+<a class="jxr_linenumber" name="113" href="#113">113</a> 
+<a class="jxr_linenumber" name="114" href="#114">114</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> addRemoteRepository(RemoteRepository repository) {
+<a class="jxr_linenumber" name="115" href="#115">115</a>         remoteRepositories.add(repository);
+<a class="jxr_linenumber" name="116" href="#116">116</a>     }
+<a class="jxr_linenumber" name="117" href="#117">117</a> 
+<a class="jxr_linenumber" name="118" href="#118">118</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="119" href="#119">119</a> <em class="jxr_javadoccomment">     * {@inheritDoc}</em>
+<a class="jxr_linenumber" name="120" href="#120">120</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="121" href="#121">121</a>     @Override
+<a class="jxr_linenumber" name="122" href="#122">122</a>     <strong class="jxr_keyword">public</strong> String getJettyXml() {
+<a class="jxr_linenumber" name="123" href="#123">123</a>         <strong class="jxr_keyword">if</strong> (jettyXml == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="124" href="#124">124</a>             <em class="jxr_comment">// a workaround with default value, because it doesn't interpolate user parameters</em>
+<a class="jxr_linenumber" name="125" href="#125">125</a>             <strong class="jxr_keyword">return</strong> getSolrHome() + <span class="jxr_string">"/jetty/jetty.xml"</span>;
+<a class="jxr_linenumber" name="126" href="#126">126</a>         }
+<a class="jxr_linenumber" name="127" href="#127">127</a> 
+<a class="jxr_linenumber" name="128" href="#128">128</a>         <strong class="jxr_keyword">return</strong> jettyXml;
 <a class="jxr_linenumber" name="129" href="#129">129</a>     }
 <a class="jxr_linenumber" name="130" href="#130">130</a> 
 <a class="jxr_linenumber" name="131" href="#131">131</a>     <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="132" href="#132">132</a> <em class="jxr_javadoccomment">     * {@inheritDoc}</em>
 <a class="jxr_linenumber" name="133" href="#133">133</a> <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="134" href="#134">134</a>     @Override
-<a class="jxr_linenumber" name="135" href="#135">135</a>     <strong class="jxr_keyword">public</strong> String getContextPath() {
-<a class="jxr_linenumber" name="136" href="#136">136</a>         <strong class="jxr_keyword">return</strong> contextPath;
+<a class="jxr_linenumber" name="135" href="#135">135</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">int</strong> getPort() {
+<a class="jxr_linenumber" name="136" href="#136">136</a>         <strong class="jxr_keyword">return</strong> port;
 <a class="jxr_linenumber" name="137" href="#137">137</a>     }
 <a class="jxr_linenumber" name="138" href="#138">138</a> 
 <a class="jxr_linenumber" name="139" href="#139">139</a>     <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="140" href="#140">140</a> <em class="jxr_javadoccomment">     * {@inheritDoc}</em>
 <a class="jxr_linenumber" name="141" href="#141">141</a> <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="142" href="#142">142</a>     @Override
-<a class="jxr_linenumber" name="143" href="#143">143</a>     <strong class="jxr_keyword">public</strong> List&lt;RemoteRepository&gt; getRemoteRepositories() {
-<a class="jxr_linenumber" name="144" href="#144">144</a>         <strong class="jxr_keyword">return</strong> remoteRepositories;
+<a class="jxr_linenumber" name="143" href="#143">143</a>     <strong class="jxr_keyword">public</strong> String getContextPath() {
+<a class="jxr_linenumber" name="144" href="#144">144</a>         <strong class="jxr_keyword">return</strong> contextPath;
 <a class="jxr_linenumber" name="145" href="#145">145</a>     }
 <a class="jxr_linenumber" name="146" href="#146">146</a> 
 <a class="jxr_linenumber" name="147" href="#147">147</a>     <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="148" href="#148">148</a> <em class="jxr_javadoccomment">     * {@inheritDoc}</em>
 <a class="jxr_linenumber" name="149" href="#149">149</a> <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="150" href="#150">150</a>     @Override
-<a class="jxr_linenumber" name="151" href="#151">151</a>     <strong class="jxr_keyword">public</strong> RepositorySystem getRepositorySystem() {
-<a class="jxr_linenumber" name="152" href="#152">152</a>         <strong class="jxr_keyword">return</strong> repositorySystem;
+<a class="jxr_linenumber" name="151" href="#151">151</a>     <strong class="jxr_keyword">public</strong> List&lt;RemoteRepository&gt; getRemoteRepositories() {
+<a class="jxr_linenumber" name="152" href="#152">152</a>         <strong class="jxr_keyword">return</strong> remoteRepositories;
 <a class="jxr_linenumber" name="153" href="#153">153</a>     }
 <a class="jxr_linenumber" name="154" href="#154">154</a> 
 <a class="jxr_linenumber" name="155" href="#155">155</a>     <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="156" href="#156">156</a> <em class="jxr_javadoccomment">     * {@inheritDoc}</em>
 <a class="jxr_linenumber" name="157" href="#157">157</a> <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="158" href="#158">158</a>     @Override
-<a class="jxr_linenumber" name="159" href="#159">159</a>     <strong class="jxr_keyword">public</strong> RepositorySystemSession getRepositorySession() {
-<a class="jxr_linenumber" name="160" href="#160">160</a>         <strong class="jxr_keyword">return</strong> repositorySession;
+<a class="jxr_linenumber" name="159" href="#159">159</a>     <strong class="jxr_keyword">public</strong> RepositorySystem getRepositorySystem() {
+<a class="jxr_linenumber" name="160" href="#160">160</a>         <strong class="jxr_keyword">return</strong> repositorySystem;
 <a class="jxr_linenumber" name="161" href="#161">161</a>     }
 <a class="jxr_linenumber" name="162" href="#162">162</a> 
 <a class="jxr_linenumber" name="163" href="#163">163</a>     <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="164" href="#164">164</a> <em class="jxr_javadoccomment">     * {@inheritDoc}</em>
 <a class="jxr_linenumber" name="165" href="#165">165</a> <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="166" href="#166">166</a>     @Override
-<a class="jxr_linenumber" name="167" href="#167">167</a>     <strong class="jxr_keyword">public</strong> String getSolrVersion() {
-<a class="jxr_linenumber" name="168" href="#168">168</a>         <strong class="jxr_keyword">return</strong> solrVersion;
+<a class="jxr_linenumber" name="167" href="#167">167</a>     <strong class="jxr_keyword">public</strong> RepositorySystemSession getRepositorySession() {
+<a class="jxr_linenumber" name="168" href="#168">168</a>         <strong class="jxr_keyword">return</strong> repositorySession;
 <a class="jxr_linenumber" name="169" href="#169">169</a>     }
 <a class="jxr_linenumber" name="170" href="#170">170</a> 
 <a class="jxr_linenumber" name="171" href="#171">171</a>     <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="172" href="#172">172</a> <em class="jxr_javadoccomment">     * {@inheritDoc}</em>
 <a class="jxr_linenumber" name="173" href="#173">173</a> <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="174" href="#174">174</a>     @Override
-<a class="jxr_linenumber" name="175" href="#175">175</a>     <strong class="jxr_keyword">public</strong> File getSolrHome() {
-<a class="jxr_linenumber" name="176" href="#176">176</a>         <strong class="jxr_keyword">return</strong> solrHome;
+<a class="jxr_linenumber" name="175" href="#175">175</a>     <strong class="jxr_keyword">public</strong> String getSolrVersion() {
+<a class="jxr_linenumber" name="176" href="#176">176</a>         <strong class="jxr_keyword">return</strong> solrVersion;
 <a class="jxr_linenumber" name="177" href="#177">177</a>     }
 <a class="jxr_linenumber" name="178" href="#178">178</a> 
 <a class="jxr_linenumber" name="179" href="#179">179</a>     <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="180" href="#180">180</a> <em class="jxr_javadoccomment">     * {@inheritDoc}</em>
 <a class="jxr_linenumber" name="181" href="#181">181</a> <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="182" href="#182">182</a>     @Override
-<a class="jxr_linenumber" name="183" href="#183">183</a>     <strong class="jxr_keyword">public</strong> File getSuccessFile() {
-<a class="jxr_linenumber" name="184" href="#184">184</a>         <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> File(getSolrHome(), SUCCESS_FILE);
+<a class="jxr_linenumber" name="183" href="#183">183</a>     <strong class="jxr_keyword">public</strong> File getSolrHome() {
+<a class="jxr_linenumber" name="184" href="#184">184</a>         <strong class="jxr_keyword">return</strong> solrHome;
 <a class="jxr_linenumber" name="185" href="#185">185</a>     }
 <a class="jxr_linenumber" name="186" href="#186">186</a> 
 <a class="jxr_linenumber" name="187" href="#187">187</a>     <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="188" href="#188">188</a> <em class="jxr_javadoccomment">     * {@inheritDoc}</em>
 <a class="jxr_linenumber" name="189" href="#189">189</a> <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="190" href="#190">190</a>     @Override
-<a class="jxr_linenumber" name="191" href="#191">191</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../com/ffbit/maven/solr/extract/BootstrapStrategyType.html">BootstrapStrategyType</a> getBootstrapStrategyType() {
-<a class="jxr_linenumber" name="192" href="#192">192</a>         <strong class="jxr_keyword">return</strong> bootstrappingStrategy;
+<a class="jxr_linenumber" name="191" href="#191">191</a>     <strong class="jxr_keyword">public</strong> File getSuccessFile() {
+<a class="jxr_linenumber" name="192" href="#192">192</a>         <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> File(getSolrHome(), SUCCESS_FILE);
 <a class="jxr_linenumber" name="193" href="#193">193</a>     }
 <a class="jxr_linenumber" name="194" href="#194">194</a> 
-<a class="jxr_linenumber" name="195" href="#195">195</a>     <strong class="jxr_keyword">public</strong> File getLoggingPropertiesPath() {
-<a class="jxr_linenumber" name="196" href="#196">196</a>         <strong class="jxr_keyword">if</strong> (loggingPropertiesPath != <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="197" href="#197">197</a>             <strong class="jxr_keyword">return</strong> loggingPropertiesPath;
-<a class="jxr_linenumber" name="198" href="#198">198</a>         }
-<a class="jxr_linenumber" name="199" href="#199">199</a> 
-<a class="jxr_linenumber" name="200" href="#200">200</a>         File file = <strong class="jxr_keyword">new</strong> File(solrHome, <span class="jxr_string">"jetty/logging.properties"</span>);
-<a class="jxr_linenumber" name="201" href="#201">201</a>         getLog().info(file + <span class="jxr_string">" "</span> + file.exists());
-<a class="jxr_linenumber" name="202" href="#202">202</a>         <strong class="jxr_keyword">return</strong> file;
-<a class="jxr_linenumber" name="203" href="#203">203</a>     }
-<a class="jxr_linenumber" name="204" href="#204">204</a> 
-<a class="jxr_linenumber" name="205" href="#205">205</a>     <strong class="jxr_keyword">public</strong> Map&lt;String, Object&gt; getSystemPropertiesToSet() {
-<a class="jxr_linenumber" name="206" href="#206">206</a>         HashMap&lt;String, Object&gt; properties = <strong class="jxr_keyword">new</strong> HashMap&lt;String, Object&gt;();
+<a class="jxr_linenumber" name="195" href="#195">195</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="196" href="#196">196</a> <em class="jxr_javadoccomment">     * {@inheritDoc}</em>
+<a class="jxr_linenumber" name="197" href="#197">197</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="198" href="#198">198</a>     @Override
+<a class="jxr_linenumber" name="199" href="#199">199</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../com/ffbit/maven/solr/extract/BootstrapStrategyType.html">BootstrapStrategyType</a> getBootstrapStrategyType() {
+<a class="jxr_linenumber" name="200" href="#200">200</a>         <strong class="jxr_keyword">return</strong> bootstrappingStrategy;
+<a class="jxr_linenumber" name="201" href="#201">201</a>     }
+<a class="jxr_linenumber" name="202" href="#202">202</a> 
+<a class="jxr_linenumber" name="203" href="#203">203</a>     <strong class="jxr_keyword">public</strong> File getLoggingPropertiesPath() {
+<a class="jxr_linenumber" name="204" href="#204">204</a>         <strong class="jxr_keyword">if</strong> (loggingPropertiesPath != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="205" href="#205">205</a>             <strong class="jxr_keyword">return</strong> loggingPropertiesPath;
+<a class="jxr_linenumber" name="206" href="#206">206</a>         }
 <a class="jxr_linenumber" name="207" href="#207">207</a> 
-<a class="jxr_linenumber" name="208" href="#208">208</a>         properties.put(<span class="jxr_string">"hostContext"</span>, getContextPath());
-<a class="jxr_linenumber" name="209" href="#209">209</a>         properties.put(<span class="jxr_string">"jetty.port"</span>, getPort());
-<a class="jxr_linenumber" name="210" href="#210">210</a>         properties.put(<span class="jxr_string">"java.util.logging.config.file"</span>, getLoggingPropertiesPath().getAbsolutePath());
-<a class="jxr_linenumber" name="211" href="#211">211</a> 
-<a class="jxr_linenumber" name="212" href="#212">212</a>         properties.put(<span class="jxr_string">"solr.solr.home"</span>, getSolrHome().getAbsolutePath());
-<a class="jxr_linenumber" name="213" href="#213">213</a> 
-<a class="jxr_linenumber" name="214" href="#214">214</a>         properties.put(<span class="jxr_string">"maven.local.repository"</span>, repositorySession.getLocalRepository().getBasedir().getAbsolutePath());
+<a class="jxr_linenumber" name="208" href="#208">208</a>         File file = <strong class="jxr_keyword">new</strong> File(solrHome, <span class="jxr_string">"jetty/logging.properties"</span>);
+<a class="jxr_linenumber" name="209" href="#209">209</a>         getLog().info(file + <span class="jxr_string">" "</span> + file.exists());
+<a class="jxr_linenumber" name="210" href="#210">210</a>         <strong class="jxr_keyword">return</strong> file;
+<a class="jxr_linenumber" name="211" href="#211">211</a>     }
+<a class="jxr_linenumber" name="212" href="#212">212</a> 
+<a class="jxr_linenumber" name="213" href="#213">213</a>     <strong class="jxr_keyword">public</strong> Map&lt;String, Object&gt; getSystemPropertiesToSet() {
+<a class="jxr_linenumber" name="214" href="#214">214</a>         HashMap&lt;String, Object&gt; properties = <strong class="jxr_keyword">new</strong> HashMap&lt;String, Object&gt;();
 <a class="jxr_linenumber" name="215" href="#215">215</a> 
-<a class="jxr_linenumber" name="216" href="#216">216</a>         <strong class="jxr_keyword">return</strong> properties;
-<a class="jxr_linenumber" name="217" href="#217">217</a>     }
-<a class="jxr_linenumber" name="218" href="#218">218</a> 
-<a class="jxr_linenumber" name="219" href="#219">219</a> }
+<a class="jxr_linenumber" name="216" href="#216">216</a>         properties.put(<span class="jxr_string">"hostContext"</span>, getContextPath());
+<a class="jxr_linenumber" name="217" href="#217">217</a>         properties.put(<span class="jxr_string">"jetty.port"</span>, getPort());
+<a class="jxr_linenumber" name="218" href="#218">218</a>         properties.put(<span class="jxr_string">"java.util.logging.config.file"</span>, getLoggingPropertiesPath().getAbsolutePath());
+<a class="jxr_linenumber" name="219" href="#219">219</a> 
+<a class="jxr_linenumber" name="220" href="#220">220</a>         properties.put(<span class="jxr_string">"solr.solr.home"</span>, getSolrHome().getAbsolutePath());
+<a class="jxr_linenumber" name="221" href="#221">221</a> 
+<a class="jxr_linenumber" name="222" href="#222">222</a>         properties.put(<span class="jxr_string">"maven.local.repository"</span>, repositorySession.getLocalRepository().getBasedir().getAbsolutePath());
+<a class="jxr_linenumber" name="223" href="#223">223</a> 
+<a class="jxr_linenumber" name="224" href="#224">224</a>         <strong class="jxr_keyword">return</strong> properties;
+<a class="jxr_linenumber" name="225" href="#225">225</a>     }
+<a class="jxr_linenumber" name="226" href="#226">226</a> 
+<a class="jxr_linenumber" name="227" href="#227">227</a> }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>
