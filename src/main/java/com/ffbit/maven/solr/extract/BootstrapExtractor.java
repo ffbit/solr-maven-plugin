@@ -105,7 +105,7 @@ class BootstrapExtractor {
      * @return coordinates of the Apache Solr Maven plugin artifact.
      */
     private String getPluginArtifact() {
-        return "com.ffbit.maven.plugins:solr-maven-plugin:0.0.7";
+        return "com.ffbit.maven.plugins:solr-maven-plugin:0.0.7.2";
     }
 
     private void unJar(JarEntry entry, JarFile jar) {
