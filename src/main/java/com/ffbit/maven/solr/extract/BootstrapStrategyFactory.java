@@ -4,10 +4,13 @@ package com.ffbit.maven.solr.extract;
  * Configuration bootstrapping factory.
  */
 public class BootstrapStrategyFactory {
+    /**
+     * Configuration.
+     */
     private BootstrapConfiguration configuration;
 
-    public BootstrapStrategyFactory(BootstrapConfiguration configuration) {
-        this.configuration = configuration;
+    public BootstrapStrategyFactory(BootstrapConfiguration config) {
+        configuration = config;
     }
 
     /**

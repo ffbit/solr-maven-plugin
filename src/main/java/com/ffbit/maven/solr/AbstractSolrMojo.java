@@ -7,13 +7,16 @@ import com.ffbit.maven.solr.extract.BootstrapStrategy;
 import com.ffbit.maven.solr.extract.BootstrapStrategyFactory;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
-import org.sonatype.aether.RepositorySystemSession;
-import org.sonatype.aether.repository.RemoteRepository;
 
 import java.util.Map;
 
+/**
+ * General place for Solr Maven plugin functionality.
+ */
 public abstract class AbstractSolrMojo extends AbstractSolrConfigurationMojo {
-
+    /**
+     * Server waiting timeout in milliseconds for <b>plugin's own unit test use</b>.
+     */
     private long serverWaitingTimeout;
 
     /**
@@ -24,16 +27,8 @@ public abstract class AbstractSolrMojo extends AbstractSolrConfigurationMojo {
         return serverWaitingTimeout;
     }
 
-    public void setServerWaitingTimeout(long serverWaitingTimeout) {
-        this.serverWaitingTimeout = serverWaitingTimeout;
-    }
-
-    public void setRepositorySession(RepositorySystemSession repositorySession) {
-        this.repositorySession = repositorySession;
-    }
-
-    public void addRemoteRepository(RemoteRepository repository) {
-        remoteRepositories.add(repository);
+    public void setServerWaitingTimeout(long waitingTimeout) {
+        serverWaitingTimeout = waitingTimeout;
     }
 
     /**
@@ -65,7 +60,7 @@ public abstract class AbstractSolrMojo extends AbstractSolrConfigurationMojo {
 
     private void resolveExternalArtifacts() {
         ExternalArtifactsFactory factory = new ExternalArtifactsFactory();
-        ExternalArtifacts externalArtifacts = factory.getExternalArtifacts(solrVersion);
+        ExternalArtifacts externalArtifacts = factory.getExternalArtifacts(getSolrVersion());
         getArtifactResolver().resolve(externalArtifacts.getArtifacts());
     }
 

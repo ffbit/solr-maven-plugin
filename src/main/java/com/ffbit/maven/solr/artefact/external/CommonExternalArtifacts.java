@@ -19,10 +19,10 @@ public class CommonExternalArtifacts implements ExternalArtifacts {
     /**
      * Instantiates common external artifacts source for a given Apache Solr version.
      *
-     * @param solrVersion a given Apache Solr version
+     * @param version a given Apache Solr version
      */
-    public CommonExternalArtifacts(String solrVersion) {
-        this.solrVersion = solrVersion;
+    public CommonExternalArtifacts(String version) {
+        solrVersion = version;
     }
 
     /**

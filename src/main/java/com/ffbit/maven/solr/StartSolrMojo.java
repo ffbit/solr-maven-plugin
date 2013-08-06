@@ -11,7 +11,10 @@ import org.apache.maven.plugins.annotations.Mojo;
  */
 @Mojo(name = "start")
 public class StartSolrMojo extends AbstractSolrMojo {
-    protected JettyRunner runner;
+    /**
+     * Jetty embedded Servlet Container wrapper.
+     */
+    private JettyRunner runner;
 
     @Override
     protected void executeGoal() throws MojoExecutionException, MojoFailureException {
@@ -23,6 +26,15 @@ public class StartSolrMojo extends AbstractSolrMojo {
     @Override
     public void stop() throws Exception {
         runner.stop();
+    }
+
+    /**
+     * Get Jetty embedded Servlet Container wrapper.
+     *
+     * @return Jetty embedded Servlet Container wrapper.
+     */
+    protected JettyRunner getRunner() {
+        return runner;
     }
 
 }

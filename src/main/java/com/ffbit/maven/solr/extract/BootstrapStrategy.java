@@ -8,6 +8,6 @@ public interface BootstrapStrategy {
     /**
      * Configuration Bootstrap.
      */
-    public void bootstrap();
+    void bootstrap();
 
 }
