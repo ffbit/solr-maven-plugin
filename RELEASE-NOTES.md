@@ -1,5 +1,9 @@
 # Release Notes
 
+## v0.0.7.2
+
+* Fixed all checkstyle issues
+
 ## v0.0.7.1
 
 * Fixed bug in the bootstrap **ONCE** configuration bootstrapping strategy
