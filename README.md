@@ -70,3 +70,5 @@ Run
 ## Status
 
 Supports Apache Solr of version 4.2.0, 4.2.1, 4.3.0 and 4.3.1 **only**
+
+![R.I.P.](http://www.theonlinenewbie.com/wp-content/uploads/2013/08/RIP-Amazon-Listmania-150x150.jpg)
