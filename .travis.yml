@@ -1,7 +1,7 @@
 language: java
 jdk:
-  - oraclejdk6
-  - openjdk6
+  - oraclejdk7
+  - openjdk7
 script:
   - mvn help:evaluate -Dexpression=settings.localRepository
   - mvn clean install
